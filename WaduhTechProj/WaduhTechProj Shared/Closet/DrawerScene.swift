@@ -14,7 +14,7 @@ class DrawerScene : SKScene {
     var timerDrawer: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var countdownStart = 12
+    var timeRemaining = 15
     
     let views: [SKTexture] = [SKTexture(imageNamed: "drawerClosed"), SKTexture(imageNamed: "drawerOpen")]
     
@@ -25,7 +25,7 @@ class DrawerScene : SKScene {
     }
     
     func startCountdown() {
-        counter = countdownStart // Set counter to countdownStart
+        counter = timeRemaining // Set counter to countdownStart
         countdownTimer.invalidate() // Invalidate the previous timer if it exists
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         
@@ -35,13 +35,17 @@ class DrawerScene : SKScene {
         counter -= 1
         timerDrawer.text = "\(counter)"
         updateTextureIndex()
+        
+        if counter == 0 {
+            countdownTimer.invalidate()
+        }
     }
     
     func updateTextureIndex() {
         
-        if counter <= 5 {
+        if counter <= 10 {
             currentTextureIndex = 1
-        } else if counter <= 10 {
+        } else if counter <= 15 {
             currentTextureIndex = 0
         }
         

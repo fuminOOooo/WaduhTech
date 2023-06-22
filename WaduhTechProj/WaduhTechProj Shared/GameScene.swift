@@ -11,12 +11,10 @@ class GameScene: SKScene {
         
     // Blackboard
     var blackboardNode: BlackboardItem!
-//    var blackboardNode: SKSpriteNode!
     var aBlackboard = BlackboardScene()
     
     // Closet
     var drawerNode: DrawerItem!
-//    var drawerNode: SKSpriteNode!
     var aDrawer = DrawerScene()
 
     // Window
@@ -49,16 +47,22 @@ class GameScene: SKScene {
         
         // Timer label blackboard
         timerBlackboard.position = CGPoint(x: 0,y: 100)
-        
         addChild(timerBlackboard)
         aBlackboard.timerBlackboard = timerBlackboard
         
+        // Timer label drawer
+        timerDrawer.position = CGPoint(x: 200, y: 100)
+        addChild(timerDrawer)
+        aDrawer.timerDrawer = timerDrawer
         
         // Start the blackboard countdown
         aBlackboard.startCountdown()
         
         // Start the window countdown timer
         aWindow.startCountdown()
+        
+        // Start the drawer counter timer
+        aDrawer.startCountdown()
         
     }
     
@@ -77,6 +81,14 @@ class GameScene: SKScene {
         var label = SKLabelNode(fontNamed: "SF Pro")
         label.fontColor = SKColor.black
         label.text = "\(aBlackboard.timeRemaining)"
+        return label
+    }()
+    
+    // Label Timer Blackboard
+    lazy var timerDrawer: SKLabelNode = {
+        var label = SKLabelNode()
+        label.fontColor = SKColor.black
+        label.text = "\(aDrawer.timeRemaining)"
         return label
     }()
     
@@ -146,16 +158,28 @@ class GameScene: SKScene {
 
                 if let node = nodeToUpdate {
                     if translation.x > swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
-
-                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboard4")
+                        // Right swipe
+                        if node == blackboardNode {
+                            continue // Skip right swipe for blackboard
+                        }
+                        
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerClosed" : "blackboard4")
                         print(node == drawerNode ? "drawer swiped right" : "blackboard swiped right")
+                        
+                        if node == drawerNode {
+                            aDrawer.startCountdown() // Reset drawer timer
+                        }
                     } else if translation.x < -swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
                         // Left swipe
-                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerClosed" : "blackboardClear")
+                        if node == drawerNode {
+                            continue // Skip right swipe for blackboard
+                        }
+                        
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboardClear")
                         print(node == drawerNode ? "drawer swiped left" : "blackboard swiped left")
 
                         if node == blackboardNode {
-                            aBlackboard.startCountdown() // Reset the timer
+                            aBlackboard.startCountdown() // Reset blackboard timer
                         }
                     }
                 }
