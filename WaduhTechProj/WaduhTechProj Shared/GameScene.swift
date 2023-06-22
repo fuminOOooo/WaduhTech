@@ -9,11 +9,6 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    
-    fileprivate var label : SKLabelNode?
-    fileprivate var spinnyNode : SKShapeNode?
-
-    
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
         guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
@@ -27,79 +22,81 @@ class GameScene: SKScene {
         return scene
     }
     
-    func setUpScene() {
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 4.0
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
+    var windowNode: WindowItem!
+    
+    var aWindow = WindowScene()
+    
+    var whichTouchIndicator = 0
+    // 0 = Touch with no sprite
+    // 1 = Touch inside window
     
     override func didMove(to view: SKView) {
-        self.setUpScene()
+        
+        windowNode = WindowItem(aWindow: aWindow, scene: self)
+        aWindow.spriteNode = windowNode
+        
+        aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
+        aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(aWindow.timerLabel)
+        
+        // Start the window countdown timer
+        aWindow.startCountdown()
+        
     }
-
-    func makeSpinny(at pos: CGPoint, color: SKColor) {
-        if let spinny = self.spinnyNode?.copy() as! SKShapeNode? {
-            spinny.position = pos
-            spinny.strokeColor = color
-            self.addChild(spinny)
+    
+    // Khusus Window
+    @objc func fireTimer() {
+        print("Timer fired!")
+        if aWindow.timeRemaining == 10 {
+            aWindow.timeRemaining = 10
+        } else if aWindow.timeRemaining < 10 {
+            aWindow.timeRemaining += 0.5
         }
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-    }
-}
-
-#if os(iOS) || os(tvOS)
-// Touch-based event handling
-extension GameScene {
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: self)
+        
+        // Began for window
+        if aWindow.spriteNode.contains(touchLocation) {
+            
+            whichTouchIndicator = 1
+            
+            aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+            
+                print("touch inside window detected!")
+                
+                // Window timer stops
+            aWindow.countdownTimer?.invalidate()
+            aWindow.countdownTimer = nil
+                
+            aWindow.touchStartTime = touch.timestamp
         }
         
-        for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.green)
-        }
+        
+        
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.blue)
-        }
-    }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.red)
+        
+        // Ended for window
+        if (whichTouchIndicator == 1) {
+            print("hold ended!")
+            aWindow.holdTimer?.invalidate()
+            aWindow.holdTimer = nil
+            
+            // Window timer starts
+            aWindow.startCountdown()
+            whichTouchIndicator = 0
         }
+        
+        
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            self.makeSpinny(at: t.location(in: self), color: SKColor.red)
-        }
-    }
     
-   
+    
 }
-#endif
 
 #if os(OSX)
 // Mouse-based event handling

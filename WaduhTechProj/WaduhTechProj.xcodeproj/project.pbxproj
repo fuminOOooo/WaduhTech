@@ -15,6 +15,8 @@
 		15662CB52A41C59000214FD7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 15662CA02A41C58F00214FD7 /* GameScene.sks */; };
 		15662CB62A41C59000214FD7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15662CA12A41C58F00214FD7 /* GameScene.swift */; };
 		15662CB72A41C59000214FD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15662CA22A41C59000214FD7 /* Assets.xcassets */; };
+		15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC582A4368320065FF12 /* WindowScene.swift */; };
+		15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC5B2A436A990065FF12 /* WindowItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		15662CAC2A41C59000214FD7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		15662CAF2A41C59000214FD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15662CB22A41C59000214FD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		15C3EC582A4368320065FF12 /* WindowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowScene.swift; sourceTree = "<group>"; };
+		15C3EC5B2A436A990065FF12 /* WindowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 				15662C9F2A41C58F00214FD7 /* Actions.sks */,
 				15662CA02A41C58F00214FD7 /* GameScene.sks */,
 				15662CA12A41C58F00214FD7 /* GameScene.swift */,
+				15C3EC5A2A436A880065FF12 /* Window */,
 				15662CA22A41C59000214FD7 /* Assets.xcassets */,
 			);
 			path = "WaduhTechProj Shared";
@@ -77,6 +82,15 @@
 				15662CB12A41C59000214FD7 /* LaunchScreen.storyboard */,
 			);
 			path = "WaduhTechProj iOS";
+			sourceTree = "<group>";
+		};
+		15C3EC5A2A436A880065FF12 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				15C3EC582A4368320065FF12 /* WindowScene.swift */,
+				15C3EC5B2A436A990065FF12 /* WindowItem.swift */,
+			);
+			path = Window;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				15662CB62A41C59000214FD7 /* GameScene.swift in Sources */,
+				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
 				15662CAD2A41C59000214FD7 /* GameViewController.swift in Sources */,
+				15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */,
 				15662CAB2A41C59000214FD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
