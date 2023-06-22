@@ -17,6 +17,10 @@
 		15662CB72A41C59000214FD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15662CA22A41C59000214FD7 /* Assets.xcassets */; };
 		15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC582A4368320065FF12 /* WindowScene.swift */; };
 		15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC5B2A436A990065FF12 /* WindowItem.swift */; };
+		9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */; };
+		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
+		9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */; };
+		9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		15662CB22A41C59000214FD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15C3EC582A4368320065FF12 /* WindowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowScene.swift; sourceTree = "<group>"; };
 		15C3EC5B2A436A990065FF12 /* WindowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowItem.swift; sourceTree = "<group>"; };
+		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
+		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
+		9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
+		9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +67,9 @@
 				15662C9F2A41C58F00214FD7 /* Actions.sks */,
 				15662CA02A41C58F00214FD7 /* GameScene.sks */,
 				15662CA12A41C58F00214FD7 /* GameScene.swift */,
+				9B0D9AC42A443D94009AB7FC /* Closet */,
 				15C3EC5A2A436A880065FF12 /* Window */,
+				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
 				15662CA22A41C59000214FD7 /* Assets.xcassets */,
 			);
 			path = "WaduhTechProj Shared";
@@ -91,6 +101,24 @@
 				15C3EC5B2A436A990065FF12 /* WindowItem.swift */,
 			);
 			path = Window;
+			sourceTree = "<group>";
+		};
+		9B0D9ABF2A4435D9009AB7FC /* Blackboard */ = {
+			isa = PBXGroup;
+			children = (
+				9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */,
+				9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */,
+			);
+			path = Blackboard;
+			sourceTree = "<group>";
+		};
+		9B0D9AC42A443D94009AB7FC /* Closet */ = {
+			isa = PBXGroup;
+			children = (
+				9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */,
+				9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */,
+			);
+			path = Closet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +198,11 @@
 				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
 				15662CAD2A41C59000214FD7 /* GameViewController.swift in Sources */,
 				15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */,
+				9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */,
+				9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */,
 				15662CAB2A41C59000214FD7 /* AppDelegate.swift in Sources */,
+				9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */,
+				9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,14 +344,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KCXWQSNV6P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +361,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.waduhTech.WaduhTechProj;
 				PRODUCT_NAME = WaduhTechProj;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -341,14 +377,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KCXWQSNV6P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,9 +394,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.waduhTech.WaduhTechProj;
 				PRODUCT_NAME = WaduhTechProj;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

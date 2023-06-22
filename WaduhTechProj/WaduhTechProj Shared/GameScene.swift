@@ -22,22 +22,58 @@ class GameScene: SKScene {
         return scene
     }
     
-    var windowNode: WindowItem!
+//    var closetNode: closetItem!
     
+    // Blackboard
+    var blackboardNode: BlackboardItem!
+    var aBlackboard = BlackboardScene()
+    
+    // Closet
+    var drawerNode: DrawerItem!
+    var aDrawer = DrawerScene()
+
+    // Window
+    var windowNode: WindowItem!
     var aWindow = WindowScene()
     
     var whichTouchIndicator = 0
     // 0 = Touch with no sprite
     // 1 = Touch inside window
+    // 2 = Touch inside blackboard
+    // 3 = Touch inside closet
+    var startLocation: CGPoint? = nil
+
+    lazy var timerBlackboard: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SF Pro")
+        label.fontColor = SKColor.black
+        label.text = "\(aBlackboard.countdownStart)"
+        return label
+    }()
     
     override func didMove(to view: SKView) {
         
         windowNode = WindowItem(aWindow: aWindow, scene: self)
         aWindow.spriteNode = windowNode
         
+        blackboardNode = BlackboardItem(scene: self)
+        aBlackboard.spriteNode = blackboardNode
+
+        drawerNode = DrawerItem(scene: self)
+        aDrawer.spriteNode = drawerNode
+
+        // Timer label window
         aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
         aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(aWindow.timerLabel)
+        
+        // Timer label blackboard
+        timerBlackboard.position = CGPoint(x: 0,y: 200)
+        addChild(timerBlackboard)
+        aBlackboard.timerBlackboard = timerBlackboard
+        
+        
+        // Start the blackboard countdown
+        aBlackboard.startCountdown()
         
         // Start the window countdown timer
         aWindow.startCountdown()
@@ -73,29 +109,65 @@ class GameScene: SKScene {
                 
             aWindow.touchStartTime = touch.timestamp
         }
+        else if blackboardNode.contains(touchLocation) {
+            print("start blackboard")
+            startLocation = touchLocation
+            whichTouchIndicator = 2
+
+        }
         
         
         
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        // Ended for window
-        if (whichTouchIndicator == 1) {
-            print("hold ended!")
-            aWindow.holdTimer?.invalidate()
-            aWindow.holdTimer = nil
+        guard let startLocation = startLocation else { return }
+        for touch in touches {
+            let endLocation = touch.location(in: self)
+            let translation = CGPoint(x: endLocation.x - startLocation.x, y: endLocation.y - startLocation.y)
+            let swipeDistanceThreshold: CGFloat = 50.0
             
-            // Window timer starts
-            aWindow.startCountdown()
-            whichTouchIndicator = 0
+            var nodeToUpdate: SKSpriteNode?
+            
+            // Ended for window
+            if (whichTouchIndicator == 1) {
+                print("hold ended!")
+                aWindow.holdTimer?.invalidate()
+                aWindow.holdTimer = nil
+                
+                // Window timer starts
+                aWindow.startCountdown()
+                whichTouchIndicator = 0
+            }
+            else if (whichTouchIndicator == 2) {
+                nodeToUpdate = blackboardNode
+//                if whichTouchIndicator == 2 {
+//                    nodeToUpdate = blackboardNode
+//                } else if whichTouchIndicator == 3 {
+//                    nodeToUpdate = closetNode
+//                }
+                
+                if let node = nodeToUpdate {
+                    if translation.x > swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
+                        // Right swipe
+                        if node == blackboardNode {
+                            continue // Skip right swipe for blackboard
+                        }
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboard4")
+                        print("swiped right")
+                    } else if translation.x < -swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
+                        // Left swipe
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerClosed" : "blackboardClear")
+                        print("swiped left")
+                        
+                        if node == blackboardNode {
+                            aBlackboard.startCountdown() // Reset the timer
+                        }
+                    }
+                }
+            }
         }
-        
-        
     }
-    
-    
-    
 }
 
 #if os(OSX)
