@@ -10,16 +10,17 @@ import SpriteKit
 class GameScene: SKScene {
         
     // Blackboard
-//    var blackboardNode: BlackboardItem!
-    var blackboardNode: SKSpriteNode!
+    var blackboardNode: BlackboardItem!
+//    var blackboardNode: SKSpriteNode!
     var aBlackboard = BlackboardScene()
     
     // Closet
-//    var drawerNode: DrawerItem!
-    var drawerNode: SKSpriteNode!
+    var drawerNode: DrawerItem!
+//    var drawerNode: SKSpriteNode!
     var aDrawer = DrawerScene()
 
     // Window
+    var isHeld: Bool = false
     var windowNode: WindowItem!
     var aWindow = WindowScene()
     
@@ -33,22 +34,9 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        // coba coba
-        blackboardNode = SKSpriteNode(imageNamed: "blackboardClear")
-        blackboardNode.position = CGPoint(x: 0, y: 287)
-        blackboardNode.size = CGSize(width: 320, height: 192)
-        
-        addChild(blackboardNode)
-        
-        drawerNode = SKSpriteNode(imageNamed: "drawerClosed")
-        drawerNode.position = CGPoint(x: 250, y: 0)
-        drawerNode.size = CGSize(width: 100, height: 100)
-
-        addChild(drawerNode)
-        
         windowNode = WindowItem(scene: self)
-//        blackboardNode = BlackboardItem(scene: self)
-//        drawerNode = DrawerItem(scene: self)
+        blackboardNode = BlackboardItem(scene: self)
+        drawerNode = DrawerItem(scene: self)
 
         aWindow.spriteNode = windowNode
         aBlackboard.spriteNode = blackboardNode
@@ -93,54 +81,55 @@ class GameScene: SKScene {
     }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-        for touch in touches {
-            let touchLocation = touch.location(in: self)
-            
-            // Began for window
-            if aWindow.spriteNode.contains(touchLocation) {
-                
-                whichTouchIndicator = 1
-                
-                aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-                
-                print("touch inside window detected!")
-                
-                // Window timer stops
-                aWindow.countdownTimer?.invalidate()
-                aWindow.countdownTimer = nil
-                
-                aWindow.touchStartTime = touch.timestamp
-            }
-            else if blackboardNode.contains(touchLocation) {
-                print("start blackboard")
-                startLocation = touchLocation
-                whichTouchIndicator = 2
-                
-            }
-            else if drawerNode.contains(touchLocation) {
-                print("start drawer")
-                startLocation = touchLocation
-                whichTouchIndicator = 3
-            }
+        guard let touch = touches.first else { return }
+        //        for touch in touches {
+        let touchLocation = touch.location(in: self)
+        
+        // Began for window
+        if (drawerNode.contains(touchLocation) && isHeld == false) {
+            print("start drawer")
+            startLocation = touchLocation
+            whichTouchIndicator = 3
         }
+        else if (blackboardNode.contains(touchLocation) && isHeld == false) {
+            print("start blackboard")
+            startLocation = touchLocation
+            whichTouchIndicator = 2
+            
+        }
+        else if (aWindow.spriteNode.contains(touchLocation) && isHeld == false) {
+            isHeld.toggle()
+            whichTouchIndicator = 1
+            
+            print("touch inside window detected!")
+            
+            aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+            
+            // Window timer stops
+            aWindow.countdownTimer?.invalidate()
+            aWindow.countdownTimer = nil
+            
+            aWindow.touchStartTime = touch.timestamp
+        }
+//        }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
             // Ended for window
-            if (whichTouchIndicator == 1) {
+            if (whichTouchIndicator == 1 && isHeld == true) {
                 print("hold ended!")
+                isHeld.toggle()
                 aWindow.holdTimer?.invalidate()
                 aWindow.holdTimer = nil
                 
                 // Window timer starts
                 aWindow.startCountdown()
-                whichTouchIndicator = 0
             }
         
             // Ended for blackboard and drawer
-            else if (whichTouchIndicator == 2 || whichTouchIndicator == 3) {
+            else if ((whichTouchIndicator == 2 || whichTouchIndicator == 3) && isHeld == false) {
+                
                 guard let startLocation = startLocation else { return }
                 for touch in touches {
                     let endLocation = touch.location(in: self)
@@ -157,11 +146,7 @@ class GameScene: SKScene {
 
                 if let node = nodeToUpdate {
                     if translation.x > swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
-                        // Right swipe
-//                        if node == blackboardNode {
-//                            continue // Skip right swipe for blackboard
-//                        }
-                        
+
                         node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboard4")
                         print(node == drawerNode ? "drawer swiped right" : "blackboard swiped right")
                     } else if translation.x < -swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
@@ -177,6 +162,9 @@ class GameScene: SKScene {
                     self.startLocation = nil
             }
         }
+        
+            whichTouchIndicator = 0
+        
     }
 }
 
