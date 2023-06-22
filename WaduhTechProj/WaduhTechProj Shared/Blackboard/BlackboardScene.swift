@@ -14,7 +14,7 @@ class BlackboardScene: SKScene {
     var timerBlackboard: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var countdownStart = 15
+    var timeRemaining = 15
     
     let views: [SKTexture] = [SKTexture(imageNamed: "blackboardClear"), SKTexture(imageNamed: "blackboard1"), SKTexture(imageNamed: "blackboard2"), SKTexture(imageNamed: "blackboard3"), SKTexture(imageNamed: "blackboard4")]
     
@@ -25,7 +25,7 @@ class BlackboardScene: SKScene {
         }
     
     func startCountdown() {
-        counter = countdownStart // Set counter to countdownStart
+        counter = timeRemaining // Set counter to countdownStart
         countdownTimer.invalidate() // Invalidate the previous timer if it exists
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         
@@ -35,6 +35,10 @@ class BlackboardScene: SKScene {
         counter -= 1
         timerBlackboard.text = "\(counter)"
         updateTextureIndex()
+        
+        if counter == 0 {
+            countdownTimer.invalidate()
+        }
     }
 
     func updateTextureIndex() {

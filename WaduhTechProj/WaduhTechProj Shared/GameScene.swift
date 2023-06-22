@@ -8,28 +8,15 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    
-    class func newGameScene() -> GameScene {
-        // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-            print("Failed to load GameScene.sks")
-            abort()
-        }
         
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .aspectFill
-        
-        return scene
-    }
-    
-//    var closetNode: closetItem!
-    
     // Blackboard
-    var blackboardNode: BlackboardItem!
+//    var blackboardNode: BlackboardItem!
+    var blackboardNode: SKSpriteNode!
     var aBlackboard = BlackboardScene()
     
     // Closet
-    var drawerNode: DrawerItem!
+//    var drawerNode: DrawerItem!
+    var drawerNode: SKSpriteNode!
     var aDrawer = DrawerScene()
 
     // Window
@@ -41,24 +28,30 @@ class GameScene: SKScene {
     // 1 = Touch inside window
     // 2 = Touch inside blackboard
     // 3 = Touch inside closet
+    
     var startLocation: CGPoint? = nil
-
-    lazy var timerBlackboard: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SF Pro")
-        label.fontColor = SKColor.black
-        label.text = "\(aBlackboard.countdownStart)"
-        return label
-    }()
     
     override func didMove(to view: SKView) {
         
-        windowNode = WindowItem(aWindow: aWindow, scene: self)
-        aWindow.spriteNode = windowNode
+        // coba coba
+        blackboardNode = SKSpriteNode(imageNamed: "blackboardClear")
+        blackboardNode.position = CGPoint(x: 0, y: 287)
+        blackboardNode.size = CGSize(width: 320, height: 192)
         
-        blackboardNode = BlackboardItem(scene: self)
-        aBlackboard.spriteNode = blackboardNode
+        addChild(blackboardNode)
+        
+        drawerNode = SKSpriteNode(imageNamed: "drawerClosed")
+        drawerNode.position = CGPoint(x: 250, y: 0)
+        drawerNode.size = CGSize(width: 100, height: 100)
 
-        drawerNode = DrawerItem(scene: self)
+        addChild(drawerNode)
+        
+        windowNode = WindowItem(scene: self)
+//        blackboardNode = BlackboardItem(scene: self)
+//        drawerNode = DrawerItem(scene: self)
+
+        aWindow.spriteNode = windowNode
+        aBlackboard.spriteNode = blackboardNode
         aDrawer.spriteNode = drawerNode
 
         // Timer label window
@@ -67,7 +60,8 @@ class GameScene: SKScene {
         addChild(aWindow.timerLabel)
         
         // Timer label blackboard
-        timerBlackboard.position = CGPoint(x: 0,y: 200)
+        timerBlackboard.position = CGPoint(x: 0,y: 100)
+        
         addChild(timerBlackboard)
         aBlackboard.timerBlackboard = timerBlackboard
         
@@ -90,45 +84,50 @@ class GameScene: SKScene {
         }
     }
     
+    // Label Timer Blackboard
+    lazy var timerBlackboard: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SF Pro")
+        label.fontColor = SKColor.black
+        label.text = "\(aBlackboard.timeRemaining)"
+        return label
+    }()
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let touchLocation = touch.location(in: self)
-        
-        // Began for window
-        if aWindow.spriteNode.contains(touchLocation) {
+//        guard let touch = touches.first else { return }
+        for touch in touches {
+            let touchLocation = touch.location(in: self)
             
-            whichTouchIndicator = 1
-            
-            aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-            
+            // Began for window
+            if aWindow.spriteNode.contains(touchLocation) {
+                
+                whichTouchIndicator = 1
+                
+                aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+                
                 print("touch inside window detected!")
                 
                 // Window timer stops
-            aWindow.countdownTimer?.invalidate()
-            aWindow.countdownTimer = nil
+                aWindow.countdownTimer?.invalidate()
+                aWindow.countdownTimer = nil
                 
-            aWindow.touchStartTime = touch.timestamp
+                aWindow.touchStartTime = touch.timestamp
+            }
+            else if blackboardNode.contains(touchLocation) {
+                print("start blackboard")
+                startLocation = touchLocation
+                whichTouchIndicator = 2
+                
+            }
+            else if drawerNode.contains(touchLocation) {
+                print("start drawer")
+                startLocation = touchLocation
+                whichTouchIndicator = 3
+            }
         }
-        else if blackboardNode.contains(touchLocation) {
-            print("start blackboard")
-            startLocation = touchLocation
-            whichTouchIndicator = 2
-
-        }
-        
-        
-        
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let startLocation = startLocation else { return }
-        for touch in touches {
-            let endLocation = touch.location(in: self)
-            let translation = CGPoint(x: endLocation.x - startLocation.x, y: endLocation.y - startLocation.y)
-            let swipeDistanceThreshold: CGFloat = 50.0
-            
-            var nodeToUpdate: SKSpriteNode?
-            
+        
             // Ended for window
             if (whichTouchIndicator == 1) {
                 print("hold ended!")
@@ -139,32 +138,43 @@ class GameScene: SKScene {
                 aWindow.startCountdown()
                 whichTouchIndicator = 0
             }
-            else if (whichTouchIndicator == 2) {
-                nodeToUpdate = blackboardNode
-//                if whichTouchIndicator == 2 {
-//                    nodeToUpdate = blackboardNode
-//                } else if whichTouchIndicator == 3 {
-//                    nodeToUpdate = closetNode
-//                }
+        
+            // Ended for blackboard and drawer
+            else if (whichTouchIndicator == 2 || whichTouchIndicator == 3) {
+                guard let startLocation = startLocation else { return }
+                for touch in touches {
+                    let endLocation = touch.location(in: self)
+                    let translation = CGPoint(x: endLocation.x - startLocation.x, y: endLocation.y - startLocation.y)
+                    let swipeDistanceThreshold: CGFloat = 50.0
+                    
+                    var nodeToUpdate: SKSpriteNode?
                 
+                if whichTouchIndicator == 2 {
+                    nodeToUpdate = blackboardNode
+                } else if whichTouchIndicator == 3 {
+                    nodeToUpdate = drawerNode
+                }
+
                 if let node = nodeToUpdate {
                     if translation.x > swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
                         // Right swipe
-                        if node == blackboardNode {
-                            continue // Skip right swipe for blackboard
-                        }
+//                        if node == blackboardNode {
+//                            continue // Skip right swipe for blackboard
+//                        }
+                        
                         node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboard4")
-                        print("swiped right")
+                        print(node == drawerNode ? "drawer swiped right" : "blackboard swiped right")
                     } else if translation.x < -swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
                         // Left swipe
                         node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerClosed" : "blackboardClear")
-                        print("swiped left")
-                        
+                        print(node == drawerNode ? "drawer swiped left" : "blackboard swiped left")
+
                         if node == blackboardNode {
                             aBlackboard.startCountdown() // Reset the timer
                         }
                     }
                 }
+                    self.startLocation = nil
             }
         }
     }

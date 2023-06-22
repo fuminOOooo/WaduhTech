@@ -10,7 +10,7 @@ import SpriteKit
 
 class WindowItem: SKSpriteNode {
     
-    init (aWindow: WindowScene, scene: SKScene) {
+    init (scene: SKScene) {
         // Create and add your sprite node
         let windowTexture : SKTexture? = SKTexture(imageNamed: "Untitled_Artwork 1")
         let windowSize = CGSize(width: 100, height: 100)

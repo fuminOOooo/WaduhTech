@@ -97,8 +97,8 @@
 		15C3EC5A2A436A880065FF12 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				15C3EC582A4368320065FF12 /* WindowScene.swift */,
 				15C3EC5B2A436A990065FF12 /* WindowItem.swift */,
+				15C3EC582A4368320065FF12 /* WindowScene.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
