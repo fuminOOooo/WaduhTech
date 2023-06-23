@@ -16,7 +16,7 @@ class BlackboardScene: SKScene {
     var countdownTimer = Timer()
     var timeRemaining = 15
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "blackboardClear"), SKTexture(imageNamed: "blackboard1"), SKTexture(imageNamed: "blackboard2"), SKTexture(imageNamed: "blackboard3"), SKTexture(imageNamed: "blackboard4")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "Blackboard"), SKTexture(imageNamed: "Blackboard1"), SKTexture(imageNamed: "Blackboard2"), SKTexture(imageNamed: "Blackboard3"), SKTexture(imageNamed: "Blackboard4")]
     
     var currentTextureIndex: Int = 0 {
             didSet {

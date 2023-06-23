@@ -175,7 +175,7 @@ class GameScene: SKScene {
                             continue // Skip right swipe for blackboard
                         }
                         
-                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboardClear")
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "Blackboard")
                         print(node == drawerNode ? "drawer swiped left" : "blackboard swiped left")
 
                         if node == blackboardNode {
