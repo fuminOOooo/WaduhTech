@@ -12,7 +12,7 @@ class BlackboardItem: SKSpriteNode {
     
     init(scene: SKScene) {
 
-        let blackboardSize = CGSize(width: 320, height: 192)
+        let blackboardSize = CGSize(width: 500, height: 192)
         let blackboardTexture = SKTexture(imageNamed: "Blackboard")
 
         super.init(texture: blackboardTexture, color: UIColor.clear, size: blackboardSize)
