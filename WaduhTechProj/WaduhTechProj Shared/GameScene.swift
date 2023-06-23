@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import GameplayKit
 
 class GameScene: SKScene {
         
@@ -15,7 +16,7 @@ class GameScene: SKScene {
     
     // Closet
     var drawerNode: DrawerItem!
-    var aDrawer = DrawerScene()
+    var aDrawer: DrawerScene!
 
     // Window
     var isHeld: Bool = false
@@ -35,6 +36,7 @@ class GameScene: SKScene {
         windowNode = WindowItem(scene: self)
         blackboardNode = BlackboardItem(scene: self)
         drawerNode = DrawerItem(scene: self)
+        aDrawer = DrawerScene(scene: self)
 
         aWindow.spriteNode = windowNode
         aBlackboard.spriteNode = blackboardNode
@@ -175,7 +177,7 @@ class GameScene: SKScene {
                             continue // Skip right swipe for blackboard
                         }
                         
-                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "Blackboard")
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboard")
                         print(node == drawerNode ? "drawer swiped left" : "blackboard swiped left")
 
                         if node == blackboardNode {

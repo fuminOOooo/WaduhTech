@@ -36,7 +36,7 @@ class BlackboardScene: SKScene {
         timerBlackboard.text = "\(counter)"
         updateTextureIndex()
         
-        if counter == 0 {
+        if counter < 1 {
             countdownTimer.invalidate()
         }
     }

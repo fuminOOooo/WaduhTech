@@ -5,16 +5,23 @@
 //  Created by Abiyyu Firmansyah on 22/06/23.
 //
 
-import Foundation
 import SpriteKit
 
-class DrawerScene : SKScene {
+class DrawerScene {
     
     var spriteNode : SKSpriteNode!
     var timerDrawer: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
     var timeRemaining = 15
+    
+    var isGameOver = false
+    
+    var scene: SKScene!
+    
+    init(scene: SKScene) {
+        self.scene = scene
+    }
     
     let views: [SKTexture] = [SKTexture(imageNamed: "drawerClosed"), SKTexture(imageNamed: "drawerOpen")]
     
@@ -32,13 +39,29 @@ class DrawerScene : SKScene {
     }
     
     @objc func decrementCounter() {
-        counter -= 1
-        timerDrawer.text = "\(counter)"
-        updateTextureIndex()
         
-        if counter == 0 {
-            countdownTimer.invalidate()
+        if !isGameOver {
+            
+            if counter < 1 {
+                isGameOver = true
+                gameOver(won: false)
+                
+                let gameOverScene = GameOver(fileNamed: "GameOver")!
+                gameOverScene.scaleMode = .aspectFit
+                gameOverScene.win = false
+                scene.view!.presentScene(gameOverScene)
+            }
+            
+            counter -= 1
+            counter = max(counter, 0)
+            timerDrawer.text = "\(counter)"
+            updateTextureIndex()
         }
+    }
+    
+    func gameOver(won: Bool) {
+        print("Game over with status: \(won)")
+        
     }
     
     func updateTextureIndex() {
