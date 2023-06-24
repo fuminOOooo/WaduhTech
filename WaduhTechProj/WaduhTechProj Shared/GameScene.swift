@@ -166,7 +166,7 @@ class GameScene: SKScene {
                             continue // Skip right swipe for blackboard
                         }
                         
-                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerClosed" : "blackboard4")
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "closedCupboard" : "blackboard4")
                         print(node == drawerNode ? "drawer swiped right" : "blackboard swiped right")
                         
                         if node == drawerNode {
@@ -178,7 +178,7 @@ class GameScene: SKScene {
                             continue // Skip right swipe for blackboard
                         }
                         
-                        node.texture = SKTexture(imageNamed: node == drawerNode ? "drawerOpen" : "blackboard")
+                        node.texture = SKTexture(imageNamed: node == drawerNode ? "openedCupboard" : "blackboard")
                         print(node == drawerNode ? "drawer swiped left" : "blackboard swiped left")
 
                         if node == blackboardNode {

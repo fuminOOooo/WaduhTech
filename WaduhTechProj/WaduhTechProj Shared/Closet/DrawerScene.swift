@@ -23,7 +23,7 @@ class DrawerScene {
         self.scene = scene
     }
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "drawerClosed"), SKTexture(imageNamed: "drawerOpen")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "closedCupboard"), SKTexture(imageNamed: "openedCupboard")]
     
     var currentTextureIndex: Int = 0 {
         didSet {
