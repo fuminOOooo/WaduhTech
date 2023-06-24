@@ -15,8 +15,6 @@ class WindowScene {
     var spriteLocation : SKView?
     var touchStartTime: TimeInterval = 0.0
     var countdownTimer: Timer?
-
-    var isGameOver = false
     
     var scene: SKScene!
     
@@ -47,13 +45,6 @@ class WindowScene {
             }
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1.0
-            } else if self.timeRemaining == 0 {
-                isGameOver = true
-                
-                let gameOverScene = GameOver(fileNamed: "GameOver")!
-                gameOverScene.scaleMode = .aspectFit
-                gameOverScene.win = false
-                scene.view!.presentScene(gameOverScene)
             }
         }
     }

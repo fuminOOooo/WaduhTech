@@ -28,15 +28,6 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
-            //        let scene = GameScene.newGameScene()
-            //
-            //        // Present the scene
-            //        let skView = self.view as! SKView
-            //        skView.presentScene(scene)
-            
-            //        skView.ignoresSiblingOrder = true
-            //        skView.showsFPS = true
-            //        skView.showsNodeCount = true
         }
     }
     

@@ -16,8 +16,6 @@ class BlackboardScene {
     var countdownTimer = Timer()
     var timeRemaining = 10
     
-    var isGameOver = false
-    
     var scene: SKScene!
     
     init(scene: SKScene) {
@@ -40,23 +38,10 @@ class BlackboardScene {
     }
     
     @objc func decrementCounter() {
-        if !isGameOver {
-            
-            if counter < 1 {
-                isGameOver = true
-                gameOver(won: false)
-                
-                let gameOverScene = GameOver(fileNamed: "GameOver")!
-                gameOverScene.scaleMode = .aspectFit
-                gameOverScene.win = false
-                scene.view!.presentScene(gameOverScene)
-            }
-            
-            counter -= 1
-            counter = max(counter, 0)
-            timerBlackboard.text = "\(counter)"
-            updateTextureIndex()
-        }
+        counter -= 1
+        counter = max(counter, 0)
+        timerBlackboard.text = "\(counter)"
+        updateTextureIndex()
     }
     
     func gameOver(won: Bool) {

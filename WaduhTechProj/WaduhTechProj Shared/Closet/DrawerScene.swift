@@ -5,6 +5,7 @@
 //  Created by Abiyyu Firmansyah on 22/06/23.
 //
 
+import SwiftUI
 import SpriteKit
 
 class DrawerScene {
@@ -14,8 +15,6 @@ class DrawerScene {
     var counter = 0
     var countdownTimer = Timer()
     var timeRemaining = 10
-    
-    var isGameOver = false
     
     var scene: SKScene!
     
@@ -35,28 +34,18 @@ class DrawerScene {
         counter = timeRemaining // Set counter to countdownStart
         countdownTimer.invalidate() // Invalidate the previous timer if it exists
         countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
-        
     }
     
     @objc func decrementCounter() {
         
-        if !isGameOver {
-            
-            if counter < 1 {
-                isGameOver = true
-                gameOver(won: false)
-                
-                let gameOverScene = GameOver(fileNamed: "GameOver")!
-                gameOverScene.scaleMode = .aspectFit
-                gameOverScene.win = false
-                scene.view!.presentScene(gameOverScene)
-            }
-            
-            counter -= 1
-            counter = max(counter, 0)
-            timerDrawer.text = "\(counter)"
-            updateTextureIndex()
+        if counter < 1 {
+            gameOver(won: false)
         }
+        
+        counter -= 1
+        counter = max(counter, 0)
+        timerDrawer.text = "\(counter)"
+        updateTextureIndex()
     }
     
     func gameOver(won: Bool) {

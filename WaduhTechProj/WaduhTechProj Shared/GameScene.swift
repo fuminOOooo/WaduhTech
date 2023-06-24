@@ -5,6 +5,7 @@
 //  Created by Elvis Susanto on 20/06/23.
 //
 
+import SwiftUI
 import SpriteKit
 import GameplayKit
 
@@ -23,15 +24,47 @@ class GameScene: SKScene {
     var windowNode: WindowItem!
     var aWindow: WindowScene!
     
+    var isGameOver: Bool = false
+    
+    var startLocation: CGPoint? = nil
     var whichTouchIndicator = 0
     // 0 = Touch with no sprite
     // 1 = Touch inside window
     // 2 = Touch inside blackboard
     // 3 = Touch inside closet
     
-    var startLocation: CGPoint? = nil
+    var globalTimer = Timer()
+    var timeRemaining: TimeInterval = 15.0
+    var globalTimerLabel: SKLabelNode!
+    
+    override func update(_ currentTime: TimeInterval) {
+        globalTimerLabel.text = "\(Int(timeRemaining))"
+        if ((aWindow.timeRemaining == 0 || aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
+            aWindow.countdownTimer?.invalidate()
+            aDrawer.countdownTimer.invalidate()
+            aBlackboard.countdownTimer.invalidate()
+            isGameOver = true
+            moveToGameOver()
+        }
+    }
     
     override func didMove(to view: SKView) {
+        
+        globalTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            if timeRemaining > 0 {
+                timeRemaining -= 1.0
+            }
+        }
+        
+        globalTimerLabel = SKLabelNode(text: "\(Int(timeRemaining))")
+        globalTimerLabel.position = CGPoint(x: 300, y: 300)
+        globalTimerLabel.fontColor = .black
+        globalTimerLabel.zPosition = 6
+        addChild(globalTimerLabel)
         
         aDrawer = DrawerScene(scene: self)
         aBlackboard = BlackboardScene(scene: self)
@@ -44,7 +77,7 @@ class GameScene: SKScene {
         aWindow.spriteNode = windowNode
         aBlackboard.spriteNode = blackboardNode
         aDrawer.spriteNode = drawerNode
-
+        
         // Timer label window
         aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
         aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -79,6 +112,13 @@ class GameScene: SKScene {
         } else if aWindow.timeRemaining < 10 {
             aWindow.timeRemaining += 0.5
         }
+    }
+    
+    @objc func moveToGameOver() {
+        let gameOverScene = GameOver(fileNamed: "GameOver")!
+        gameOverScene.scaleMode = .aspectFit
+        gameOverScene.win = false
+        self.view!.presentScene(gameOverScene)
     }
     
     // Label Timer Blackboard
