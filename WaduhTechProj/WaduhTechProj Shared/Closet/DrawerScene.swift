@@ -14,7 +14,7 @@ class DrawerScene {
     var timerDrawer: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 10
+    var timeRemaining = 15
     
     var scene: SKScene!
     
@@ -60,7 +60,13 @@ class DrawerScene {
         } else if counter <= 15 {
             currentTextureIndex = 0
         }
-        
+    }
+    
+    func updateAudioIndex() {
+        if counter == 10 {
+            let cupboardOpenSound = SKAction.playSoundFileNamed("cupboardOpening", waitForCompletion: false)
+            scene.run(cupboardOpenSound)
+        }
     }
     
     func updateSpriteTexture() {

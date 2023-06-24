@@ -63,7 +63,6 @@ class BlackboardScene {
             } else if counter <= 15 {
                 currentTextureIndex = 0
             }
-
         }
     
     func updateAudioIndex() {

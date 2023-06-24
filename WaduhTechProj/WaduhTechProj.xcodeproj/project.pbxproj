@@ -25,6 +25,7 @@
 		9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */; };
 		9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */; };
 		9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */; };
+		9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */; };
 		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
 		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_L.mp3; sourceTree = "<group>"; };
 		9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_A.mp3; sourceTree = "<group>"; };
 		9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_F.mp3; sourceTree = "<group>"; };
+		9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cupboardOpening.mp3; sourceTree = "<group>"; };
 		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */,
 				9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */,
 				9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */,
+				9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				9B1E91AF2A47773F00ADD9A4 /* blackboard_I.mp3 in Resources */,
 				15662CB32A41C59000214FD7 /* LaunchScreen.storyboard in Resources */,
 				9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */,
+				9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */,
 				9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */,
 				15662CB72A41C59000214FD7 /* Assets.xcassets in Resources */,
 			);
