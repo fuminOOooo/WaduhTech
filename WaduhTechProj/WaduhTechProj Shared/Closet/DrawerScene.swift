@@ -13,7 +13,7 @@ class DrawerScene {
     var timerDrawer: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 15
+    var timeRemaining = 10
     
     var isGameOver = false
     

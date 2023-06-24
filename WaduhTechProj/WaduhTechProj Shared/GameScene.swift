@@ -12,7 +12,7 @@ class GameScene: SKScene {
         
     // Blackboard
     var blackboardNode: BlackboardItem!
-    var aBlackboard = BlackboardScene()
+    var aBlackboard: BlackboardScene!
     
     // Closet
     var drawerNode: DrawerItem!
@@ -37,6 +37,7 @@ class GameScene: SKScene {
         blackboardNode = BlackboardItem(scene: self)
         drawerNode = DrawerItem(scene: self)
         aDrawer = DrawerScene(scene: self)
+        aBlackboard = BlackboardScene(scene: self)
 
         aWindow.spriteNode = windowNode
         aBlackboard.spriteNode = blackboardNode

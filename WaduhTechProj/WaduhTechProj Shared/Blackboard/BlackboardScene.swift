@@ -8,13 +8,21 @@
 import Foundation
 import SpriteKit
 
-class BlackboardScene: SKScene {
+class BlackboardScene {
     
     var spriteNode : SKSpriteNode!
     var timerBlackboard: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 15
+    var timeRemaining = 10
+    
+    var isGameOver = false
+    
+    var scene: SKScene!
+    
+    init(scene: SKScene) {
+        self.scene = scene
+    }
     
     let views: [SKTexture] = [SKTexture(imageNamed: "blackboard"), SKTexture(imageNamed: "blackboard1"), SKTexture(imageNamed: "blackboard2"), SKTexture(imageNamed: "blackboard3"), SKTexture(imageNamed: "blackboard4")]
     
@@ -32,13 +40,28 @@ class BlackboardScene: SKScene {
     }
     
     @objc func decrementCounter() {
-        counter -= 1
-        timerBlackboard.text = "\(counter)"
-        updateTextureIndex()
-        
-        if counter < 1 {
-            countdownTimer.invalidate()
+        if !isGameOver {
+            
+            if counter < 1 {
+                isGameOver = true
+                gameOver(won: false)
+                
+                let gameOverScene = GameOver(fileNamed: "GameOver")!
+                gameOverScene.scaleMode = .aspectFit
+                gameOverScene.win = false
+                scene.view!.presentScene(gameOverScene)
+            }
+            
+            counter -= 1
+            counter = max(counter, 0)
+            timerBlackboard.text = "\(counter)"
+            updateTextureIndex()
         }
+    }
+    
+    func gameOver(won: Bool) {
+        print("Game over with status: \(won)")
+        
     }
 
     func updateTextureIndex() {
