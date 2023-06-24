@@ -21,6 +21,8 @@
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
 		9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */; };
 		9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */; };
+		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
+		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
 		9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScene.swift; sourceTree = "<group>"; };
+		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 				9B0D9AC42A443D94009AB7FC /* Closet */,
 				15C3EC5A2A436A880065FF12 /* Window */,
 				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
+				9BCD53282A45929E00B09C86 /* Game Over */,
 				15662CA22A41C59000214FD7 /* Assets.xcassets */,
 			);
 			path = "WaduhTechProj Shared";
@@ -97,8 +102,8 @@
 		15C3EC5A2A436A880065FF12 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				15C3EC582A4368320065FF12 /* WindowScene.swift */,
 				15C3EC5B2A436A990065FF12 /* WindowItem.swift */,
+				15C3EC582A4368320065FF12 /* WindowScene.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -119,6 +124,15 @@
 				9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */,
 			);
 			path = Closet;
+			sourceTree = "<group>";
+		};
+		9BCD53282A45929E00B09C86 /* Game Over */ = {
+			isa = PBXGroup;
+			children = (
+				9BCD53292A45943200B09C86 /* GameOver.sks */,
+				9BCD53262A45929600B09C86 /* GameOver.swift */,
+			);
+			path = "Game Over";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15662CB52A41C59000214FD7 /* GameScene.sks in Resources */,
+				9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */,
 				15662CB02A41C59000214FD7 /* Main.storyboard in Resources */,
 				15662CB42A41C59000214FD7 /* Actions.sks in Resources */,
 				15662CB32A41C59000214FD7 /* LaunchScreen.storyboard in Resources */,
@@ -197,6 +212,7 @@
 				15662CB62A41C59000214FD7 /* GameScene.swift in Sources */,
 				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
 				15662CAD2A41C59000214FD7 /* GameViewController.swift in Sources */,
+				9BCD53272A45929600B09C86 /* GameOver.swift in Sources */,
 				15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */,
 				9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */,
 				9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */,
