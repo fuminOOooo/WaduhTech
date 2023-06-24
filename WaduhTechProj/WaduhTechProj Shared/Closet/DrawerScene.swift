@@ -46,6 +46,7 @@ class DrawerScene {
         counter = max(counter, 0)
         timerDrawer.text = "\(counter)"
         updateTextureIndex()
+        updateAudioIndex()
     }
     
     func gameOver(won: Bool) {
