@@ -21,7 +21,7 @@ class GameScene: SKScene {
     // Window
     var isHeld: Bool = false
     var windowNode: WindowItem!
-    var aWindow = WindowScene()
+    var aWindow: WindowScene!
     
     var whichTouchIndicator = 0
     // 0 = Touch with no sprite
@@ -33,12 +33,14 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        aDrawer = DrawerScene(scene: self)
+        aBlackboard = BlackboardScene(scene: self)
+        aWindow = WindowScene(scene: self)
+        
         windowNode = WindowItem(scene: self)
         blackboardNode = BlackboardItem(scene: self)
         drawerNode = DrawerItem(scene: self)
-        aDrawer = DrawerScene(scene: self)
-        aBlackboard = BlackboardScene(scene: self)
-
+        
         aWindow.spriteNode = windowNode
         aBlackboard.spriteNode = blackboardNode
         aDrawer.spriteNode = drawerNode

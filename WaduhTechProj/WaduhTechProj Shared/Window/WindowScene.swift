@@ -5,11 +5,9 @@
 //  Created by Elvis Susanto on 21/06/23.
 //
 
-import Foundation
-import SwiftUI
 import SpriteKit
 
-class WindowScene : SKScene {
+class WindowScene {
     
     var spriteNode : SKSpriteNode!
     var timerLabel: SKLabelNode!
@@ -18,6 +16,14 @@ class WindowScene : SKScene {
     var touchStartTime: TimeInterval = 0.0
     var countdownTimer: Timer?
 
+    var isGameOver = false
+    
+    var scene: SKScene!
+    
+    init(scene: SKScene) {
+        self.scene = scene
+    }
+    
     let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3")]
     
     var timeRemaining: TimeInterval = 10.0 {
@@ -41,6 +47,13 @@ class WindowScene : SKScene {
             }
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1.0
+            } else if self.timeRemaining == 0 {
+                isGameOver = true
+                
+                let gameOverScene = GameOver(fileNamed: "GameOver")!
+                gameOverScene.scaleMode = .aspectFit
+                gameOverScene.win = false
+                scene.view!.presentScene(gameOverScene)
             }
         }
     }
