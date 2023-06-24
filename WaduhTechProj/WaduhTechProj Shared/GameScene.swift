@@ -34,7 +34,7 @@ class GameScene: SKScene {
     // 3 = Touch inside closet
     
     var globalTimer = Timer()
-    var timeRemaining: TimeInterval = 15.0
+    var timeRemaining: TimeInterval = 20.0
     var globalTimerLabel: SKLabelNode!
     
     override func update(_ currentTime: TimeInterval) {

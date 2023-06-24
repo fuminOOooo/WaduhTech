@@ -21,6 +21,10 @@
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
 		9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */; };
 		9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */; };
+		9B1E91AF2A47773F00ADD9A4 /* blackboard_I.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */; };
+		9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */; };
+		9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */; };
+		9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */; };
 		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
 		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
 /* End PBXBuildFile section */
@@ -41,6 +45,10 @@
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
 		9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScene.swift; sourceTree = "<group>"; };
+		9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_I.mp3; sourceTree = "<group>"; };
+		9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_L.mp3; sourceTree = "<group>"; };
+		9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_A.mp3; sourceTree = "<group>"; };
+		9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_F.mp3; sourceTree = "<group>"; };
 		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +83,7 @@
 				15C3EC5A2A436A880065FF12 /* Window */,
 				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
 				9BCD53282A45929E00B09C86 /* Game Over */,
+				9B1E91AA2A47772300ADD9A4 /* Audio */,
 				15662CA22A41C59000214FD7 /* Assets.xcassets */,
 			);
 			path = "WaduhTechProj Shared";
@@ -124,6 +133,17 @@
 				9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */,
 			);
 			path = Closet;
+			sourceTree = "<group>";
+		};
+		9B1E91AA2A47772300ADD9A4 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */,
+				9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */,
+				9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */,
+				9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		9BCD53282A45929E00B09C86 /* Game Over */ = {
@@ -195,9 +215,13 @@
 			files = (
 				15662CB52A41C59000214FD7 /* GameScene.sks in Resources */,
 				9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */,
+				9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */,
 				15662CB02A41C59000214FD7 /* Main.storyboard in Resources */,
 				15662CB42A41C59000214FD7 /* Actions.sks in Resources */,
+				9B1E91AF2A47773F00ADD9A4 /* blackboard_I.mp3 in Resources */,
 				15662CB32A41C59000214FD7 /* LaunchScreen.storyboard in Resources */,
+				9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */,
+				9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */,
 				15662CB72A41C59000214FD7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

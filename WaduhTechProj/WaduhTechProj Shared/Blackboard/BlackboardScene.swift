@@ -14,7 +14,7 @@ class BlackboardScene {
     var timerBlackboard: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 10
+    var timeRemaining = 15
     
     var scene: SKScene!
     
@@ -42,6 +42,7 @@ class BlackboardScene {
         counter = max(counter, 0)
         timerBlackboard.text = "\(counter)"
         updateTextureIndex()
+        updateAudioIndex()
     }
     
     func gameOver(won: Bool) {
@@ -64,6 +65,22 @@ class BlackboardScene {
             }
 
         }
+    
+    func updateAudioIndex() {
+        if counter == 3 {
+            let blackboardSoundL = SKAction.playSoundFileNamed("blackboard_L", waitForCompletion: false)
+            scene.run(blackboardSoundL)
+        } else if counter == 6 {
+            let blackboardSoundI = SKAction.playSoundFileNamed("blackboard_I", waitForCompletion: false)
+            scene.run(blackboardSoundI)
+        } else if counter == 9 {
+            let blackboardSoundA = SKAction.playSoundFileNamed("blackboard_A", waitForCompletion: false)
+            scene.run(blackboardSoundA)
+        } else if counter == 12 {
+            let blackboardSoundF = SKAction.playSoundFileNamed("blackboard_F", waitForCompletion: false)
+            scene.run(blackboardSoundF)
+        }
+    }
     
     func updateSpriteTexture() {
             let textureAction = SKAction.setTexture(views[currentTextureIndex])
