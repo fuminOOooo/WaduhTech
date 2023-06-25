@@ -14,7 +14,7 @@ class DrawerItem: SKSpriteNode{
 
         let drawerSize = CGSize(width: 100, height: 100)
         let drawerColor = SKColor.white
-        let drawerTexture = SKTexture(imageNamed: "drawerClosed")
+        let drawerTexture = SKTexture(imageNamed: "closedCupboard")
 
         super.init(texture: drawerTexture, color: drawerColor, size: drawerSize)
 

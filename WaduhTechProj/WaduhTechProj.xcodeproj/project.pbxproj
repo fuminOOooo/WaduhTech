@@ -30,6 +30,8 @@
 		9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */; };
 		9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */; };
 		9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */; };
+		9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */; };
+		9B1E91B92A484D5D00ADD9A4 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */; };
 		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
 		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,8 @@
 		9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_A.mp3; sourceTree = "<group>"; };
 		9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_F.mp3; sourceTree = "<group>"; };
 		9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cupboardOpening.mp3; sourceTree = "<group>"; };
+		9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +98,7 @@
 				9B0D9AC42A443D94009AB7FC /* Closet */,
 				15C3EC5A2A436A880065FF12 /* Window */,
 				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
+				9B1E91B52A484CCD00ADD9A4 /* Main Menu */,
 				9BCD53282A45929E00B09C86 /* Game Over */,
 				9B1E91AA2A47772300ADD9A4 /* Audio */,
 				15662CA22A41C59000214FD7 /* Assets.xcassets */,
@@ -177,6 +182,15 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		9B1E91B52A484CCD00ADD9A4 /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */,
+				9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */,
+			);
+			path = "Main Menu";
+			sourceTree = "<group>";
+		};
 		9BCD53282A45929E00B09C86 /* Game Over */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15662CB52A41C59000214FD7 /* GameScene.sks in Resources */,
+				9B1E91B92A484D5D00ADD9A4 /* MainMenu.sks in Resources */,
 				9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */,
 				9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */,
 				15662CB02A41C59000214FD7 /* Main.storyboard in Resources */,
@@ -265,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */,
 				15662CB62A41C59000214FD7 /* GameScene.swift in Sources */,
 				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
 				15662CAD2A41C59000214FD7 /* GameViewController.swift in Sources */,
@@ -420,7 +436,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 35V95TRX69;
+				DEVELOPMENT_TEAM = KCXWQSNV6P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -434,7 +450,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tes.com.waduhTech.WaduhTechProj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waduhTech.WaduhTechProj;
 				PRODUCT_NAME = WaduhTechProj;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -453,7 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 35V95TRX69;
+				DEVELOPMENT_TEAM = KCXWQSNV6P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -467,7 +483,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tes.com.waduhTech.WaduhTechProj;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waduhTech.WaduhTechProj;
 				PRODUCT_NAME = WaduhTechProj;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
