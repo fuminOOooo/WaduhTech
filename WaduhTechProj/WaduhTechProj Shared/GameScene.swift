@@ -49,11 +49,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         
         globalTimerLabel.text = "\(Int(timeRemaining))"
-        
-        // Update Audio as Exam Status
-        if examOpen {
-            
-        }
+        globalTimerLabel.zPosition = 10.0
         
         if ((aWindow.timeRemaining == 0 || aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
             aWindow.countdownTimer?.invalidate()
@@ -62,6 +58,21 @@ class GameScene: SKScene {
             isGameOver = true
             moveToGameOver()
         }
+        
+    }
+    
+    func changeZPositions() {
+        
+        if examOpen {
+            aExam.spriteNode.zPosition = 3.0
+            aExam.exitLabel.zPosition = 4.0
+        }
+        
+        else if !examOpen {
+            aExam.spriteNode.zPosition = -2.0
+            aExam.exitLabel.zPosition = -1.0
+        }
+        
     }
     
     override func didMove(to view: SKView) {
@@ -100,7 +111,7 @@ class GameScene: SKScene {
         aDrawer.spriteNode = drawerNode
         aExamTable.spriteNode = examTableNode
         
-        aExam.scene.zPosition = -4
+        aExam.scene.zPosition = -2.0
         
         // Timer label window
         aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
@@ -116,6 +127,13 @@ class GameScene: SKScene {
         timerDrawer.position = CGPoint(x: 200, y: 100)
         addChild(timerDrawer)
         aDrawer.timerDrawer = timerDrawer
+        
+        aExam.exitLabel = SKSpriteNode(imageNamed: "examPaper")
+        aExam.exitLabel.position = CGPoint(x: frame.maxX-200, y: frame.maxY-200)
+        aExam.exitLabel.size = CGSize(width: 30, height: 30)
+        addChild(aExam.exitLabel)
+        
+        aExam.exitLabel.zPosition = -1.0
         
         // Start the blackboard countdown
         aBlackboard.startCountdown()
@@ -170,9 +188,9 @@ class GameScene: SKScene {
         // Began for window
         if (isHeld == false && !examOpen) {
             
-            if (examTableNode.contains(touchLocation)) {
+            if (aExamTable.spriteNode.contains(touchLocation)) {
                 examOpen.toggle()
-                examNode.zPosition = 2
+                changeZPositions()
             }
             
             else if (drawerNode.contains(touchLocation)) {
@@ -201,6 +219,13 @@ class GameScene: SKScene {
                 aWindow.countdownTimer = nil
                 
                 aWindow.touchStartTime = touch.timestamp
+            }
+            
+        } else if examOpen {
+            
+            if (aExam.exitLabel.contains(touchLocation)) {
+                examOpen.toggle()
+                changeZPositions()
             }
             
         }
@@ -275,6 +300,7 @@ class GameScene: SKScene {
             
         }
     }
+    
 }
 
 #if os(OSX)

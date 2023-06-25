@@ -11,8 +11,8 @@ import SpriteKit
 class ExamScene {
     
     var spriteNode : SKSpriteNode!
-    
     var scene: SKScene!
+    var exitLabel: SKSpriteNode!
     
     init(scene: SKScene) {
         self.scene = scene
