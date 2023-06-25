@@ -28,7 +28,7 @@ class GameOver: SKScene {
             addChild(jumpscare)
         }
         mainMenuButton = SKSpriteNode(imageNamed: "mainMenuButton")
-//        mainMenuButton.zPosition = 2
+        //        mainMenuButton.zPosition = 2
         mainMenuButton.position = CGPoint(x: 0, y: -200)
         mainMenuButton.size = CGSize(width: 500, height: 100)
         addChild(mainMenuButton)
@@ -36,9 +36,16 @@ class GameOver: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let scene = MainMenu(fileNamed: "MainMenu")
-        scene!.scaleMode = .aspectFit
-        self.view?.presentScene(scene)
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            if mainMenuButton.contains(location) {
+                print("button main menu clicked")
+                startLocation = location
+                let scene = MainMenu(fileNamed: "MainMenu")
+                scene!.scaleMode = .aspectFit
+                self.view?.presentScene(scene)
+            }
+        }
     }
-    
 }

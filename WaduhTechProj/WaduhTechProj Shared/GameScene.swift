@@ -165,7 +165,7 @@ class GameScene: SKScene {
     
     // Label Timer Blackboard
     lazy var timerBlackboard: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SF Pro")
+        var label = SKLabelNode()
         label.fontColor = SKColor.black
         label.text = "\(aBlackboard.timeRemaining)"
         return label
