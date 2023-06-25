@@ -19,7 +19,8 @@ class BlackboardItem: SKSpriteNode {
 
         // Add the box node to the scene
         scene.addChild(self)
-
+        
+        self.zPosition = 1.0
         self.position = CGPoint(x: 0, y: 287)
 
     }

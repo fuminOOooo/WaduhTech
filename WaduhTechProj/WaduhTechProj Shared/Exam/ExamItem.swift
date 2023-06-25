@@ -2,24 +2,23 @@
 //  WindowSprite.swift
 //  WaduhTechProj iOS
 //
-//  Created by Elvis Susanto on 22/06/23.
+//  Created by Elvis Susanto on 25/06/23.
 //
 
 import Foundation
 import SpriteKit
 
-class WindowItem: SKSpriteNode {
+class ExamItem: SKSpriteNode {
     
     init (scene: SKScene) {
         // Create and add your sprite node
-        let windowTexture : SKTexture? = SKTexture(imageNamed: "Untitled_Artwork 1")
-        let windowSize = CGSize(width: 100, height: 100)
-        
-        super.init(texture: windowTexture, color: UIColor.clear, size: windowSize)
+        let examTexture : SKTexture? = SKTexture(imageNamed: "examPaper")
+        let examSize = CGSize(width: scene.frame.width, height: scene.frame.height)
+        super.init(texture: examTexture, color: UIColor.clear, size: examSize)
         
         scene.addChild(self)
         
-        self.zPosition = 1.0
+        self.zPosition = -1.0
         self.position = CGPoint(x: frame.midX, y: frame.midY)
         
     }

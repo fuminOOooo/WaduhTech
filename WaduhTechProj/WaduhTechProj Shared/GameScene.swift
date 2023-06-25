@@ -11,6 +11,15 @@ import GameplayKit
 
 class GameScene: SKScene {
         
+    // Exam
+    var examOpen: Bool = false
+    var examNode: ExamItem!
+    var aExam: ExamScene!
+    
+    // Exam Table
+    var examTableNode: ExamTableItem!
+    var aExamTable: ExamTableScene!
+    
     // Blackboard
     var blackboardNode: BlackboardItem!
     var aBlackboard: BlackboardScene!
@@ -38,7 +47,14 @@ class GameScene: SKScene {
     var globalTimerLabel: SKLabelNode!
     
     override func update(_ currentTime: TimeInterval) {
+        
         globalTimerLabel.text = "\(Int(timeRemaining))"
+        
+        // Update Audio as Exam Status
+        if examOpen {
+            
+        }
+        
         if ((aWindow.timeRemaining == 0 || aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
             aWindow.countdownTimer?.invalidate()
             aDrawer.countdownTimer.invalidate()
@@ -66,17 +82,25 @@ class GameScene: SKScene {
         globalTimerLabel.zPosition = 6
         addChild(globalTimerLabel)
         
+        aExam = ExamScene(scene: self)
         aDrawer = DrawerScene(scene: self)
         aBlackboard = BlackboardScene(scene: self)
         aWindow = WindowScene(scene: self)
+        aExamTable = ExamTableScene(scene: self)
         
+        examNode = ExamItem(scene: self)
         windowNode = WindowItem(scene: self)
         blackboardNode = BlackboardItem(scene: self)
         drawerNode = DrawerItem(scene: self)
+        examTableNode = ExamTableItem(scene: self)
         
+        aExam.spriteNode = examNode
         aWindow.spriteNode = windowNode
         aBlackboard.spriteNode = blackboardNode
         aDrawer.spriteNode = drawerNode
+        aExamTable.spriteNode = examTableNode
+        
+        aExam.scene.zPosition = -4
         
         // Timer label window
         aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
@@ -138,41 +162,56 @@ class GameScene: SKScene {
     }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         guard let touch = touches.first else { return }
-        //        for touch in touches {
+        
         let touchLocation = touch.location(in: self)
         
         // Began for window
-        if (drawerNode.contains(touchLocation) && isHeld == false) {
-            print("start drawer")
-            startLocation = touchLocation
-            whichTouchIndicator = 3
-        }
-        else if (blackboardNode.contains(touchLocation) && isHeld == false) {
-            print("start blackboard")
-            startLocation = touchLocation
-            whichTouchIndicator = 2
+        if (isHeld == false && !examOpen) {
+            
+            if (examTableNode.contains(touchLocation)) {
+                examOpen.toggle()
+                examNode.zPosition = 2
+            }
+            
+            else if (drawerNode.contains(touchLocation)) {
+                print("start drawer")
+                startLocation = touchLocation
+                whichTouchIndicator = 3
+            }
+            
+            else if (blackboardNode.contains(touchLocation)) {
+                print("start blackboard")
+                startLocation = touchLocation
+                whichTouchIndicator = 2
+                
+            }
+            
+            else if (aWindow.spriteNode.contains(touchLocation)) {
+                isHeld.toggle()
+                whichTouchIndicator = 1
+                
+                print("touch inside window detected!")
+                
+                aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+                
+                // Window timer stops
+                aWindow.countdownTimer?.invalidate()
+                aWindow.countdownTimer = nil
+                
+                aWindow.touchStartTime = touch.timestamp
+            }
             
         }
-        else if (aWindow.spriteNode.contains(touchLocation) && isHeld == false) {
-            isHeld.toggle()
-            whichTouchIndicator = 1
-            
-            print("touch inside window detected!")
-            
-            aWindow.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-            
-            // Window timer stops
-            aWindow.countdownTimer?.invalidate()
-            aWindow.countdownTimer = nil
-            
-            aWindow.touchStartTime = touch.timestamp
-        }
-//        }
+        
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        // 2nd Person View Interactions
+        if !examOpen {
+            
             // Ended for window
             if (whichTouchIndicator == 1 && isHeld == true) {
                 print("hold ended!")
@@ -233,7 +272,8 @@ class GameScene: SKScene {
         }
         
             whichTouchIndicator = 0
-        
+            
+        }
     }
 }
 
