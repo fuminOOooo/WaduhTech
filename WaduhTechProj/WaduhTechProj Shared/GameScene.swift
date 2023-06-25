@@ -12,7 +12,20 @@ import GameplayKit
 class GameScene: SKScene {
         
     // Exam
-    var examOpen: Bool = false
+    var examOpen: Bool = false {
+        didSet {
+            if examOpen {
+                // Turn on sound effects
+                aBlackboard.enableSoundEffects()
+                aDrawer.enableSoundEffects()
+            } else {
+                // Turn off sound effects
+                aBlackboard.disableSoundEffects()
+                aDrawer.disableSoundEffects()
+            }
+        }
+    }
+    
     var examNode: ExamItem!
     var aExam: ExamScene!
     
@@ -66,11 +79,13 @@ class GameScene: SKScene {
         if examOpen {
             aExam.spriteNode.zPosition = 3.0
             aExam.exitLabel.zPosition = 4.0
+            aBlackboard.soundEnabled = true
         }
         
         else if !examOpen {
             aExam.spriteNode.zPosition = -2.0
             aExam.exitLabel.zPosition = -1.0
+            aBlackboard.soundEnabled = false
         }
         
     }
@@ -111,7 +126,7 @@ class GameScene: SKScene {
         aDrawer.spriteNode = drawerNode
         aExamTable.spriteNode = examTableNode
         
-        aExam.scene.zPosition = -2.0
+//        aExam.scene.zPosition = -2.0
         
         // Timer label window
         aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
