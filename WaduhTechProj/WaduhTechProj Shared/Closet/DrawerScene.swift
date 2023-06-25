@@ -16,6 +16,9 @@ class DrawerScene {
     var countdownTimer = Timer()
     var timeRemaining = 15
     
+    // Audio Enable or Disable
+    var soundEnabled: Bool = false
+    
     var scene: SKScene!
     
     init(scene: SKScene) {
@@ -63,10 +66,21 @@ class DrawerScene {
         }
     }
     
+    func enableSoundEffects() {
+        soundEnabled = true
+    }
+    
+    func disableSoundEffects() {
+        soundEnabled = false
+    }
+    
     func updateAudioIndex() {
-        if counter == 10 {
-            let cupboardOpenSound = SKAction.playSoundFileNamed("cupboardOpening", waitForCompletion: false)
-            scene.run(cupboardOpenSound)
+        if soundEnabled {
+            
+            if counter == 10 {
+                let cupboardOpenSound = SKAction.playSoundFileNamed("cupboardOpening", waitForCompletion: false)
+                scene.run(cupboardOpenSound)
+            }
         }
     }
     

@@ -16,6 +16,9 @@ class BlackboardScene {
     var countdownTimer = Timer()
     var timeRemaining = 15
     
+    // Audio Enable or Disable
+    var soundEnabled: Bool = false
+
     var scene: SKScene!
     
     init(scene: SKScene) {
@@ -65,19 +68,30 @@ class BlackboardScene {
             }
         }
     
+    func enableSoundEffects() {
+        soundEnabled = true
+    }
+    
+    func disableSoundEffects() {
+        soundEnabled = false
+    }
+    
     func updateAudioIndex() {
-        if counter == 3 {
-            let blackboardSoundL = SKAction.playSoundFileNamed("blackboard_L", waitForCompletion: false)
-            scene.run(blackboardSoundL)
-        } else if counter == 6 {
-            let blackboardSoundI = SKAction.playSoundFileNamed("blackboard_I", waitForCompletion: false)
-            scene.run(blackboardSoundI)
-        } else if counter == 9 {
-            let blackboardSoundA = SKAction.playSoundFileNamed("blackboard_A", waitForCompletion: false)
-            scene.run(blackboardSoundA)
-        } else if counter == 12 {
-            let blackboardSoundF = SKAction.playSoundFileNamed("blackboard_F", waitForCompletion: false)
-            scene.run(blackboardSoundF)
+        if soundEnabled {
+            
+            if counter == 3 {
+                let blackboardSoundL = SKAction.playSoundFileNamed("blackboard_L", waitForCompletion: false)
+                scene.run(blackboardSoundL)
+            } else if counter == 6 {
+                let blackboardSoundI = SKAction.playSoundFileNamed("blackboard_I", waitForCompletion: false)
+                scene.run(blackboardSoundI)
+            } else if counter == 9 {
+                let blackboardSoundA = SKAction.playSoundFileNamed("blackboard_A", waitForCompletion: false)
+                scene.run(blackboardSoundA)
+            } else if counter == 12 {
+                let blackboardSoundF = SKAction.playSoundFileNamed("blackboard_F", waitForCompletion: false)
+                scene.run(blackboardSoundF)
+            }
         }
     }
     
