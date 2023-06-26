@@ -33,6 +33,10 @@ class GameScene: SKScene {
     var examTableNode: ExamTableItem!
     var aExamTable: ExamTableScene!
     
+    // Light
+//    var lightNode: LightItem!
+//    var aLight: LightScene!
+    
     // Blackboard
     var blackboardNode: BlackboardItem!
     var aBlackboard: BlackboardScene!
@@ -56,8 +60,18 @@ class GameScene: SKScene {
     // 3 = Touch inside closet
     
     var globalTimer = Timer()
-    var timeRemaining: TimeInterval = 20.0
+    var timeRemaining: TimeInterval = 20.0 {
+        didSet
+        {
+            if !lightSwitch {
+                darken()
+            }
+        }
+    }
+    var totalDuration: TimeInterval = 20.0
     var globalTimerLabel: SKLabelNode!
+    var darkOverlay: SKSpriteNode!
+    var lightSwitch: Bool = false
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -148,6 +162,14 @@ class GameScene: SKScene {
         aExam.exitLabel.size = CGSize(width: 30, height: 30)
         addChild(aExam.exitLabel)
         
+        darkOverlay = SKSpriteNode(color: .black, size: self.size)
+        darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
+        darkOverlay.size = CGSize(width: frame.width, height: frame.height)
+        addChild(darkOverlay)
+        
+        darkOverlay.alpha = 0
+        darkOverlay.zPosition = 20.0
+        
         aExam.exitLabel.zPosition = -1.0
         
         // Start the blackboard countdown
@@ -159,6 +181,19 @@ class GameScene: SKScene {
         // Start the drawer counter timer
         aDrawer.startCountdown()
         
+    }
+    
+    //Dark Overlay
+    @objc func darken() {
+        if timeRemaining / totalDuration <= 0.2 {
+            darkOverlay.alpha = 0.95
+        } else if timeRemaining / totalDuration <= 0.4 {
+            darkOverlay.alpha = 0.75
+        } else if timeRemaining / totalDuration <= 0.6 {
+            darkOverlay.alpha = 0.50
+        } else if timeRemaining / totalDuration <= 0.8 {
+            darkOverlay.alpha = 0.25
+        }
     }
     
     // Khusus Window
