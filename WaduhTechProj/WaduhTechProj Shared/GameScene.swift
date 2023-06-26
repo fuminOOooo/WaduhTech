@@ -60,7 +60,7 @@ class GameScene: SKScene {
     // 3 = Touch inside closet
     
     var globalTimer = Timer()
-    var timeRemaining: TimeInterval = 20.0 {
+    var timeRemaining: TimeInterval = 30.0 {
         didSet
         {
             if !lightSwitch {
@@ -68,7 +68,7 @@ class GameScene: SKScene {
             }
         }
     }
-    var totalDuration: TimeInterval = 20.0
+    var totalDuration: TimeInterval = 30.0
     var globalTimerLabel: SKLabelNode!
     var darkOverlay: SKSpriteNode!
     var lightSwitch: Bool = false
