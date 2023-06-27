@@ -20,7 +20,7 @@ class WindowItem: SKSpriteNode {
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: -550, y: 50)
+        self.position = CGPoint(x: scene.frame.midX-550, y: scene.frame.midY+50)
         
     }
     

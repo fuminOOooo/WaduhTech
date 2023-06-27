@@ -11,6 +11,8 @@ import GameplayKit
 
 class GameOver: SKScene {
     
+    var stage: Int = 0
+    
     var mainMenuButton: SKSpriteNode!
     var startLocation: CGPoint? = nil
 

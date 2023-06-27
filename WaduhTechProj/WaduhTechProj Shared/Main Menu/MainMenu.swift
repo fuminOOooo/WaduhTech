@@ -10,6 +10,8 @@ import SpriteKit
 
 class MainMenu: SKScene {
     
+    var stage: Int = 0
+    
     var buttonPlay: SKSpriteNode!
     var startLocation: CGPoint? = nil
 
@@ -28,10 +30,12 @@ class MainMenu: SKScene {
             
             if buttonPlay.contains(location) {
                 print("button play clicked")
-                startLocation = location
-                let scene = GameScene(fileNamed: "GameScene")
-                scene!.scaleMode = .aspectFit
-                self.view?.presentScene(scene)
+                let scene = ExamTransition()
+                scene.stage = 1
+                scene.position = CGPoint(x: 0, y: 0)
+                scene.size = CGSize(width: frame.width, height: frame.height)
+                let transition = SKTransition.fade(with: .black, duration: 5)
+                self.view?.presentScene(scene, transition: transition)
             }
         }
     }

@@ -16,7 +16,7 @@ class ExamTableItem: SKSpriteNode {
         let examTableSize = CGSize(width: 454, height: 242)
         super.init(texture: examTableTexture, color: UIColor.clear, size: examTableSize)
         
-        self.position = CGPoint(x: -5, y: -392)
+        self.position = CGPoint(x: scene.frame.midX-5, y: scene.frame.midY-392)
         
         self.zPosition = 1.0
         scene.addChild(self)

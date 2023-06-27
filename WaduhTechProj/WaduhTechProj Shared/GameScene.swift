@@ -10,18 +10,29 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    
+    var stage: Int = 0
         
     // Exam
     var examOpen: Bool = false {
         didSet {
             if examOpen {
                 // Turn on sound effects
-                aBlackboard.enableSoundEffects()
-                aDrawer.enableSoundEffects()
+                if stage >= 1 {
+                    aDrawer.enableSoundEffects()
+                    if stage >= 2 {
+                        aBlackboard.enableSoundEffects()
+                    }
+                }
+                
             } else {
                 // Turn off sound effects
-                aBlackboard.disableSoundEffects()
-                aDrawer.disableSoundEffects()
+                if stage >= 1 {
+                    aDrawer.disableSoundEffects()
+                    if stage >= 2 {
+                        aBlackboard.disableSoundEffects()
+                    }
+                }
             }
         }
     }
@@ -36,6 +47,9 @@ class GameScene: SKScene {
     // Light
 //    var lightNode: LightItem!
 //    var aLight: LightScene!
+    
+    var bg: SKSpriteNode!
+    var bgTexture: SKTexture = SKTexture(imageNamed: "background")
     
     // Blackboard
     var blackboardNode: BlackboardItem!
@@ -78,7 +92,20 @@ class GameScene: SKScene {
         globalTimerLabel.text = "\(Int(timeRemaining))"
         globalTimerLabel.zPosition = 10.0
         
-        if ((aWindow.timeRemaining == 0 || aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
+        if ((stage >= 1) && (aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
+            aDrawer.countdownTimer.invalidate()
+            isGameOver = true
+            moveToGameOver()
+        }
+        
+        else if ((stage >= 2) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
+            aDrawer.countdownTimer.invalidate()
+            aBlackboard.countdownTimer.invalidate()
+            isGameOver = true
+            moveToGameOver()
+        }
+        
+        else if ((stage >= 3) && (aWindow.timeRemaining == 0 || aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
             aWindow.countdownTimer?.invalidate()
             aDrawer.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
@@ -93,18 +120,24 @@ class GameScene: SKScene {
         if examOpen {
             aExam.spriteNode.zPosition = 3.0
             aExam.exitLabel.zPosition = 4.0
-            aBlackboard.soundEnabled = true
+            if (stage >= 2) {
+                aBlackboard.soundEnabled = true
+            }
         }
         
         else if !examOpen {
             aExam.spriteNode.zPosition = -2.0
             aExam.exitLabel.zPosition = -1.0
-            aBlackboard.soundEnabled = false
+            if (stage >= 2) {
+                aBlackboard.soundEnabled = false
+            }
         }
         
     }
     
     override func didMove(to view: SKView) {
+        
+        print(stage)
         
         globalTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
             guard let self = self else {
@@ -116,6 +149,12 @@ class GameScene: SKScene {
             }
         }
         
+        bg = SKSpriteNode(texture: bgTexture)
+        bg.position = CGPoint(x: frame.midX, y: frame.midY)
+        bg.size = CGSize(width: frame.width, height: frame.height)
+        addChild(bg)
+        bg.zPosition = -0.0
+        
         globalTimerLabel = SKLabelNode(text: "\(Int(timeRemaining))")
         globalTimerLabel.position = CGPoint(x: 300, y: 300)
         globalTimerLabel.fontColor = .black
@@ -123,44 +162,17 @@ class GameScene: SKScene {
         addChild(globalTimerLabel)
         
         aExam = ExamScene(scene: self)
-        aDrawer = DrawerScene(scene: self)
-        aBlackboard = BlackboardScene(scene: self)
-        aWindow = WindowScene(scene: self)
-        aExamTable = ExamTableScene(scene: self)
-        
         examNode = ExamItem(scene: self)
-        windowNode = WindowItem(scene: self)
-        blackboardNode = BlackboardItem(scene: self)
-        drawerNode = DrawerItem(scene: self)
-        examTableNode = ExamTableItem(scene: self)
-        
         aExam.spriteNode = examNode
-        aWindow.spriteNode = windowNode
-        aBlackboard.spriteNode = blackboardNode
-        aDrawer.spriteNode = drawerNode
-        aExamTable.spriteNode = examTableNode
-        
-//        aExam.scene.zPosition = -2.0
-        
-        // Timer label window
-        aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
-        aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(aWindow.timerLabel)
-        
-        // Timer label blackboard
-        timerBlackboard.position = CGPoint(x: 0,y: 100)
-        addChild(timerBlackboard)
-        aBlackboard.timerBlackboard = timerBlackboard
-        
-        // Timer label drawer
-        timerDrawer.position = CGPoint(x: 200, y: 100)
-        addChild(timerDrawer)
-        aDrawer.timerDrawer = timerDrawer
-        
         aExam.exitLabel = SKSpriteNode(imageNamed: "examPaper")
         aExam.exitLabel.position = CGPoint(x: frame.maxX-200, y: frame.maxY-200)
         aExam.exitLabel.size = CGSize(width: 30, height: 30)
         addChild(aExam.exitLabel)
+        aExam.exitLabel.zPosition = -1.0
+        
+        aExamTable = ExamTableScene(scene: self)
+        examTableNode = ExamTableItem(scene: self)
+        aExamTable.spriteNode = examTableNode
         
         darkOverlay = SKSpriteNode(color: .black, size: self.size)
         darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -170,16 +182,48 @@ class GameScene: SKScene {
         darkOverlay.alpha = 0
         darkOverlay.zPosition = 20.0
         
-        aExam.exitLabel.zPosition = -1.0
-        
-        // Start the blackboard countdown
-        aBlackboard.startCountdown()
-        
-        // Start the window countdown timer
-        aWindow.startCountdown()
-        
-        // Start the drawer counter timer
-        aDrawer.startCountdown()
+        if (stage >= 1) {
+            
+            aDrawer = DrawerScene(scene: self)
+            drawerNode = DrawerItem(scene: self)
+            aDrawer.spriteNode = drawerNode
+            // Timer label drawer
+            timerDrawer.position = CGPoint(x: 200, y: 100)
+            addChild(timerDrawer)
+            aDrawer.timerDrawer = timerDrawer
+            // Start the drawer counter timer
+            aDrawer.startCountdown()
+            
+            if (stage >= 2) {
+                
+                aBlackboard = BlackboardScene(scene: self)
+                blackboardNode = BlackboardItem(scene: self)
+                aBlackboard.spriteNode = blackboardNode
+                // Timer label blackboard
+                timerBlackboard.position = CGPoint(x: 0,y: 100)
+                addChild(timerBlackboard)
+                aBlackboard.timerBlackboard = timerBlackboard
+                // Start the blackboard countdown
+                aBlackboard.startCountdown()
+                
+                if (stage >= 3) {
+                    
+                    aWindow = WindowScene(scene: self)
+                    windowNode = WindowItem(scene: self)
+                    aWindow.spriteNode = windowNode
+                    // Timer label window
+                    aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
+                    aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+                    addChild(aWindow.timerLabel)
+                    // Start the window countdown timer
+                    aWindow.startCountdown()
+                    
+                }
+                
+                
+            }
+            
+        }
         
     }
     
@@ -207,10 +251,11 @@ class GameScene: SKScene {
     }
     
     @objc func moveToGameOver() {
-        let gameOverScene = GameOver(fileNamed: "GameOver")!
-        gameOverScene.scaleMode = .aspectFit
-        gameOverScene.win = false
-        self.view!.presentScene(gameOverScene)
+        let scene = GameScene()
+        scene.stage = stage+1
+        scene.position = CGPoint(x: 0, y: 0)
+        scene.size = CGSize(width: frame.width, height: frame.height)
+        self.view?.presentScene(scene)
     }
     
     // Label Timer Blackboard
@@ -249,14 +294,14 @@ class GameScene: SKScene {
                 whichTouchIndicator = 3
             }
             
-            else if (blackboardNode.contains(touchLocation)) {
+            else if (blackboardNode != nil && blackboardNode.contains(touchLocation)) {
                 print("start blackboard")
                 startLocation = touchLocation
                 whichTouchIndicator = 2
                 
             }
             
-            else if (aWindow.spriteNode.contains(touchLocation)) {
+            else if (aWindow != nil && aWindow.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
                 whichTouchIndicator = 1
                 
