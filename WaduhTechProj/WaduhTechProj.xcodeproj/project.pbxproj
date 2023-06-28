@@ -97,6 +97,7 @@
 				15662CA12A41C58F00214FD7 /* GameScene.swift */,
 				15C3EC8A2A484B8F0065FF12 /* ExamTable */,
 				15C3EC852A4843E00065FF12 /* Exam */,
+				A30F1BB12A49349300F402B5 /* LightSwitch */,
 				9B0D9AC42A443D94009AB7FC /* Closet */,
 				15C3EC5A2A436A880065FF12 /* Window */,
 				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
@@ -104,7 +105,6 @@
 				9BCD53282A45929E00B09C86 /* Game Over */,
 				9B1E91AA2A47772300ADD9A4 /* Audio */,
 				15662CA22A41C59000214FD7 /* Assets.xcassets */,
-				A30F1BAF2A48881100F402B5 /* LightItem.swift */,
 			);
 			path = "WaduhTechProj Shared";
 			sourceTree = "<group>";
@@ -201,6 +201,14 @@
 				9BCD53262A45929600B09C86 /* GameOver.swift */,
 			);
 			path = "Game Over";
+			sourceTree = "<group>";
+		};
+		A30F1BB12A49349300F402B5 /* LightSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				A30F1BAF2A48881100F402B5 /* LightItem.swift */,
+			);
+			path = LightSwitch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
