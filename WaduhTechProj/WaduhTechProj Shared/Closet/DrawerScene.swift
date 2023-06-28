@@ -14,7 +14,7 @@ class DrawerScene {
     var timerDrawer: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 15
+    var timeRemaining = 20
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
@@ -61,7 +61,7 @@ class DrawerScene {
         
         if counter <= 10 {
             currentTextureIndex = 1
-        } else if counter <= 15 {
+        } else if counter <= 20 {
             currentTextureIndex = 0
         }
     }

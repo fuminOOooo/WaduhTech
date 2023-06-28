@@ -36,6 +36,7 @@ class GameScene: SKScene {
             }
         }
     }
+    var buttonTest: SKSpriteNode!
     
     var examNode: ExamItem!
     var aExam: ExamScene!
@@ -74,7 +75,7 @@ class GameScene: SKScene {
     // 3 = Touch inside closet
     
     var globalTimer = Timer()
-    var timeRemaining: TimeInterval = 30.0 {
+    var timeRemaining: TimeInterval = 0.0 {
         didSet
         {
             if !lightSwitch {
@@ -82,7 +83,7 @@ class GameScene: SKScene {
             }
         }
     }
-    var totalDuration: TimeInterval = 30.0
+    var totalDuration: TimeInterval = 0.0
     var globalTimerLabel: SKLabelNode!
     var darkOverlay: SKSpriteNode!
     var lightSwitch: Bool = false
@@ -101,36 +102,32 @@ class GameScene: SKScene {
         else if ((stage >= 2) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
             aDrawer.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
+            aWindow.countdownTimer?.invalidate()
             isGameOver = true
             moveToGameOver()
         }
         
         else if ((stage >= 3) && (aWindow.timeRemaining == 0 || aBlackboard.counter == 0 || aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
-            aWindow.countdownTimer?.invalidate()
+            // TODO: Drawer, blackboard, window, all item that use hold gesture
             aDrawer.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
+            aWindow.countdownTimer?.invalidate()
             isGameOver = true
             moveToGameOver()
         }
         
     }
     
+    // MARK: Changing ZPosition of Exam
     func changeZPositions() {
         
         if examOpen {
             aExam.spriteNode.zPosition = 3.0
             aExam.exitLabel.zPosition = 4.0
-            if (stage >= 2) {
-                aBlackboard.soundEnabled = true
-            }
         }
-        
         else if !examOpen {
             aExam.spriteNode.zPosition = -2.0
             aExam.exitLabel.zPosition = -1.0
-            if (stage >= 2) {
-                aBlackboard.soundEnabled = false
-            }
         }
         
     }
@@ -182,8 +179,17 @@ class GameScene: SKScene {
         darkOverlay.alpha = 0
         darkOverlay.zPosition = 20.0
         
+        // MARK: BUTTON BUAT TEST WIN CONDITION
+        buttonTest = SKSpriteNode(color: .red, size: CGSize(width: 200, height: 100))
+        buttonTest.position = CGPoint(x: frame.midX, y: frame.midY-100)
+        buttonTest.zPosition = +5
+        addChild(buttonTest)
+        
+        // MARK: Setup Stage Timer and Obstacle
         if (stage >= 1) {
-            
+            // MARK: Cupboard Item
+            timeRemaining = 240.0
+            totalDuration = 240.0
             aDrawer = DrawerScene(scene: self)
             drawerNode = DrawerItem(scene: self)
             aDrawer.spriteNode = drawerNode
@@ -195,7 +201,10 @@ class GameScene: SKScene {
             aDrawer.startCountdown()
             
             if (stage >= 2) {
+                timeRemaining = 300.0
+                totalDuration = 300.0
                 
+                // MARK: Blackboard Item
                 aBlackboard = BlackboardScene(scene: self)
                 blackboardNode = BlackboardItem(scene: self)
                 aBlackboard.spriteNode = blackboardNode
@@ -206,25 +215,35 @@ class GameScene: SKScene {
                 // Start the blackboard countdown
                 aBlackboard.startCountdown()
                 
+                // MARK: Window Item
+                timeRemaining = 330.0
+                totalDuration = 330.0
+                aWindow = WindowScene(scene: self)
+                windowNode = WindowItem(scene: self)
+                aWindow.spriteNode = windowNode
+                // Timer label window
+                aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
+                aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+                addChild(aWindow.timerLabel)
+                // Start the window countdown timer
+                aWindow.startCountdown()
+                
                 if (stage >= 3) {
+                    timeRemaining = 330.0
+                    totalDuration = 330.0
                     
-                    aWindow = WindowScene(scene: self)
-                    windowNode = WindowItem(scene: self)
-                    aWindow.spriteNode = windowNode
-                    // Timer label window
-                    aWindow.timerLabel = SKLabelNode(text: "\(Int(aWindow.timeRemaining))")
-                    aWindow.timerLabel.position = CGPoint(x: frame.midX, y: frame.midY)
-                    addChild(aWindow.timerLabel)
-                    // Start the window countdown timer
-                    aWindow.startCountdown()
+                    // MARK: Laci Item
                     
+                    
+                    if (stage >= 4) {
+                        timeRemaining = 360.0
+                        totalDuration = 360.0
+                        
+                        // MARK: TV item
+                    }
                 }
-                
-                
             }
-            
         }
-        
     }
     
     //Dark Overlay
@@ -251,9 +270,8 @@ class GameScene: SKScene {
     }
     
     @objc func moveToGameOver() {
-        let scene = GameScene()
+        let scene = GameOver()
         scene.stage = stage+1
-        scene.position = CGPoint(x: 0, y: 0)
         scene.size = CGSize(width: frame.width, height: frame.height)
         self.view?.presentScene(scene)
     }
@@ -280,7 +298,6 @@ class GameScene: SKScene {
         
         let touchLocation = touch.location(in: self)
         
-        // Began for window
         if (isHeld == false && !examOpen) {
             
             if (aExamTable.spriteNode.contains(touchLocation)) {
@@ -301,6 +318,8 @@ class GameScene: SKScene {
                 
             }
             
+            // MARK: Began for Window
+
             else if (aWindow != nil && aWindow.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
                 whichTouchIndicator = 1
@@ -314,6 +333,15 @@ class GameScene: SKScene {
                 aWindow.countdownTimer = nil
                 
                 aWindow.touchStartTime = touch.timestamp
+            }
+            
+            else if (buttonTest != nil && buttonTest.contains(touchLocation)) {
+                isHeld.toggle()
+                let scene = ExamTransition()
+                scene.stage = stage+1
+                scene.size = CGSize(width: frame.width, height: frame.height)
+                let transition = SKTransition.fade(with: .black, duration: 5)
+                self.view?.presentScene(scene, transition: transition)
             }
             
         } else if examOpen {
