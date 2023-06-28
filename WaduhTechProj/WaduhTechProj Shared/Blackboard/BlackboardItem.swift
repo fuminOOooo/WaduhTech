@@ -21,7 +21,7 @@ class BlackboardItem: SKSpriteNode {
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: 0, y: 287)
+        self.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY+287)
 
     }
     

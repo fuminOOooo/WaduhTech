@@ -24,7 +24,7 @@ class WindowScene {
     
     let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3")]
     
-    var timeRemaining: TimeInterval = 10.0 {
+    var timeRemaining: TimeInterval = 30.0 {
         didSet {
             updateTimerLabel()
             updateColorIndex()
@@ -55,11 +55,11 @@ class WindowScene {
 
     func updateColorIndex() {
         
-        if timeRemaining <= 3 {
+        if timeRemaining <= 18 {
             currentColorIndex = 2
-        } else if timeRemaining <= 6 {
+        } else if timeRemaining <= 24 {
             currentColorIndex = 1
-        } else if timeRemaining <= 10 {
+        } else if timeRemaining <= 30 {
             currentColorIndex = 0
         }
 

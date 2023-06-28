@@ -14,7 +14,7 @@ class BlackboardScene {
     var timerBlackboard: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 15
+    var timeRemaining = 35
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
@@ -55,15 +55,15 @@ class BlackboardScene {
 
     func updateTextureIndex() {
             
-            if counter <= 3 {
+            if counter <= 7 {
                 currentTextureIndex = 4
-            } else if counter <= 6 {
+            } else if counter <= 14 {
                 currentTextureIndex = 3
-            } else if counter <= 9 {
+            } else if counter <= 21 {
                 currentTextureIndex = 2
-            } else if counter <= 12 {
+            } else if counter <= 28 {
                 currentTextureIndex = 1
-            } else if counter <= 15 {
+            } else if counter <= 35 {
                 currentTextureIndex = 0
             }
         }
@@ -79,16 +79,16 @@ class BlackboardScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if counter == 3 {
+            if counter == 7 {
                 let blackboardSoundL = SKAction.playSoundFileNamed("blackboard_L", waitForCompletion: false)
                 scene.run(blackboardSoundL)
-            } else if counter == 6 {
+            } else if counter == 14 {
                 let blackboardSoundI = SKAction.playSoundFileNamed("blackboard_I", waitForCompletion: false)
                 scene.run(blackboardSoundI)
-            } else if counter == 9 {
+            } else if counter == 21 {
                 let blackboardSoundA = SKAction.playSoundFileNamed("blackboard_A", waitForCompletion: false)
                 scene.run(blackboardSoundA)
-            } else if counter == 12 {
+            } else if counter == 28 {
                 let blackboardSoundF = SKAction.playSoundFileNamed("blackboard_F", waitForCompletion: false)
                 scene.run(blackboardSoundF)
             }

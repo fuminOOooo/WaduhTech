@@ -13,14 +13,14 @@ class WindowItem: SKSpriteNode {
     init (scene: SKScene) {
         // Create and add your sprite node
         let windowTexture : SKTexture? = SKTexture(imageNamed: "Untitled_Artwork 1")
-        let windowSize = CGSize(width: 100, height: 100)
+        let windowSize = CGSize(width: 400, height: 400)
         
         super.init(texture: windowTexture, color: UIColor.clear, size: windowSize)
         
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: frame.midX, y: frame.midY)
+        self.position = CGPoint(x: scene.frame.midX-550, y: scene.frame.midY+50)
         
     }
     
