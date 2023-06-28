@@ -11,10 +11,10 @@ import SpriteKit
 class DrawerScene {
     
     var spriteNode : SKSpriteNode!
-    var timerDrawer: SKLabelNode!
+    var timerCupboard: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 20
+    var timeRemaining = 22
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
@@ -47,7 +47,7 @@ class DrawerScene {
         
         counter -= 1
         counter = max(counter, 0)
-        timerDrawer.text = "\(counter)"
+        timerCupboard.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
     }
@@ -59,9 +59,9 @@ class DrawerScene {
     
     func updateTextureIndex() {
         
-        if counter <= 10 {
+        if counter <= 11 {
             currentTextureIndex = 1
-        } else if counter <= 20 {
+        } else if counter <= 22 {
             currentTextureIndex = 0
         }
     }

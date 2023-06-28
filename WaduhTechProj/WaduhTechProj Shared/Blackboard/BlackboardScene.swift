@@ -48,11 +48,6 @@ class BlackboardScene {
         updateAudioIndex()
     }
     
-    func gameOver(won: Bool) {
-        print("Game over with status: \(won)")
-        
-    }
-
     func updateTextureIndex() {
             
             if counter <= 7 {
