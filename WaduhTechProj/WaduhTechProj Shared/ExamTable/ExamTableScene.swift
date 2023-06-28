@@ -5,7 +5,6 @@
 //  Created by Elvis Susanto on 25/06/23.
 //
 
-import SwiftUI
 import SpriteKit
 
 class ExamTableScene {

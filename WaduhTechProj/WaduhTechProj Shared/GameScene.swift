@@ -11,12 +11,20 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var currentQuestionsAndAnswers = QuestionsAndAnswers()
     var stage: Int = 0
-        
+    var questionNumber: Int = 1
+    var nextQ: Bool = false
+    
     // Exam
     var examOpen: Bool = false {
+        
         didSet {
+            
             if examOpen {
+                
+                changeQuestions()
+                
                 // Turn on sound effects
                 if stage >= 1 {
                     aDrawer.enableSoundEffects()
@@ -25,7 +33,10 @@ class GameScene: SKScene {
                     }
                 }
                 
-            } else {
+            }
+            
+            if !examOpen {
+                
                 // Turn off sound effects
                 if stage >= 1 {
                     aDrawer.disableSoundEffects()
@@ -33,8 +44,13 @@ class GameScene: SKScene {
                         aBlackboard.disableSoundEffects()
                     }
                 }
+                
             }
+            
+            changeZPositions()
+            
         }
+        
     }
     
     var examNode: ExamItem!
@@ -43,6 +59,10 @@ class GameScene: SKScene {
     // Exam Table
     var examTableNode: ExamTableItem!
     var aExamTable: ExamTableScene!
+    
+    // Exam Sheet
+    var examSheetNode: ExamSheetItem!
+    var aExamSheet: ExamSheetScene!
     
     // Light
 //    var lightNode: LightItem!
@@ -74,6 +94,7 @@ class GameScene: SKScene {
     // 3 = Touch inside closet
     
     var globalTimer = Timer()
+    
     var timeRemaining: TimeInterval = 30.0 {
         didSet
         {
@@ -82,15 +103,24 @@ class GameScene: SKScene {
             }
         }
     }
+    
     var totalDuration: TimeInterval = 30.0
     var globalTimerLabel: SKLabelNode!
     var darkOverlay: SKSpriteNode!
     var lightSwitch: Bool = false
     
+    var firstTime: Bool = true
+    
+    
+    
     override func update(_ currentTime: TimeInterval) {
         
         globalTimerLabel.text = "\(Int(timeRemaining))"
         globalTimerLabel.zPosition = 10.0
+        
+        if (nextQ == true) {
+            changeQuestions()
+        }
         
         if ((stage >= 1) && (aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
             aDrawer.countdownTimer.invalidate()
@@ -115,11 +145,25 @@ class GameScene: SKScene {
         
     }
     
+    // Next
+    func nextQuestion() {
+        changeQuestions()
+        nextQ = false
+    }
+    
     func changeZPositions() {
         
         if examOpen {
             aExam.spriteNode.zPosition = 3.0
             aExam.exitLabel.zPosition = 4.0
+            aExamSheet.question.zPosition = 6.0
+            aExamSheet.spriteNode.zPosition = 5.0
+            aExamSheet.labelAnswerA.zPosition = 6.0
+            aExamSheet.labelAnswerB.zPosition = 6.0
+            aExamSheet.labelAnswerC.zPosition = 6.0
+            aExamSheet.labelAnswerD.zPosition = 6.0
+            aExamSheet.nextQuestion.zPosition = 6.0
+            aExamSheet.prevQuestion.zPosition = 6.0
             if (stage >= 2) {
                 aBlackboard.soundEnabled = true
             }
@@ -128,6 +172,14 @@ class GameScene: SKScene {
         else if !examOpen {
             aExam.spriteNode.zPosition = -2.0
             aExam.exitLabel.zPosition = -1.0
+            aExamSheet.question.zPosition = -1.0
+            aExamSheet.spriteNode.zPosition = -2.0
+            aExamSheet.labelAnswerA.zPosition = -1.0
+            aExamSheet.labelAnswerB.zPosition = -1.0
+            aExamSheet.labelAnswerC.zPosition = -1.0
+            aExamSheet.labelAnswerD.zPosition = -1.0
+            aExamSheet.nextQuestion.zPosition = -1.0
+            aExamSheet.prevQuestion.zPosition = -1.0
             if (stage >= 2) {
                 aBlackboard.soundEnabled = false
             }
@@ -137,7 +189,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        print(stage)
+        currentQuestionsAndAnswers.stage = stage
         
         globalTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
             guard let self = self else {
@@ -156,7 +208,7 @@ class GameScene: SKScene {
         bg.zPosition = -0.0
         
         globalTimerLabel = SKLabelNode(text: "\(Int(timeRemaining))")
-        globalTimerLabel.position = CGPoint(x: 300, y: 300)
+        globalTimerLabel.position = CGPoint(x: frame.minX+100, y: frame.maxY-100)
         globalTimerLabel.fontColor = .black
         globalTimerLabel.zPosition = 6
         addChild(globalTimerLabel)
@@ -173,6 +225,12 @@ class GameScene: SKScene {
         aExamTable = ExamTableScene(scene: self)
         examTableNode = ExamTableItem(scene: self)
         aExamTable.spriteNode = examTableNode
+        
+        // Exam Sheet Interactions
+//        aExamSheet = ExamSheetScene(scene: self)
+//        examSheetNode = ExamSheetItem(scene: self)
+//        aExamSheet.spriteNode = examSheetNode
+//        aExamSheet.spriteNode.zPosition = -1.0
         
         darkOverlay = SKSpriteNode(color: .black, size: self.size)
         darkOverlay.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -227,7 +285,153 @@ class GameScene: SKScene {
         
     }
     
-    //Dark Overlay
+    @objc func updateFontSize() {
+        if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "A"
+        {
+            aExamSheet.labelAnswerA.fontSize = 100
+            aExamSheet.labelAnswerB.fontSize = 50
+            aExamSheet.labelAnswerC.fontSize = 50
+            aExamSheet.labelAnswerD.fontSize = 50
+        } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "B"
+        {
+            aExamSheet.labelAnswerA.fontSize = 50
+            aExamSheet.labelAnswerB.fontSize = 100
+            aExamSheet.labelAnswerC.fontSize = 50
+            aExamSheet.labelAnswerD.fontSize = 50
+        } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "C"
+        {
+            aExamSheet.labelAnswerA.fontSize = 50
+            aExamSheet.labelAnswerB.fontSize = 50
+            aExamSheet.labelAnswerC.fontSize = 100
+            aExamSheet.labelAnswerD.fontSize = 50
+        } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "D"
+        {
+            aExamSheet.labelAnswerA.fontSize = 50
+            aExamSheet.labelAnswerB.fontSize = 50
+            aExamSheet.labelAnswerC.fontSize = 50
+            aExamSheet.labelAnswerD.fontSize = 100
+        }
+    }
+    
+    // Change Questions
+    @objc func changeQuestions() {
+        
+        aExamSheet = ExamSheetScene(scene: self)
+        examSheetNode = ExamSheetItem(scene: self)
+        
+        let labelQuestion = currentQuestionsAndAnswers.qACA[currentQuestionsAndAnswers.qACA.index(currentQuestionsAndAnswers.qACA.startIndex, offsetBy: questionNumber-1)].questions
+        aExamSheet.question = SKLabelNode(text: "\(labelQuestion)")
+        
+        aExamSheet.question.fontSize = 50
+        aExamSheet.question.fontColor = .black
+        
+        var labelAnswer =
+        currentQuestionsAndAnswers.qACA[currentQuestionsAndAnswers.qACA.index(currentQuestionsAndAnswers.qACA.startIndex, offsetBy: questionNumber-1)].answerA
+        aExamSheet.labelAnswerA = SKLabelNode(text: "\(labelAnswer)")
+        
+        var answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
+        if answered == "A" {
+            aExamSheet.labelAnswerA.fontSize = 100
+        } else {
+            aExamSheet.labelAnswerA.fontSize = 50
+        }
+        
+        labelAnswer =
+        currentQuestionsAndAnswers.qACA[currentQuestionsAndAnswers.qACA.index(currentQuestionsAndAnswers.qACA.startIndex, offsetBy: questionNumber-1)].answerB
+        aExamSheet.labelAnswerB = SKLabelNode(text: "\(labelAnswer)")
+        answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
+        if answered == "B" {
+            aExamSheet.labelAnswerB.fontSize = 100
+        } else {
+            aExamSheet.labelAnswerB.fontSize = 50
+        }
+        
+        labelAnswer =
+        currentQuestionsAndAnswers.qACA[currentQuestionsAndAnswers.qACA.index(currentQuestionsAndAnswers.qACA.startIndex, offsetBy: questionNumber-1)].answerC
+        aExamSheet.labelAnswerC = SKLabelNode(text: "\(labelAnswer)")
+        answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
+        if answered == "C" {
+            aExamSheet.labelAnswerC.fontSize = 100
+        } else {
+            aExamSheet.labelAnswerC.fontSize = 50
+        }
+        
+        labelAnswer =
+        currentQuestionsAndAnswers.qACA[currentQuestionsAndAnswers.qACA.index(currentQuestionsAndAnswers.qACA.startIndex, offsetBy: questionNumber-1)].answerD
+        aExamSheet.labelAnswerD = SKLabelNode(text: "\(labelAnswer)")
+        answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
+        if answered == "D" {
+            aExamSheet.labelAnswerD.fontSize = 100
+        } else {
+            aExamSheet.labelAnswerD.fontSize = 50
+        }
+        
+        aExamSheet.nextQuestion = SKLabelNode(text: "next")
+        aExamSheet.nextQuestion.fontSize = 100
+        aExamSheet.nextQuestion.fontColor = .black
+        aExamSheet.nextQuestion.position = CGPoint(x: self.frame.midX+10, y: self.frame.midY)
+    
+        aExamSheet.prevQuestion = SKLabelNode(text: "prev")
+        aExamSheet.prevQuestion.fontSize = 100
+        aExamSheet.prevQuestion.fontColor = .black
+        aExamSheet.prevQuestion.position = CGPoint(x: self.frame.midX-10, y: self.frame.midY)
+        
+        aExamSheet.question.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
+        aExamSheet.labelAnswerA.position = CGPoint(x: frame.midX-100, y: frame.midY - 100)
+        aExamSheet.labelAnswerB.position = CGPoint(x: frame.midX+100, y: frame.midY - 100)
+        aExamSheet.labelAnswerC.position = CGPoint(x: frame.midX-100, y: frame.midY - 200)
+        aExamSheet.labelAnswerD.position = CGPoint(x: frame.midX+100, y: frame.midY - 200)
+        
+        aExamSheet.labelAnswerA.fontColor = .black
+        aExamSheet.labelAnswerB.fontColor = .black
+        aExamSheet.labelAnswerC.fontColor = .black
+        aExamSheet.labelAnswerD.fontColor = .black
+        aExamSheet.spriteNode = examSheetNode
+        
+        if (firstTime) {
+            addChild(aExamSheet.question)
+            addChild(aExamSheet.labelAnswerA)
+            addChild(aExamSheet.labelAnswerB)
+            addChild(aExamSheet.labelAnswerC)
+            addChild(aExamSheet.labelAnswerD)
+            if (questionNumber > 1) {
+                addChild(aExamSheet.prevQuestion)
+            }
+            if (questionNumber < 1) {
+                addChild(aExamSheet.nextQuestion)
+            }
+            firstTime = false
+        } else if (!firstTime) {
+            aExamSheet.spriteNode.removeFromParent()
+            aExamSheet.question.removeFromParent()
+            aExamSheet.labelAnswerA.removeFromParent()
+            aExamSheet.labelAnswerB.removeFromParent()
+            aExamSheet.labelAnswerC.removeFromParent()
+            aExamSheet.labelAnswerD.removeFromParent()
+            if (questionNumber > 1) {
+                aExamSheet.prevQuestion.removeFromParent()
+            }
+            if (questionNumber < 10) {
+                aExamSheet.nextQuestion.removeFromParent()
+            }
+            addChild(aExamSheet.question)
+            addChild(aExamSheet.labelAnswerA)
+            addChild(aExamSheet.labelAnswerB)
+            addChild(aExamSheet.labelAnswerC)
+            addChild(aExamSheet.labelAnswerD)
+            if (questionNumber > 1) {
+                
+                addChild(aExamSheet.prevQuestion)
+            }
+            if (questionNumber < 10) {
+                
+                addChild(aExamSheet.nextQuestion)
+            }
+        }
+        
+    }
+    
+    // Dark Overlay
     @objc func darken() {
         if timeRemaining / totalDuration <= 0.2 {
             darkOverlay.alpha = 0.95
@@ -285,7 +489,6 @@ class GameScene: SKScene {
             
             if (aExamTable.spriteNode.contains(touchLocation)) {
                 examOpen.toggle()
-                changeZPositions()
             }
             
             else if (drawerNode.contains(touchLocation)) {
@@ -316,12 +519,38 @@ class GameScene: SKScene {
                 aWindow.touchStartTime = touch.timestamp
             }
             
-        } else if examOpen {
+        }
+        
+        else if examOpen {
             
             if (aExam.exitLabel.contains(touchLocation)) {
                 examOpen.toggle()
-                changeZPositions()
+            } else if (aExamSheet.labelAnswerA.contains(touchLocation)) {
+                currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "A"
+                updateFontSize()
+                
+            } else if (aExamSheet.labelAnswerB.contains(touchLocation)) {
+                currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "B"
+                updateFontSize()
+            } else if (aExamSheet.labelAnswerC.contains(touchLocation)) {
+                currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "C"
+                updateFontSize()
+            } else if (aExamSheet.labelAnswerD.contains(touchLocation)) {
+                currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "D"
+                updateFontSize()
+            } else if (questionNumber < 10) {
+                if (aExamSheet.nextQuestion.contains(touchLocation)) {
+                    questionNumber += 1
+                    nextQ = true
+                }
+            } else if (questionNumber > 1) {
+                if (aExamSheet.prevQuestion.contains(touchLocation)) {
+                    questionNumber -= 1
+                    nextQ = true
+                }
             }
+        
+            print(currentQuestionsAndAnswers.playerAnswers)
             
         }
         
