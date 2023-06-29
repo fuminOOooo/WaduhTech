@@ -390,28 +390,28 @@ class GameScene: SKScene {
     @objc func updateFontSize() {
         if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "A"
         {
-            aExamSheet.labelAnswerA.fontSize = 100
-            aExamSheet.labelAnswerB.fontSize = 50
-            aExamSheet.labelAnswerC.fontSize = 50
-            aExamSheet.labelAnswerD.fontSize = 50
+            aExamSheet.labelAnswerA.fontColor = .green
+            aExamSheet.labelAnswerB.fontColor = .black
+            aExamSheet.labelAnswerC.fontColor = .black
+            aExamSheet.labelAnswerD.fontColor = .black
         } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "B"
         {
-            aExamSheet.labelAnswerA.fontSize = 50
-            aExamSheet.labelAnswerB.fontSize = 100
-            aExamSheet.labelAnswerC.fontSize = 50
-            aExamSheet.labelAnswerD.fontSize = 50
+            aExamSheet.labelAnswerA.fontColor = .black
+            aExamSheet.labelAnswerB.fontColor = .green
+            aExamSheet.labelAnswerC.fontColor = .black
+            aExamSheet.labelAnswerD.fontColor = .black
         } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "C"
         {
-            aExamSheet.labelAnswerA.fontSize = 50
-            aExamSheet.labelAnswerB.fontSize = 50
-            aExamSheet.labelAnswerC.fontSize = 100
-            aExamSheet.labelAnswerD.fontSize = 50
+            aExamSheet.labelAnswerA.fontColor = .black
+            aExamSheet.labelAnswerB.fontColor = .black
+            aExamSheet.labelAnswerC.fontColor = .green
+            aExamSheet.labelAnswerD.fontColor = .black
         } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "D"
         {
-            aExamSheet.labelAnswerA.fontSize = 50
-            aExamSheet.labelAnswerB.fontSize = 50
-            aExamSheet.labelAnswerC.fontSize = 50
-            aExamSheet.labelAnswerD.fontSize = 100
+            aExamSheet.labelAnswerA.fontColor = .black
+            aExamSheet.labelAnswerB.fontColor = .black
+            aExamSheet.labelAnswerC.fontColor = .black
+            aExamSheet.labelAnswerD.fontColor = .green
         }
     }
     
@@ -421,7 +421,7 @@ class GameScene: SKScene {
         let labelQuestion = currentQuestionsAndAnswers.qACA[currentQuestionsAndAnswers.qACA.index(currentQuestionsAndAnswers.qACA.startIndex, offsetBy: questionNumber-1)].questions
         aExamSheet.question.text = "\(labelQuestion)"
         
-        aExamSheet.question.fontSize = 30
+        aExamSheet.question.fontSize = 40
         aExamSheet.question.fontColor = .black
         
         var labelAnswer =
@@ -430,9 +430,9 @@ class GameScene: SKScene {
         
         var answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "A" {
-            aExamSheet.labelAnswerA.fontSize = 50
+            aExamSheet.labelAnswerA.fontColor = .green
         } else {
-            aExamSheet.labelAnswerA.fontSize = 20
+            aExamSheet.labelAnswerA.fontColor = .black
         }
         
         labelAnswer =
@@ -440,9 +440,9 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerB.text = "\(labelAnswer)"
         answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "B" {
-            aExamSheet.labelAnswerB.fontSize = 50
+            aExamSheet.labelAnswerB.fontColor = .green
         } else {
-            aExamSheet.labelAnswerB.fontSize = 20
+            aExamSheet.labelAnswerB.fontColor = .black
         }
         
         labelAnswer =
@@ -450,9 +450,9 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerC.text = "\(labelAnswer)"
         answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "C" {
-            aExamSheet.labelAnswerC.fontSize = 50
+            aExamSheet.labelAnswerC.fontColor = .green
         } else {
-            aExamSheet.labelAnswerC.fontSize = 20
+            aExamSheet.labelAnswerC.fontColor = .black
         }
         
         labelAnswer =
@@ -460,9 +460,9 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerD.text = "\(labelAnswer)"
         answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "D" {
-            aExamSheet.labelAnswerD.fontSize = 50
+            aExamSheet.labelAnswerD.fontColor = .green
         } else {
-            aExamSheet.labelAnswerD.fontSize = 20
+            aExamSheet.labelAnswerD.fontColor = .black
         }
         
         if (questionNumber < currentQuestionsAndAnswers.qACA.count) {
@@ -490,10 +490,10 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerC.position = CGPoint(x: self.frame.midX-100, y: self.frame.midY-200)
         aExamSheet.labelAnswerD.position = CGPoint(x: self.frame.midX+100, y: self.frame.midY-200)
         
-        aExamSheet.labelAnswerA.fontColor = .black
-        aExamSheet.labelAnswerB.fontColor = .black
-        aExamSheet.labelAnswerC.fontColor = .black
-        aExamSheet.labelAnswerD.fontColor = .black
+        aExamSheet.labelAnswerA.fontSize = 50
+        aExamSheet.labelAnswerB.fontSize = 50
+        aExamSheet.labelAnswerC.fontSize = 50
+        aExamSheet.labelAnswerD.fontSize = 50
         
     }
     
@@ -516,14 +516,16 @@ class GameScene: SKScene {
             if (counter / 5 >= 0.8) {
                 nextStage()
             } else {
-                moveToGameOver()
+                loseIndicator = 3
+                moveToGameOver2()
             }
         }
         if (currentQuestionsAndAnswers.correctAnswers.count == 10) {
             if (counter / 10 >= 0.8) {
                 nextStage()
             } else {
-                moveToGameOver()
+                loseIndicator = 3
+                moveToGameOver2()
             }
         }
         
@@ -575,6 +577,14 @@ class GameScene: SKScene {
         }
     }
     
+    @objc func moveToGameOver2() {
+        let scene = GameOver()
+        scene.stage = stage
+        scene.loseIndicator = 3
+        scene.size = CGSize(width: frame.width, height: frame.height)
+        self.view?.presentScene(scene)
+    }
+    
     @objc func moveToGameOver() {
         gameOverIndicator()
         let scene = GameOver()
@@ -611,8 +621,7 @@ class GameScene: SKScene {
     func gameOverIndicator() {
         if (timeRemaining == 0) {
             loseIndicator = 1
-        }
-        else if (aDrawer.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0) {
+        } else if (aDrawer.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0) {
             loseIndicator = 2
         }
     }

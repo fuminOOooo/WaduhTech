@@ -30,7 +30,7 @@ class GameOverTransition: SKScene {
         } else if (loseIndicator == 2) {
             loseFactor = "YOU WERE ATTACKED!"
         } else if (loseIndicator == 3) {
-            loseFactor = "YOU FAILED TO ACHIEVE THE MINIMUM SCORE!"
+            loseFactor = "YOU SCORED TOO LOW!"
         }
         
         loseLabel = SKLabelNode(attributedText: NSAttributedString(string: "\(loseFactor)",
@@ -54,7 +54,7 @@ class GameOverTransition: SKScene {
                 print("button main menu clicked")
                 startLocation = location
                 let scene = MainMenu(fileNamed: "MainMenu")!
-                scene.stage = 0
+                scene.stage = stage
                 scene.scaleMode = .aspectFit
                 self.view?.presentScene(scene, transition: transition)
             }
