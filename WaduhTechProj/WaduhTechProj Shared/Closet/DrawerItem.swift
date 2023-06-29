@@ -22,7 +22,7 @@ class DrawerItem: SKSpriteNode{
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: scene.frame.midX+390, y: scene.frame.midY+40)
+        self.position = CGPoint(x: scene.frame.midX+500, y: scene.frame.midY+138)
 
     }
     
