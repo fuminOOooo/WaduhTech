@@ -14,7 +14,7 @@ class WindowScene {
     var timerWindow: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 30
+    var timeRemaining = 21
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
@@ -50,11 +50,11 @@ class WindowScene {
     
     func updateTextureIndex() {
             
-            if counter <= 10 {
+            if counter <= 7 {
                 currentTextureIndex = 2
-            } else if counter <= 20 {
+            } else if counter <= 14 {
                 currentTextureIndex = 1
-            } else if counter <= 30 {
+            } else if counter <= 21 {
                 currentTextureIndex = 0
             }
         }

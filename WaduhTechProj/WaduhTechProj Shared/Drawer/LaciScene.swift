@@ -27,7 +27,7 @@ class LaciScene {
     
     let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3")]
     
-    var timeRemaining: TimeInterval = 32.0 {
+    var timeRemaining: TimeInterval = 24.0 {
         didSet {
             updateTimerLabel()
             updateTextureIndex()
@@ -58,11 +58,11 @@ class LaciScene {
     
     func updateTextureIndex() {
         
-        if timeRemaining <= 16 {
+        if timeRemaining <= 8 {
             currentTextureIndex = 2
-        } else if timeRemaining <= 24 {
+        } else if timeRemaining <= 16 {
             currentTextureIndex = 1
-        } else if timeRemaining <= 32 {
+        } else if timeRemaining <= 24 {
             currentTextureIndex = 0
         }
     }

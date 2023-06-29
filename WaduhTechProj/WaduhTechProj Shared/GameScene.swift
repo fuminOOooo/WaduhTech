@@ -271,9 +271,9 @@ class GameScene: SKScene {
                     laciNode = LaciItem(scene: self)
                     aLaci.spriteNode = laciNode
                     // Timer label drawer
+                    aLaci.timerLaci = SKLabelNode(text: "\(Int(aLaci.timeRemaining))")
                     aLaci.timerLaci.position = CGPoint(x: frame.midX+50, y: frame.midY)
                     addChild(aLaci.timerLaci)
-                    aLaci.timerLaci = SKLabelNode(text: "\(Int(aLaci.timeRemaining))")
                     //Start drawer countdown timer
                     aLaci.startCountdown()
                     
@@ -286,9 +286,9 @@ class GameScene: SKScene {
                         tvNode = TVItem(scene: self)
                         aTV.spriteNode = tvNode
                         // Timer label drawer
+                        aTV.timerTV = SKLabelNode(text: "\(Int(aTV.timeRemaining))")
                         aTV.timerTV.position = CGPoint(x: frame.midX+50, y: frame.midY-50)
                         addChild(aLaci.timerLaci)
-                        aTV.timerTV = SKLabelNode(text: "\(Int(aTV.timeRemaining))")
                         //Start drawer countdown timer
                         aTV.startCountdown()
                     }
@@ -313,20 +313,20 @@ class GameScene: SKScene {
     // Khusus Drawer
     @objc func fireTimer() {
         print("Timer fired!")
-        if aLaci.timeRemaining == 10 {
-            aLaci.timeRemaining = 10
-        } else if aLaci.timeRemaining < 10 {
-            aLaci.timeRemaining += 0.5
+        if aLaci.timeRemaining == 24 {
+            aLaci.timeRemaining = 24
+        } else if aLaci.timeRemaining < 24 {
+            aLaci.timeRemaining += 1
         }
     }
     
         // Khusus TV
         @objc func fireTimerTV() {
             print("Timer fired!")
-            if aTV.timeRemaining == 10 {
-                aTV.timeRemaining = 10
-            } else if aTV.timeRemaining < 10 {
-                aTV.timeRemaining += 0.5
+            if aTV.timeRemaining == 30 {
+                aTV.timeRemaining = 30
+            } else if aTV.timeRemaining < 30 {
+                aTV.timeRemaining += 1
             }
         }
     
@@ -345,7 +345,7 @@ class GameScene: SKScene {
         return label
     }()
     
-    // Label Timer Blackboard
+    // Label Timer Cupboard
     lazy var timerCupboard: SKLabelNode = {
         var label = SKLabelNode()
         label.fontColor = SKColor.black
@@ -401,7 +401,7 @@ class GameScene: SKScene {
                 isHeld.toggle()
                 whichTouchIndicator = 4
                 
-                print("touch inside window detected!")
+                print("touch inside laci detected!")
                 
                 aLaci.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
                 
@@ -414,9 +414,9 @@ class GameScene: SKScene {
             
             else if (aTV != nil && aTV.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
-                whichTouchIndicator = 4
+                whichTouchIndicator = 5
                 
-                print("touch inside window detected!")
+                print("touch inside tv detected!")
                 
                 aTV.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimerTV), userInfo: nil, repeats: true)
                 
