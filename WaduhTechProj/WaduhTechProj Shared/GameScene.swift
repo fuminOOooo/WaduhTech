@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var stage: Int = 0
     var questionNumber: Int = 1
     var nextQ: Bool = false
+    var done: Bool = false
     
     // Exam
     var examOpen: Bool = false {
@@ -64,7 +65,7 @@ class GameScene: SKScene {
         }
         
     }
-    var buttonTest: SKSpriteNode!
+    var buttonTest: SKLabelNode!
     
     var examNode: ExamItem!
     var aExam: ExamScene!
@@ -134,6 +135,12 @@ class GameScene: SKScene {
     var firstTime: Bool = true
     
     override func update(_ currentTime: TimeInterval) {
+        
+        if (done == false) {
+            checkAnswers()
+        }
+        
+        checkAnswers()
         
         globalTimerLabel.text = "\(Int(timeRemaining))"
         globalTimerLabel.zPosition = 10.0
@@ -293,10 +300,11 @@ class GameScene: SKScene {
         darkOverlay.zPosition = 20.0
         
         // MARK: BUTTON BUAT TEST WIN CONDITION
-        buttonTest = SKSpriteNode(color: .red, size: CGSize(width: 200, height: 100))
-        buttonTest.position = CGPoint(x: frame.midX, y: frame.midY-100)
-        buttonTest.zPosition = +2
+        buttonTest = SKLabelNode(text: "SUBMIT")
+        buttonTest.fontSize = 100
+        buttonTest.position = CGPoint(x: frame.midX-420, y: frame.midY-430)
         addChild(buttonTest)
+        buttonTest.zPosition = -2.0
         
         // MARK: Setup Stage Timer and Obstacle
         if (stage >= 1) {
@@ -484,6 +492,51 @@ class GameScene: SKScene {
         
     }
     
+    func nextStage() {
+        let scene = ExamTransition()
+        scene.stage = stage+1
+        scene.size = CGSize(width: frame.width, height: frame.height)
+        let transition = SKTransition.fade(with: .black, duration: 5)
+        self.view?.presentScene(scene, transition: transition)
+    }
+    
+    func checkCorrectAnswers() {
+        var counter: Float = 0
+        for i in 0 ..< currentQuestionsAndAnswers.correctAnswers.count-1 {
+            if currentQuestionsAndAnswers.playerAnswers[i] == currentQuestionsAndAnswers.correctAnswers[i] {
+                counter += 1
+            }
+        }
+        if (currentQuestionsAndAnswers.correctAnswers.count == 5) {
+            if (counter / 5 >= 0.8) {
+                nextStage()
+            } else {
+                moveToGameOver()
+            }
+        }
+        if (currentQuestionsAndAnswers.correctAnswers.count == 10) {
+            if (counter / 10 >= 0.8) {
+                nextStage()
+            } else {
+                moveToGameOver()
+            }
+        }
+        
+    }
+    
+    func checkAnswers() {
+        var counter = 0
+        for string in currentQuestionsAndAnswers.playerAnswers {
+            if string.contains("-") {
+                counter += 1
+            }
+        }
+        if counter == 0 {
+            buttonTest.zPosition = 1.0
+            done = true
+        }
+    }
+    
     // Dark Overlay
     @objc func darken() {
         if timeRemaining / totalDuration <= 0.2 {
@@ -612,13 +665,9 @@ class GameScene: SKScene {
                 
                 aTV.touchStartTime = touch.timestamp
             }
-            else if (buttonTest != nil && buttonTest.contains(touchLocation)) {
+            else if (done == true && buttonTest != nil && buttonTest.contains(touchLocation)) {
                 isHeld.toggle()
-                let scene = ExamTransition()
-                scene.stage = stage+1
-                scene.size = CGSize(width: frame.width, height: frame.height)
-                let transition = SKTransition.fade(with: .black, duration: 5)
-                self.view?.presentScene(scene, transition: transition)
+                checkCorrectAnswers()
             }
             
         } else if examOpen {
