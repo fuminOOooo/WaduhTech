@@ -16,6 +16,9 @@ class TVScene {
     var touchStartTime: TimeInterval = 0.0
     var countdownTimer: Timer?
     
+    // Audio Enable or Disable
+    var soundEnabled: Bool = false
+    
     var scene: SKScene!
     
     init(scene: SKScene) {
@@ -63,12 +66,29 @@ class TVScene {
             currentTextureIndex = 0
         }
     }
-        
-        func updateSpriteTexture() {
-            let colorAction = SKAction.setTexture(views[currentTextureIndex])
-            colorAction.speed = 0.5
-            spriteNode.run(colorAction)
-        }
-        
+    
+    func updateSpriteTexture() {
+        let colorAction = SKAction.setTexture(views[currentTextureIndex])
+        colorAction.speed = 0.5
+        spriteNode.run(colorAction)
     }
+    
+    func enableSoundEffects() {
+        soundEnabled = true
+    }
+    
+    func disableSoundEffects() {
+        soundEnabled = false
+    }
+    
+    func updateAudioIndex() {
+        if soundEnabled {
+            
+            if timeRemaining == 24 || timeRemaining == 16 {
+                let tvSound = SKAction.playSoundFileNamed("soundTV", waitForCompletion: false)
+                scene.run(tvSound)
+            }
+        }
+    }
+}
 
