@@ -295,7 +295,7 @@ class GameScene: SKScene {
         // MARK: BUTTON BUAT TEST WIN CONDITION
         buttonTest = SKSpriteNode(color: .red, size: CGSize(width: 200, height: 100))
         buttonTest.position = CGPoint(x: frame.midX, y: frame.midY-100)
-        buttonTest.zPosition = +5
+        buttonTest.zPosition = +2
         addChild(buttonTest)
         
         // MARK: Setup Stage Timer and Obstacle
@@ -365,7 +365,7 @@ class GameScene: SKScene {
                         // Timer label drawer
                         aTV.timerTV = SKLabelNode(text: "\(Int(aTV.timeRemaining))")
                         aTV.timerTV.position = CGPoint(x: frame.midX+50, y: frame.midY-50)
-                        addChild(aLaci.timerLaci)
+                        addChild(aTV.timerTV)
                         //Start drawer countdown timer
                         aTV.startCountdown()
                     }
