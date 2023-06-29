@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class ExamSheetScene {
+struct ExamSheetScene {
     
     var spriteNode : SKSpriteNode!
     var question: SKLabelNode!

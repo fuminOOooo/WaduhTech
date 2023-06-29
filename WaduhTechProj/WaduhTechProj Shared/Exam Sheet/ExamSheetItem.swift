@@ -13,13 +13,13 @@ class ExamSheetItem: SKSpriteNode {
     init (scene: SKScene) {
         // Create and add your sprite node
         let examSheetTexture: SKTexture? = SKTexture(imageNamed: "examSheet")
-        let examSheetSize = CGSize(width: 542, height: 712)
+        let examSheetSize = CGSize(width: 0, height: 0)
         super.init(texture: examSheetTexture, color: UIColor.clear, size: examSheetSize)
         
         scene.addChild(self)
         
         self.zPosition = -1.0
-        self.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        self.position = CGPoint(x: 0, y: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
