@@ -16,6 +16,11 @@ class GameScene: SKScene {
     var questionNumber: Int = 1
     var nextQ: Bool = false
     
+    var loseIndicator: Int = 0
+    // 1 = Ran out of global timer
+    // 2 = Failed to maintain obstacle
+    // 3 = Failed to reach minimum score
+    
     // Exam
     var examOpen: Bool = false {
         
@@ -507,19 +512,21 @@ class GameScene: SKScene {
         }
     }
     
-        // Khusus TV
-        @objc func fireTimerTV() {
-            print("Timer fired!")
-            if aTV.timeRemaining == 30 {
-                aTV.timeRemaining = 30
-            } else if aTV.timeRemaining < 30 {
-                aTV.timeRemaining += 1
-            }
+    // Khusus TV
+    @objc func fireTimerTV() {
+        print("Timer fired!")
+        if aTV.timeRemaining == 30 {
+            aTV.timeRemaining = 30
+        } else if aTV.timeRemaining < 30 {
+            aTV.timeRemaining += 1
         }
+    }
     
     @objc func moveToGameOver() {
+        gameOverIndicator()
         let scene = GameOver()
         scene.stage = stage
+        scene.loseIndicator = loseIndicator
         scene.size = CGSize(width: frame.width, height: frame.height)
         self.view?.presentScene(scene)
     }
@@ -548,6 +555,16 @@ class GameScene: SKScene {
         return label
     }()
     
+    func gameOverIndicator() {
+        if (timeRemaining == 0) {
+            loseIndicator = 1
+        }
+        else if (aDrawer.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0) {
+            loseIndicator = 2
+        }
+    }
+    
+    // MARK: Touches Began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         guard let touch = touches.first else { return }
@@ -660,6 +677,7 @@ class GameScene: SKScene {
         
     }
     
+    // MARK: Touches Ended
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         // 2nd Person View Interactions
