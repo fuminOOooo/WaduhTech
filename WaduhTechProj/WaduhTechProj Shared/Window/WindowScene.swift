@@ -25,7 +25,7 @@ class WindowScene {
         self.scene = scene
     }
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "windowState1"), SKTexture(imageNamed: "windowState2"), SKTexture(imageNamed: "windowState3")]
     
     var currentTextureIndex: Int = 0 {
             didSet {
@@ -48,11 +48,6 @@ class WindowScene {
         updateAudioIndex()
     }
     
-    func gameOver(won: Bool) {
-        print("Game over with status: \(won)")
-        
-    }
-
     func updateTextureIndex() {
             
             if counter <= 10 {

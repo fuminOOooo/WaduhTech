@@ -24,9 +24,9 @@ class GameScene: SKScene {
                         aBlackboard.enableSoundEffects()
                         aWindow.enableSoundEffects()
                         if stage >= 3 {
-                            //                            aLaci.enableSoundEffects()
+                            aLaci.enableSoundEffects()
                             if stage >= 4 {
-                                //                                aTV.enableSoundEffects()
+                                aTV.enableSoundEffects()
                             }
                         }
                     }
@@ -40,9 +40,9 @@ class GameScene: SKScene {
                         aBlackboard.disableSoundEffects()
                         aWindow.disableSoundEffects()
                         if stage >= 3 {
-                            //                            aLaci.disableSoundEffects()
+                            aLaci.disableSoundEffects()
                             if stage >= 4 {
-                                //                                aTV.disableSoundEffects()
+                                aTV.disableSoundEffects()
                             }
                         }
                     }
@@ -64,7 +64,7 @@ class GameScene: SKScene {
     //    var aLight: LightScene!
     
     var bg: SKSpriteNode!
-    var bgTexture: SKTexture = SKTexture(imageNamed: "background")
+    var bgTexture: SKTexture = SKTexture(imageNamed: "classroomBG")
     
     // Blackboard
     var blackboardNode: BlackboardItem!
@@ -81,6 +81,10 @@ class GameScene: SKScene {
     // Drawer
     var laciNode: LaciItem!
     var aLaci: LaciScene!
+    
+    // TV
+    var tvNode: TVItem!
+    var aTV: TVScene!
     
     var isHeld: Bool = false
     var isGameOver: Bool = false
@@ -137,13 +141,13 @@ class GameScene: SKScene {
             moveToGameOver()
         }
         
-        else if ((stage >= 4) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || /* aTV.timeRemaining ||*/ timeRemaining == 0) && (isGameOver == false)) {
+        else if ((stage >= 4) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0 || timeRemaining == 0) && (isGameOver == false)) {
             // TODO: Drawer, blackboard, window, all item that use hold gesture
             aDrawer.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
             aWindow.countdownTimer.invalidate()
             aLaci.countdownTimer?.invalidate()
-            //            aTV.countdownTimer.invalidate()
+            aTV.countdownTimer?.invalidate()
             isGameOver = true
             moveToGameOver()
         }
@@ -267,9 +271,9 @@ class GameScene: SKScene {
                     laciNode = LaciItem(scene: self)
                     aLaci.spriteNode = laciNode
                     // Timer label drawer
-                    aLaci.timerDrawer.position = CGPoint(x: frame.midX, y: frame.midY)
-                    addChild(aLaci.timerDrawer)
-                    aLaci.timerDrawer = SKLabelNode(text: "\(Int(aLaci.timeRemaining))")
+                    aLaci.timerLaci.position = CGPoint(x: frame.midX+50, y: frame.midY)
+                    addChild(aLaci.timerLaci)
+                    aLaci.timerLaci = SKLabelNode(text: "\(Int(aLaci.timeRemaining))")
                     //Start drawer countdown timer
                     aLaci.startCountdown()
                     
@@ -278,15 +282,15 @@ class GameScene: SKScene {
                         totalDuration = 360.0
                         
                         // MARK: TV item
-                        //                        aTV = TVScene(scene: self)
-                        //                        tvNode = TVItem(scene: self)
-                        //                        aTV.spriteNode = tvNode
-                        //                        // Timer label drawer
-                        //                        aTV.timerDrawer.position = CGPoint(x: frame.midX, y: frame.midY)
-                        //                        addChild(aLaci.timerDrawer)
-                        //                        aTV.timerDrawer = SKLabelNode(text: "\(Int(aTV.timeRemaining))")
-                        //                        //Start drawer countdown timer
-                        //                        aTV.startCountdown()
+                        aTV = TVScene(scene: self)
+                        tvNode = TVItem(scene: self)
+                        aTV.spriteNode = tvNode
+                        // Timer label drawer
+                        aTV.timerTV.position = CGPoint(x: frame.midX+50, y: frame.midY-50)
+                        addChild(aLaci.timerLaci)
+                        aTV.timerTV = SKLabelNode(text: "\(Int(aTV.timeRemaining))")
+                        //Start drawer countdown timer
+                        aTV.startCountdown()
                     }
                 }
             }
@@ -316,19 +320,19 @@ class GameScene: SKScene {
         }
     }
     
-    //    // Khusus TV
-    //    @objc func fireTimerTV() {
-    //        print("Timer fired!")
-    //        if aTV.timeRemaining == 10 {
-    //            aTV.timeRemaining = 10
-    //        } else if aTV.timeRemaining < 10 {
-    //            aTV.timeRemaining += 0.5
-    //        }
-    //    }
+        // Khusus TV
+        @objc func fireTimerTV() {
+            print("Timer fired!")
+            if aTV.timeRemaining == 10 {
+                aTV.timeRemaining = 10
+            } else if aTV.timeRemaining < 10 {
+                aTV.timeRemaining += 0.5
+            }
+        }
     
     @objc func moveToGameOver() {
         let scene = GameOver()
-        scene.stage = stage+1
+        scene.stage = stage
         scene.size = CGSize(width: frame.width, height: frame.height)
         self.view?.presentScene(scene)
     }
@@ -408,20 +412,20 @@ class GameScene: SKScene {
                 aLaci.touchStartTime = touch.timestamp
             }
             
-            //            else if (aTV != nil && aTV.spriteNode.contains(touchLocation)) {
-            //                isHeld.toggle()
-            //                whichTouchIndicator = 4
-            //
-            //                print("touch inside window detected!")
-            //
-            //                aTV.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer2), userInfo: nil, repeats: true)
-            //
-            //                // Laci timer stops
-            //                aTV.countdownTimer?.invalidate()
-            //                aTV.countdownTimer = nil
-            //
-            //                aTV.touchStartTime = touch.timestamp
-            //            }
+            else if (aTV != nil && aTV.spriteNode.contains(touchLocation)) {
+                isHeld.toggle()
+                whichTouchIndicator = 4
+                
+                print("touch inside window detected!")
+                
+                aTV.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimerTV), userInfo: nil, repeats: true)
+                
+                // Laci timer stops
+                aTV.countdownTimer?.invalidate()
+                aTV.countdownTimer = nil
+                
+                aTV.touchStartTime = touch.timestamp
+            }
             else if (buttonTest != nil && buttonTest.contains(touchLocation)) {
                 isHeld.toggle()
                 let scene = ExamTransition()
@@ -478,7 +482,7 @@ class GameScene: SKScene {
                                 aDrawer.startCountdown()
                             }
                             else if node == windowNode {
-                                windowNode.texture = SKTexture(imageNamed: "Untitled_Artwork 1")
+                                windowNode.texture = SKTexture(imageNamed: "windowState1")
                                 print("window swiped right")
                                 aWindow.startCountdown()
                             }
@@ -506,6 +510,14 @@ class GameScene: SKScene {
                 
                 // Window timer starts
                 aLaci.startCountdown()
+            }
+            else if (whichTouchIndicator == 5 && isHeld == true) {
+                print("hold ended!")
+                isHeld.toggle()
+                aTV.holdTimer?.invalidate()
+                aTV.holdTimer = nil
+                
+                aTV.startCountdown()
             }
             
             whichTouchIndicator = 0

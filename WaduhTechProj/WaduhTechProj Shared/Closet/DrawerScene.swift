@@ -41,20 +41,11 @@ class DrawerScene {
     
     @objc func decrementCounter() {
         
-        if counter < 1 {
-            gameOver(won: false)
-        }
-        
         counter -= 1
         counter = max(counter, 0)
         timerCupboard.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
-    }
-    
-    func gameOver(won: Bool) {
-        print("Game over with status: \(won)")
-        
     }
     
     func updateTextureIndex() {

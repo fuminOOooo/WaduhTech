@@ -10,11 +10,14 @@ import SpriteKit
 
 class LaciScene {    
     var spriteNode : SKSpriteNode!
-    var timerDrawer: SKLabelNode!
+    var timerLaci: SKLabelNode!
     var holdTimer : Timer?
     var spriteLocation : SKView?
     var touchStartTime: TimeInterval = 0.0
     var countdownTimer: Timer?
+    
+    // Audio Enable or Disable
+    var soundEnabled: Bool = false
     
     var scene: SKScene!
     
@@ -50,14 +53,12 @@ class LaciScene {
     }
     
     func updateTimerLabel() {
-        timerDrawer.text = "\(Int(timeRemaining))"
+        timerLaci.text = "\(Int(timeRemaining))"
     }
     
     func updateTextureIndex() {
         
-        if timeRemaining <= 8 {
-            currentTextureIndex = 3
-        } else if timeRemaining <= 16 {
+        if timeRemaining <= 16 {
             currentTextureIndex = 2
         } else if timeRemaining <= 24 {
             currentTextureIndex = 1
@@ -65,11 +66,29 @@ class LaciScene {
             currentTextureIndex = 0
         }
     }
-        
-        func updateSpriteTexture() {
-            let colorAction = SKAction.setTexture(views[currentTextureIndex])
-            colorAction.speed = 0.5
-            spriteNode.run(colorAction)
-        }
-        
+    
+    func updateSpriteTexture() {
+        let colorAction = SKAction.setTexture(views[currentTextureIndex])
+        colorAction.speed = 0.5
+        spriteNode.run(colorAction)
     }
+    
+    func enableSoundEffects() {
+        soundEnabled = true
+    }
+    
+    func disableSoundEffects() {
+        soundEnabled = false
+    }
+    
+    func updateAudioIndex() {
+        if soundEnabled {
+            
+            if timeRemaining == 24 || timeRemaining == 16 {
+                let laciSound = SKAction.playSoundFileNamed("soundLaci", waitForCompletion: false)
+                scene.run(laciSound)
+            }
+        }
+    }
+    
+}
