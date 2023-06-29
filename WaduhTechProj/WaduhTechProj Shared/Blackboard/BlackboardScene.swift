@@ -14,7 +14,7 @@ class BlackboardScene {
     var timerBlackboard: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 35
+    var timeRemaining = 30
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
@@ -48,22 +48,17 @@ class BlackboardScene {
         updateAudioIndex()
     }
     
-    func gameOver(won: Bool) {
-        print("Game over with status: \(won)")
-        
-    }
-
     func updateTextureIndex() {
             
-            if counter <= 7 {
+            if counter <= 6 {
                 currentTextureIndex = 4
-            } else if counter <= 14 {
+            } else if counter <= 12 {
                 currentTextureIndex = 3
-            } else if counter <= 21 {
+            } else if counter <= 18 {
                 currentTextureIndex = 2
-            } else if counter <= 28 {
+            } else if counter <= 24 {
                 currentTextureIndex = 1
-            } else if counter <= 35 {
+            } else if counter <= 30 {
                 currentTextureIndex = 0
             }
         }

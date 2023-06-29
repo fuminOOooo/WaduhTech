@@ -37,6 +37,10 @@
 		9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */; };
 		9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */; };
 		9B1E91B92A484D5D00ADD9A4 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */; };
+		9B1E91C12A4C3DA200ADD9A4 /* LaciItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C02A4C3DA200ADD9A4 /* LaciItem.swift */; };
+		9B1E91C32A4C3E0F00ADD9A4 /* LaciScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C22A4C3E0F00ADD9A4 /* LaciScene.swift */; };
+		9B1E91C62A4C44FF00ADD9A4 /* TVItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C52A4C44FF00ADD9A4 /* TVItem.swift */; };
+		9B1E91C82A4C450E00ADD9A4 /* TVScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C72A4C450E00ADD9A4 /* TVScene.swift */; };
 		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
 		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
 		A30F1BB02A48881100F402B5 /* LightItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F1BAF2A48881100F402B5 /* LightItem.swift */; };
@@ -74,6 +78,10 @@
 		9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cupboardOpening.mp3; sourceTree = "<group>"; };
 		9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		9B1E91C02A4C3DA200ADD9A4 /* LaciItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaciItem.swift; sourceTree = "<group>"; };
+		9B1E91C22A4C3E0F00ADD9A4 /* LaciScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaciScene.swift; sourceTree = "<group>"; };
+		9B1E91C52A4C44FF00ADD9A4 /* TVItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVItem.swift; sourceTree = "<group>"; };
+		9B1E91C72A4C450E00ADD9A4 /* TVScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVScene.swift; sourceTree = "<group>"; };
 		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		A30F1BAF2A48881100F402B5 /* LightItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightItem.swift; sourceTree = "<group>"; };
@@ -113,6 +121,8 @@
 				9B0D9AC42A443D94009AB7FC /* Closet */,
 				15C3EC5A2A436A880065FF12 /* Window */,
 				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
+				9B1E91BF2A4C3D9200ADD9A4 /* Drawer */,
+				9B1E91C42A4C44E800ADD9A4 /* TV */,
 				9B1E91B52A484CCD00ADD9A4 /* Main Menu */,
 				9BCD53282A45929E00B09C86 /* Game Over */,
 				9B1E91AA2A47772300ADD9A4 /* Audio */,
@@ -225,6 +235,24 @@
 			path = "Main Menu";
 			sourceTree = "<group>";
 		};
+		9B1E91BF2A4C3D9200ADD9A4 /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				9B1E91C02A4C3DA200ADD9A4 /* LaciItem.swift */,
+				9B1E91C22A4C3E0F00ADD9A4 /* LaciScene.swift */,
+			);
+			path = Drawer;
+			sourceTree = "<group>";
+		};
+		9B1E91C42A4C44E800ADD9A4 /* TV */ = {
+			isa = PBXGroup;
+			children = (
+				9B1E91C52A4C44FF00ADD9A4 /* TVItem.swift */,
+				9B1E91C72A4C450E00ADD9A4 /* TVScene.swift */,
+			);
+			path = TV;
+			sourceTree = "<group>";
+		};
 		9BCD53282A45929E00B09C86 /* Game Over */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B1E91C82A4C450E00ADD9A4 /* TVScene.swift in Sources */,
+				9B1E91C12A4C3DA200ADD9A4 /* LaciItem.swift in Sources */,
 				9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */,
 				15C3EC982A4ACDC10065FF12 /* ExamSheetItem.swift in Sources */,
 				15C3EC9A2A4ACE110065FF12 /* QuestionsAndAnswers.swift in Sources */,
@@ -333,9 +363,11 @@
 				15C3EC892A48441F0065FF12 /* ExamItem.swift in Sources */,
 				9BCD53272A45929600B09C86 /* GameOver.swift in Sources */,
 				15C3EC8E2A484BDA0065FF12 /* ExamTableItem.swift in Sources */,
+				9B1E91C62A4C44FF00ADD9A4 /* TVItem.swift in Sources */,
 				15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */,
 				15C3EC8C2A484BD30065FF12 /* ExamTableScene.swift in Sources */,
 				15C3EC932A49A2ED0065FF12 /* ExamTransition.swift in Sources */,
+				9B1E91C32A4C3E0F00ADD9A4 /* LaciScene.swift in Sources */,
 				9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */,
 				9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */,
 				15C3EC962A4ACDB60065FF12 /* ExamSheetScene.swift in Sources */,

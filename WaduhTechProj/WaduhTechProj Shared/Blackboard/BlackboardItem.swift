@@ -12,7 +12,7 @@ class BlackboardItem: SKSpriteNode {
     
     init(scene: SKScene) {
 
-        let blackboardSize = CGSize(width: 320, height: 192)
+        let blackboardSize = CGSize(width: 366, height: 240)
         let blackboardTexture = SKTexture(imageNamed: "blackboard")
 
         super.init(texture: blackboardTexture, color: UIColor.clear, size: blackboardSize)
@@ -21,7 +21,7 @@ class BlackboardItem: SKSpriteNode {
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY+287)
+        self.position = CGPoint(x: scene.frame.midX-20, y: scene.frame.midY+280)
 
     }
     
