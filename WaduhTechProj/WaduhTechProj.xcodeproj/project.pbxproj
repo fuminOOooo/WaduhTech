@@ -23,6 +23,9 @@
 		15C3EC8E2A484BDA0065FF12 /* ExamTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC8D2A484BDA0065FF12 /* ExamTableItem.swift */; };
 		15C3EC912A4979850065FF12 /* MovingStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC902A4979850065FF12 /* MovingStage.swift */; };
 		15C3EC932A49A2ED0065FF12 /* ExamTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC922A49A2ED0065FF12 /* ExamTransition.swift */; };
+		15C3EC962A4ACDB60065FF12 /* ExamSheetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC952A4ACDB60065FF12 /* ExamSheetScene.swift */; };
+		15C3EC982A4ACDC10065FF12 /* ExamSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC972A4ACDC10065FF12 /* ExamSheetItem.swift */; };
+		15C3EC9A2A4ACE110065FF12 /* QuestionsAndAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC992A4ACE110065FF12 /* QuestionsAndAnswers.swift */; };
 		9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */; };
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
 		9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */; };
@@ -57,6 +60,9 @@
 		15C3EC8D2A484BDA0065FF12 /* ExamTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTableItem.swift; sourceTree = "<group>"; };
 		15C3EC902A4979850065FF12 /* MovingStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingStage.swift; sourceTree = "<group>"; };
 		15C3EC922A49A2ED0065FF12 /* ExamTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamTransition.swift; sourceTree = "<group>"; };
+		15C3EC952A4ACDB60065FF12 /* ExamSheetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamSheetScene.swift; sourceTree = "<group>"; };
+		15C3EC972A4ACDC10065FF12 /* ExamSheetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamSheetItem.swift; sourceTree = "<group>"; };
+		15C3EC992A4ACE110065FF12 /* QuestionsAndAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsAndAnswers.swift; sourceTree = "<group>"; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 		15662C9E2A41C58F00214FD7 /* WaduhTechProj Shared */ = {
 			isa = PBXGroup;
 			children = (
+				15C3EC942A4ACD1F0065FF12 /* Exam Sheet */,
 				15C3EC8F2A4979710065FF12 /* Variables */,
 				15662C9F2A41C58F00214FD7 /* Actions.sks */,
 				15662CA02A41C58F00214FD7 /* GameScene.sks */,
@@ -166,6 +173,16 @@
 				15C3EC902A4979850065FF12 /* MovingStage.swift */,
 			);
 			path = Variables;
+			sourceTree = "<group>";
+		};
+		15C3EC942A4ACD1F0065FF12 /* Exam Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				15C3EC952A4ACDB60065FF12 /* ExamSheetScene.swift */,
+				15C3EC972A4ACDC10065FF12 /* ExamSheetItem.swift */,
+				15C3EC992A4ACE110065FF12 /* QuestionsAndAnswers.swift */,
+			);
+			path = "Exam Sheet";
 			sourceTree = "<group>";
 		};
 		9B0D9ABF2A4435D9009AB7FC /* Blackboard */ = {
@@ -306,6 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */,
+				15C3EC982A4ACDC10065FF12 /* ExamSheetItem.swift in Sources */,
+				15C3EC9A2A4ACE110065FF12 /* QuestionsAndAnswers.swift in Sources */,
 				A30F1BB02A48881100F402B5 /* LightItem.swift in Sources */,
 				15662CB62A41C59000214FD7 /* GameScene.swift in Sources */,
 				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
@@ -319,6 +338,7 @@
 				15C3EC932A49A2ED0065FF12 /* ExamTransition.swift in Sources */,
 				9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */,
 				9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */,
+				15C3EC962A4ACDB60065FF12 /* ExamSheetScene.swift in Sources */,
 				15C3EC872A4843FB0065FF12 /* ExamScene.swift in Sources */,
 				15662CAB2A41C59000214FD7 /* AppDelegate.swift in Sources */,
 				9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */,
