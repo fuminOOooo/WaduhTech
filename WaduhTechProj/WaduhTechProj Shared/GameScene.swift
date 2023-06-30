@@ -353,10 +353,7 @@ class GameScene: SKScene {
             aDrawer = DrawerScene(scene: self)
             drawerNode = DrawerItem(scene: self)
             aDrawer.spriteNode = drawerNode
-            // Timer label drawer
-            timerCupboard.position = CGPoint(x: 200, y: 100)
-            addChild(timerCupboard)
-            aDrawer.timerCupboard = timerCupboard
+            
             // Start the drawer counter timer
             aDrawer.startCountdown()
             
@@ -368,10 +365,7 @@ class GameScene: SKScene {
                 aBlackboard = BlackboardScene(scene: self)
                 blackboardNode = BlackboardItem(scene: self)
                 aBlackboard.spriteNode = blackboardNode
-                // Timer label blackboard
-                timerBlackboard.position = CGPoint(x: frame.midX,y: frame.midY+100)
-                addChild(timerBlackboard)
-                aBlackboard.timerBlackboard = timerBlackboard
+                
                 // Start the blackboard countdown
                 aBlackboard.startCountdown()
                 
@@ -379,10 +373,7 @@ class GameScene: SKScene {
                 aWindow = WindowScene(scene: self)
                 windowNode = WindowItem(scene: self)
                 aWindow.spriteNode = windowNode
-                // Timer label window
-                timerWindow.position = CGPoint(x: frame.midX, y: frame.midY)
-                addChild(timerWindow)
-                aWindow.timerWindow = timerWindow
+                
                 // Start the window countdown timer
                 aWindow.startCountdown()
                 
@@ -394,10 +385,6 @@ class GameScene: SKScene {
                     aLaci = LaciScene(scene: self)
                     laciNode = LaciItem(scene: self)
                     aLaci.spriteNode = laciNode
-                    // Timer label drawer
-                    aLaci.timerLaci = SKLabelNode(text: "\(Int(aLaci.timeRemaining))")
-                    aLaci.timerLaci.position = CGPoint(x: frame.midX+50, y: frame.midY)
-                    addChild(aLaci.timerLaci)
                     //Start drawer countdown timer
                     aLaci.startCountdown()
                     
@@ -409,10 +396,7 @@ class GameScene: SKScene {
                         aTV = TVScene(scene: self)
                         tvNode = TVItem(scene: self)
                         aTV.spriteNode = tvNode
-                        // Timer label drawer
-                        aTV.timerTV = SKLabelNode(text: "\(Int(aTV.timeRemaining))")
-                        aTV.timerTV.position = CGPoint(x: frame.midX+50, y: frame.midY-50)
-                        addChild(aTV.timerTV)
+                        
                         //Start drawer countdown timer
                         aTV.startCountdown()
                     }
@@ -600,30 +584,6 @@ class GameScene: SKScene {
         scene.size = CGSize(width: frame.width, height: frame.height)
         self.view?.presentScene(scene)
     }
-    
-    // Label Timer Blackboard
-    lazy var timerBlackboard: SKLabelNode = {
-        var label = SKLabelNode()
-        label.fontColor = SKColor.black
-        label.text = "\(aBlackboard.timeRemaining)"
-        return label
-    }()
-    
-    // Label Timer Cupboard
-    lazy var timerCupboard: SKLabelNode = {
-        var label = SKLabelNode()
-        label.fontColor = SKColor.black
-        label.text = "\(aDrawer.timeRemaining)"
-        return label
-    }()
-    
-    // Label Timer Window
-    lazy var timerWindow: SKLabelNode = {
-        var label = SKLabelNode()
-        label.fontColor = SKColor.black
-        label.text = "\(aWindow.timeRemaining)"
-        return label
-    }()
     
     func gameOverIndicator() {
         if (timeRemaining == 0) {
