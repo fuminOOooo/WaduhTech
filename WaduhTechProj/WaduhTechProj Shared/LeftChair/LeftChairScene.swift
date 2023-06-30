@@ -43,7 +43,6 @@ class LeftChairScene {
         
         counter -= 1
         counter = max(counter, 0)
-        timerLChair.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
     }

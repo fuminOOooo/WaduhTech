@@ -674,7 +674,9 @@ class GameScene: SKScene {
                 whichTouchIndicator = 3
             }
             else if (leftChairNode != nil && leftChairNode.contains(touchLocation)) {
-                
+                leftChairNode.texture = SKTexture(imageNamed: "kursiTap1_1")
+                print("left chair texture change")
+                aLeftChair.startCountdown()
             }
             
             // MARK: Began for Hold Gesture
