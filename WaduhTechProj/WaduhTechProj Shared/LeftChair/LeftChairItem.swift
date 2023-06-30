@@ -20,7 +20,7 @@ class LeftChairItem: SKSpriteNode {
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: frame.midX+240, y: frame.midY-180)
+        self.position = CGPoint(x: frame.midX-240, y: frame.midY-180)
         
     }
     

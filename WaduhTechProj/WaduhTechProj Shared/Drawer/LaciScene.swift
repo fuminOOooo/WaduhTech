@@ -29,7 +29,6 @@ class LaciScene {
     
     var timeRemaining: TimeInterval = 24.0 {
         didSet {
-            updateTimerLabel()
             updateTextureIndex()
         }
     }
@@ -50,10 +49,6 @@ class LaciScene {
                 self.timeRemaining -= 1.0
             }
         }
-    }
-    
-    func updateTimerLabel() {
-        timerLaci.text = "\(Int(timeRemaining))"
     }
     
     func updateTextureIndex() {

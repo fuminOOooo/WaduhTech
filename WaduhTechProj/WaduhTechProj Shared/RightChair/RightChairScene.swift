@@ -43,7 +43,6 @@ class RightChairScene {
         
         counter -= 1
         counter = max(counter, 0)
-        timerRChair.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
     }

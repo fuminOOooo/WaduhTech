@@ -29,7 +29,6 @@ class TVScene {
     
     var timeRemaining: TimeInterval = 30.0 {
         didSet {
-            updateTimerLabel()
             updateTextureIndex()
         }
     }
@@ -50,10 +49,6 @@ class TVScene {
                 self.timeRemaining -= 1.0
             }
         }
-    }
-    
-    func updateTimerLabel() {
-        timerTV.text = "\(Int(timeRemaining))"
     }
     
     func updateTextureIndex() {
