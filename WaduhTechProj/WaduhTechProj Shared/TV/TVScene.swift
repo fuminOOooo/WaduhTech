@@ -25,7 +25,7 @@ class TVScene {
         self.scene = scene
     }
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3"), SKTexture(imageNamed: "Untitled_Artwork")]
     
     var timeRemaining: TimeInterval = 30.0 {
         didSet {
@@ -59,10 +59,12 @@ class TVScene {
     func updateTextureIndex() {
         
         if timeRemaining <= 10 {
-            currentTextureIndex = 2
+            currentTextureIndex = 3
         } else if timeRemaining <= 20 {
-            currentTextureIndex = 1
+            currentTextureIndex = 2
         } else if timeRemaining <= 30 {
+            currentTextureIndex = 1
+        } else if timeRemaining <= 40 {
             currentTextureIndex = 0
         }
     }
