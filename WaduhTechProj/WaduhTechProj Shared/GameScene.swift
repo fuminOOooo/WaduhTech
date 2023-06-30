@@ -149,17 +149,13 @@ class GameScene: SKScene {
     
     func lightsTurning() {
         if lightSwitch == true {
-            darkOverlay.alpha = 0.0
+            darkOverlay.alpha = 0
             nextLight = TimeInterval(Int.random(in: 12...15))
             lightSwitch = false
             let texture = SKTexture(imageNamed: "onSwitch")
             let textureAction = SKAction.setTexture(texture)
             aLightSwitch.spriteNode.run(textureAction)
         } else if nextLight == 0 {
-            if (examOpen) {
-                let windowOpenSound = SKAction.playSoundFileNamed("lightswitch3_off", waitForCompletion: false)
-                self.run(windowOpenSound)
-            }
             let texture = SKTexture(imageNamed: "offSwitch")
             let textureAction = SKAction.setTexture(texture)
             aLightSwitch.spriteNode.run(textureAction)
@@ -171,7 +167,7 @@ class GameScene: SKScene {
         
         lightsTurning()
         
-        if nextLight == 0 {
+        if nextLight <= 0 {
             darken()
         }
         
@@ -274,7 +270,12 @@ class GameScene: SKScene {
             }
             if nextLight > 0 {
                 nextLight -= 1.0
+                if (examOpen && nextLight == 0.0) {
+                    let lightSwitchOffSound = SKAction.playSoundFileNamed("lightswitch3_off", waitForCompletion: false)
+                    self.run(lightSwitchOffSound)
+                }
             }
+            
         }
         
         // Background

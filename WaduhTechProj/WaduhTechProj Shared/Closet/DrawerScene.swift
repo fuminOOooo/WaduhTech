@@ -43,7 +43,6 @@ class DrawerScene {
         
         counter -= 1
         counter = max(counter, 0)
-        timerCupboard.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
     }
