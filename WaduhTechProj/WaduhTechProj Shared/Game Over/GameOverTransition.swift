@@ -52,14 +52,12 @@ class GameOverTransition: SKScene {
                 startLocation = location
                 let scene = MainMenu(fileNamed: "MainMenu")!
                 
-                if (stage > 1) {
+                if (stage >= 2) {
                     scene.stage = stage
                 }
-                else if (stage <= 1) {
+                else if (stage == 1) {
                     scene.stage = 0
                 }
-                
-                scene.stage = stage
                 scene.scaleMode = .aspectFit
                 self.view?.presentScene(scene, transition: transition)
             }

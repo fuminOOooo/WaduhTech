@@ -49,6 +49,7 @@ class MainMenu: SKScene {
             continueButton.size = CGSize(width: 485, height: 100)
             addChild(continueButton)
         }
+        print(stage)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -46,12 +46,9 @@ class ExamTransition: SKScene {
             gesture = "All at once"
         }
         
-        let examLabel = SKLabelNode(attributedText: NSAttributedString(string: "EXAM \(stage): \"\(gesture)\"",
-                                                                       attributes: [.font: UIFont.systemFont(ofSize: 64, weight: .medium),
-                                                                                    .foregroundColor: UIColor.white]))
+        let examLabel = SKLabelNode(attributedText: NSAttributedString(string: "EXAM \(stage): \"\(gesture)\"", attributes: [.font: UIFont(name: "hulberthopperdisplay", size: 64)!, .foregroundColor: UIColor.white]))
+        
         examLabel.position = CGPoint(x: frame.midX, y: frame.midY)
-        examLabel.fontSize = CGFloat(64)
-        examLabel.fontColor = .white
         addChild(examLabel)
         
         let durationLabel = SKLabelNode(attributedText: NSAttributedString(string: "17:00 - 19:00",
