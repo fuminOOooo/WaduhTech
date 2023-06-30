@@ -32,9 +32,7 @@ class GameOverTransition: SKScene {
         } else if (loseIndicator == 3) {
             loseFactor = "YOU SCORED TOO LOW!"
         }
-        
-//        loseLabel = SKLabelNode(attributedText: NSAttributedString(string: "\(loseFactor)", attributes: [.font: UIFont.systemFont(ofSize: 64, weight: .medium), .foregroundColor: UIColor.red]))
-        
+
         loseLabel = SKLabelNode(attributedText: NSAttributedString(string: "\(loseFactor)", attributes: [.font: UIFont(name: "hulberthopperdisplay", size: 64)!, .foregroundColor: UIColor.red]))
         loseLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(loseLabel)

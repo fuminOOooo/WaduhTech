@@ -77,7 +77,6 @@
 		15C3EC972A4ACDC10065FF12 /* ExamSheetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamSheetItem.swift; sourceTree = "<group>"; };
 		15C3EC992A4ACE110065FF12 /* QuestionsAndAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsAndAnswers.swift; sourceTree = "<group>"; };
 		15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchScene.swift; sourceTree = "<group>"; };
-		15C3EC9D2A4E81C10065FF12 /* WaduhTechProj-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WaduhTechProj-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lightswitch3_off.mp3; path = "Sound Assets/lightswitch3_off.mp3"; sourceTree = SOURCE_ROOT; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
