@@ -1,5 +1,5 @@
 //
-//  LeftChairScene.swift
+//  RightChairScene.swift
 //  WaduhTechProj iOS
 //
 //  Created by Abiyyu Firmansyah on 30/06/23.
@@ -8,13 +8,13 @@
 import Foundation
 import SpriteKit
 
-class LeftChairScene {
+class RightChairScene {
     
     var spriteNode: SKSpriteNode!
-    var timerLChair: SKLabelNode!
+    var timerRChair: SKLabelNode!
     var counter = 0
     var countdownTimer = Timer()
-    var timeRemaining = 26
+    var timeRemaining = 24
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
@@ -25,7 +25,7 @@ class LeftChairScene {
         self.scene = scene
     }
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "kursiTap1_1"), SKTexture(imageNamed: "kursiTap1_2")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "kursiTap2_1"), SKTexture(imageNamed: "kursiTap2_2")]
     
     var currentTextureIndex: Int = 0 {
         didSet {
@@ -43,16 +43,16 @@ class LeftChairScene {
         
         counter -= 1
         counter = max(counter, 0)
-        timerLChair.text = "\(counter)"
+        timerRChair.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
     }
     
     func updateTextureIndex() {
         
-        if counter <= 13 {
+        if counter <= 12 {
             currentTextureIndex = 1
-        } else if counter <= 26 {
+        } else if counter <= 24 {
             currentTextureIndex = 0
         }
     }
@@ -69,7 +69,7 @@ class LeftChairScene {
         if soundEnabled {
             
             if counter == 10 {
-                let cupboardOpenSound = SKAction.playSoundFileNamed("kursiTap1_1", waitForCompletion: false)
+                let cupboardOpenSound = SKAction.playSoundFileNamed("kursiTap2_1", waitForCompletion: false)
                 scene.run(cupboardOpenSound)
             }
         }

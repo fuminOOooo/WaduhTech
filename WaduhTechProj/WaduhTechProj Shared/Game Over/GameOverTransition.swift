@@ -33,17 +33,17 @@ class GameOverTransition: SKScene {
             loseFactor = "YOU SCORED TOO LOW!"
         }
         
-        loseLabel = SKLabelNode(attributedText: NSAttributedString(string: "\(loseFactor)",
-                                                                       attributes: [.font: UIFont.systemFont(ofSize: 64, weight: .medium),
-                                                                                    .foregroundColor: UIColor.red]))
+//        loseLabel = SKLabelNode(attributedText: NSAttributedString(string: "\(loseFactor)", attributes: [.font: UIFont.systemFont(ofSize: 64, weight: .medium), .foregroundColor: UIColor.red]))
+        
+        loseLabel = SKLabelNode(attributedText: NSAttributedString(string: "\(loseFactor)", attributes: [.font: UIFont(name: "hulberthopperdisplay", size: 64)!, .foregroundColor: UIColor.red]))
         loseLabel.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(loseLabel)
         
-        mainMenuButton = SKSpriteNode(imageNamed: "mainMenuButton")
+        mainMenuButton = SKSpriteNode(imageNamed: "menuButton")
         mainMenuButton.position = CGPoint(x: frame.midX, y: frame.midY-200)
-        mainMenuButton.size = CGSize(width: 500, height: 100)
+        mainMenuButton.size = CGSize(width: 485, height: 100)
         addChild(mainMenuButton)
-        print("button loaded")
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,9 +51,16 @@ class GameOverTransition: SKScene {
             let location = touch.location(in: self)
             
             if mainMenuButton.contains(location) {
-                print("button main menu clicked")
                 startLocation = location
                 let scene = MainMenu(fileNamed: "MainMenu")!
+                
+                if (stage > 1) {
+                    scene.stage = stage
+                }
+                else if (stage <= 1) {
+                    scene.stage = 0
+                }
+                
                 scene.stage = stage
                 scene.scaleMode = .aspectFit
                 self.view?.presentScene(scene, transition: transition)
