@@ -110,6 +110,14 @@ class GameScene: SKScene {
     var tvNode: TVItem!
     var aTV: TVScene!
     
+    // Left Chair
+    var leftChairNode: LeftChairItem!
+    var aLeftChair: LeftChairScene!
+    
+    // Right Chair
+    var rightChairNode: RightChairItem!
+    var aRightChair: RightChairScene!
+    
     var isHeld: Bool = false
     var isGameOver: Bool = false
     
@@ -136,9 +144,18 @@ class GameScene: SKScene {
     var globalTimerLabel: SKLabelNode!
     var darkOverlay: SKSpriteNode!
     var lightSwitch: Bool = false
+    var leftChairFix: Bool = false
     
     var firstTime: Bool = true
     
+    func leftChairFixPos() {
+        if leftChairFix == true {
+            leftChairFix = false
+            let textureLChair = SKTexture(imageNamed: "kursiTap1_1")
+            let textureAction = SKAction.setTexture(textureLChair)
+            aLeftChair.spriteNode.run(textureAction)
+        }
+    }
     override func update(_ currentTime: TimeInterval) {
         
         if (done == false) {
@@ -174,13 +191,15 @@ class GameScene: SKScene {
             moveToGameOver()
         }
         
-        else if ((stage >= 4) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0 || timeRemaining == 0) && (isGameOver == false)) {
+        else if ((stage >= 4) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0 || timeRemaining == 0 || aLeftChair.counter == 0 || aRightChair.counter == 0) && (isGameOver == false)) {
             // TODO: Drawer, blackboard, window, all item that use hold gesture
             aDrawer.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
             aWindow.countdownTimer.invalidate()
             aLaci.countdownTimer?.invalidate()
             aTV.countdownTimer?.invalidate()
+            aLeftChair.countdownTimer.invalidate()
+            aRightChair.countdownTimer.invalidate()
             isGameOver = true
             moveToGameOver()
         }
@@ -371,7 +390,7 @@ class GameScene: SKScene {
                         timeRemaining = 360.0
                         totalDuration = 360.0
                         
-                        // MARK: TV item
+                        // MARK: TV Item
                         aTV = TVScene(scene: self)
                         tvNode = TVItem(scene: self)
                         aTV.spriteNode = tvNode
@@ -381,6 +400,20 @@ class GameScene: SKScene {
                         addChild(aTV.timerTV)
                         //Start drawer countdown timer
                         aTV.startCountdown()
+                        
+                        // MARK: Left Chair Item
+                        aLeftChair = LeftChairScene(scene: self)
+                        leftChairNode = LeftChairItem(scene: self)
+                        aLeftChair.spriteNode = leftChairNode
+                        // Start left chair countdown timer
+                        aLeftChair.startCountdown()
+                        
+                        //MARK: Right Chair Item
+                        aRightChair = RightChairScene(scene: self)
+                        rightChairNode = RightChairItem(scene: self)
+                        aRightChair.spriteNode = rightChairNode
+                        
+                        aRightChair.startCountdown()
                     }
                 }
             }
@@ -578,20 +611,38 @@ class GameScene: SKScene {
     }
     
     @objc func moveToGameOver2() {
-        let scene = GameOver()
-        scene.stage = stage
-        scene.loseIndicator = 3
-        scene.size = CGSize(width: frame.width, height: frame.height)
-        self.view?.presentScene(scene)
+        if (stage >= 2) {
+            let scene = GameOver()
+            scene.stage = stage
+            scene.loseIndicator = 3
+            scene.size = CGSize(width: frame.width, height: frame.height)
+            self.view?.presentScene(scene)
+        }
+        else if (stage == 1) {
+            let scene = GameOverTransition()
+            scene.stage = stage
+            scene.loseIndicator = 3
+            scene.size = CGSize(width: frame.width, height: frame.height)
+            self.view?.presentScene(scene)
+        }
     }
     
     @objc func moveToGameOver() {
         gameOverIndicator()
-        let scene = GameOver()
-        scene.stage = stage
-        scene.loseIndicator = loseIndicator
-        scene.size = CGSize(width: frame.width, height: frame.height)
-        self.view?.presentScene(scene)
+        if (stage >= 2) {
+            let scene = GameOver()
+            scene.stage = stage
+            scene.loseIndicator = loseIndicator
+            scene.size = CGSize(width: frame.width, height: frame.height)
+            self.view?.presentScene(scene)
+        }
+        else if (stage == 1) {
+            let scene = GameOverTransition()
+            scene.stage = stage
+            scene.loseIndicator = loseIndicator
+            scene.size = CGSize(width: frame.width, height: frame.height)
+            self.view?.presentScene(scene)
+        }
     }
     
     // Label Timer Blackboard
@@ -621,7 +672,7 @@ class GameScene: SKScene {
     func gameOverIndicator() {
         if (timeRemaining == 0) {
             loseIndicator = 1
-        } else if (aDrawer.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0) {
+        } else if (aDrawer.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0 || aLeftChair.counter == 0 || aRightChair.counter == 0) {
             loseIndicator = 2
         }
     }
@@ -658,6 +709,9 @@ class GameScene: SKScene {
                 print("start window")
                 startLocation = touchLocation
                 whichTouchIndicator = 3
+            }
+            else if (leftChairNode != nil && leftChairNode.contains(touchLocation)) {
+                
             }
             
             // MARK: Began for Hold Gesture
