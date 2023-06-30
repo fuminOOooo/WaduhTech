@@ -12,7 +12,7 @@ class ExamTableItem: SKSpriteNode {
     
     init (scene: SKScene) {
         // Create and add your sprite node
-        let examTableTexture: SKTexture? = SKTexture(imageNamed: "examPaper")
+        let examTableTexture: SKTexture? = SKTexture(imageNamed: "mainCharacter_1")
         let examTableSize = CGSize(width: 454, height: 242)
         super.init(texture: examTableTexture, color: UIColor.clear, size: examTableSize)
         

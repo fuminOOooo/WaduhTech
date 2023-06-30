@@ -16,7 +16,7 @@ class TVScene {
     var spriteLocation : SKView?
     var touchStartTime: TimeInterval = 0.0
     var countdownTimer: Timer?
-    
+    var playingAudio: Bool = false
     // Audio Enable or Disable
     var soundEnabled: Bool = false
     var audioPlayer: AVAudioPlayer!
@@ -110,10 +110,15 @@ class TVScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if timeRemaining == 30 || timeRemaining == 20 {
+            if (playingAudio == false) {
                 
-            }
-            else if timeRemaining == 10 {
+                if timeRemaining <= 10 {
+                    tvSound2()
+                    playingAudio = true
+                } else if timeRemaining <= 30 {
+                    tvSound1()
+                    playingAudio = true
+                }
                 
             }
         }

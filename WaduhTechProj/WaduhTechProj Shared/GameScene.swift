@@ -41,6 +41,7 @@ class GameScene: SKScene {
                             aDrawer.enableSoundEffects()
                             if stage >= 4 {
                                 aTV.enableSoundEffects()
+                                aTV.updateAudioIndex()
                             }
                         }
                     }
@@ -63,6 +64,9 @@ class GameScene: SKScene {
                             aDrawer.disableSoundEffects()
                             if stage >= 4 {
                                 aTV.disableSoundEffects()
+                                aTV.audioPlayer?.stop()
+                                aTV.audioPlayer = nil
+                                aTV.playingAudio = false
                             }
                         }
                     }
@@ -844,6 +848,12 @@ class GameScene: SKScene {
                 isHeld.toggle()
                 aTV.holdTimer?.invalidate()
                 aTV.holdTimer = nil
+                
+                if (aTV.timeRemaining > 30) {
+                    aTV.audioPlayer?.stop()
+                    aTV.audioPlayer = nil
+                    aTV.playingAudio = false
+                }
                 
                 aTV.startCountdown()
             }
