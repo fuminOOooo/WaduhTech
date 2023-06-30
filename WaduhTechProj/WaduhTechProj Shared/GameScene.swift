@@ -182,8 +182,8 @@ class GameScene: SKScene {
         
         checkAnswers()
         
-        globalTimerLabel.text = "\(Int(timeRemaining))"
-        globalTimerLabel.zPosition = 10.0
+//        globalTimerLabel.text = "\(Int(timeRemaining))"
+//        globalTimerLabel.zPosition = 10.0
         
         if ((stage >= 1) && (aCupboard.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
             aCupboard.countdownTimer.invalidate()
@@ -285,11 +285,11 @@ class GameScene: SKScene {
         bg.zPosition = -0.0
         
         // Global Timer Label
-        globalTimerLabel = SKLabelNode(text: "\(Int(timeRemaining))")
-        globalTimerLabel.position = CGPoint(x: frame.minX+100, y: frame.maxY-100)
-        globalTimerLabel.fontColor = .black
-        globalTimerLabel.zPosition = 6
-        addChild(globalTimerLabel)
+//        globalTimerLabel = SKLabelNode(text: "\(Int(timeRemaining))")
+//        globalTimerLabel.position = CGPoint(x: frame.minX+100, y: frame.maxY-100)
+//        globalTimerLabel.fontColor = .black
+//        globalTimerLabel.zPosition = 6
+//        addChild(globalTimerLabel)
         
         // First Person Exam Table
         aExam = ExamScene(scene: self)
@@ -363,13 +363,21 @@ class GameScene: SKScene {
         addChild(buttonTest)
         buttonTest.zPosition = -2.0
         
+        cupboardNode = CupboardItem(scene: self)
+        blackboardNode = BlackboardItem(scene: self)
+        windowNode = WindowItem(scene: self)
+        drawerNode = DrawerItem(scene: self)
+        tvNode = TVItem(scene: self)
+        leftChairNode = LeftChairItem(scene: self)
+        rightChairNode = RightChairItem(scene: self)
+
+        
         // MARK: Setup Stage Timer and Obstacle
         if (stage >= 1) {
             // MARK: Cupboard Item
             timeRemaining = 240.0
             totalDuration = 240.0
             aCupboard = CupboardScene(scene: self)
-            cupboardNode = CupboardItem(scene: self)
             aCupboard.spriteNode = cupboardNode
             
             // Start the cupboard counter timer
@@ -381,7 +389,6 @@ class GameScene: SKScene {
                 
                 // MARK: Blackboard Item
                 aBlackboard = BlackboardScene(scene: self)
-                blackboardNode = BlackboardItem(scene: self)
                 aBlackboard.spriteNode = blackboardNode
                 
                 // Start the blackboard countdown
@@ -389,7 +396,6 @@ class GameScene: SKScene {
                 
                 // MARK: Window Item
                 aWindow = WindowScene(scene: self)
-                windowNode = WindowItem(scene: self)
                 aWindow.spriteNode = windowNode
                 
                 // Start the window countdown timer
@@ -401,7 +407,6 @@ class GameScene: SKScene {
                     
                     // MARK: Drawer Item
                     aDrawer = DrawerScene(scene: self)
-                    drawerNode = DrawerItem(scene: self)
                     aDrawer.spriteNode = drawerNode
                     //Start drawer countdown timer
                     aDrawer.startCountdown()
@@ -412,7 +417,6 @@ class GameScene: SKScene {
                         
                         // MARK: TV Item
                         aTV = TVScene(scene: self)
-                        tvNode = TVItem(scene: self)
                         aTV.spriteNode = tvNode
                         
                         //Start tv countdown timer
@@ -420,7 +424,6 @@ class GameScene: SKScene {
                         
                         // MARK: Left Chair Item
                         aLeftChair = LeftChairScene(scene: self)
-                        leftChairNode = LeftChairItem(scene: self)
                         aLeftChair.spriteNode = leftChairNode
                         
                         // Start left chair countdown timer
@@ -428,7 +431,6 @@ class GameScene: SKScene {
                         
                         //MARK: Right Chair Item
                         aRightChair = RightChairScene(scene: self)
-                        rightChairNode = RightChairItem(scene: self)
                         aRightChair.spriteNode = rightChairNode
                         
                         // Start right chair countdown timer

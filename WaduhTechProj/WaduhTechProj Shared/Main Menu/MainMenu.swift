@@ -11,13 +11,15 @@ import AVFoundation
 
 class MainMenu: SKScene {
     
-    var stage: Int = 4
+    var stage: Int = 0
     
     var newGame: SKSpriteNode!
     var continueButton: SKSpriteNode!
     var startLocation: CGPoint? = nil
     var audioPlayer: AVAudioPlayer! // Add this line
-
+    var menuBackground: SKSpriteNode!
+    var logo: SKSpriteNode!
+    
     func playMusic() {
         let path = Bundle.main.path(forResource: "mainmenu", ofType: "wav")
         let fileURL = URL(fileURLWithPath: path!)
@@ -33,20 +35,33 @@ class MainMenu: SKScene {
     
     override func didMove(to view: SKView) {
         playMusic()
+        // MARK: Background
+        menuBackground = SKSpriteNode(imageNamed: "menuBackground")
+        menuBackground.position = CGPoint(x: frame.midX, y: frame.midY)
+        menuBackground.size = CGSize(width: frame.width, height: frame.height)
+        addChild(menuBackground)
+        menuBackground.zPosition = -0.0
+        
+        // MARK: Logo
+        logo = SKSpriteNode(imageNamed: "gameName")
+        logo.position = CGPoint(x: frame.midX, y: frame.midY)
+        logo.size = CGSize(width: 800, height: 600)
+        addChild(logo)
+        logo.zPosition = 1.0
         
         // MARK: Button New Game
         newGame = SKSpriteNode(imageNamed: "newButton")
         newGame.zPosition = 2
-        newGame.position = CGPoint(x: 0, y: -100)
-        newGame.size = CGSize(width: 485, height: 100)
+        newGame.position = CGPoint(x: 0, y: -170)
+        newGame.size = CGSize(width: 450, height: 93)
         addChild(newGame)
         
         if (stage >= 1) {
             // MARK: Button Continue
             continueButton = SKSpriteNode(imageNamed: "continueButton")
             continueButton.zPosition = 2
-            continueButton.position = CGPoint(x: 0, y: -250)
-            continueButton.size = CGSize(width: 485, height: 100)
+            continueButton.position = CGPoint(x: 0, y: -300)
+            continueButton.size = CGSize(width: 450, height: 93)
             addChild(continueButton)
         }
         print(stage)

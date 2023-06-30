@@ -27,7 +27,7 @@ class GameOver: SKScene {
         
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(moveToTransition), userInfo: nil, repeats: false)
 
-        let jumpscareSound = SKAction.playSoundFileNamed("jumpscare", waitForCompletion: false)
+        let jumpscareSound = SKAction.playSoundFileNamed("jumpscareFix", waitForCompletion: false)
         self.run(jumpscareSound)
         
         print(loseIndicator)

@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class TVScene {
     var spriteNode : SKSpriteNode!
@@ -18,8 +19,7 @@ class TVScene {
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
-    var tvSound: SKAction!
-    var tvSound2: SKAction!
+    var audioPlayer: AVAudioPlayer!
     
     var scene: SKScene!
     
@@ -81,28 +81,41 @@ class TVScene {
         soundEnabled = false
     }
     
+    func tvSound1() {
+        let path = Bundle.main.path(forResource: "television_1", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
+        }
+        audioPlayer.numberOfLoops = -1 //Infinite
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+    
+    func tvSound2() {
+        let path = Bundle.main.path(forResource: "television_3", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
+        }
+        audioPlayer.numberOfLoops = -1 //Infinite
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+    
     func updateAudioIndex() {
         if soundEnabled {
             
             if timeRemaining == 30 || timeRemaining == 20 {
-                tvSound = SKAction.playSoundFileNamed("television_1", waitForCompletion: false)
-                let playSoundAction = SKAction.group([tvSound])
-                scene.run(tvSound, withKey: "tvSound")
+                
             }
             else if timeRemaining == 10 {
-                tvSound2 = SKAction.playSoundFileNamed("television_3", waitForCompletion: false)
-                let playSoundAction = SKAction.group([tvSound2])
-                scene.run(tvSound2, withKey: "tvSound2")
+                
             }
-            else if timeRemaining >= 31 {
-                spriteNode.removeAction(forKey: "tvSound")
-                spriteNode.removeAction(forKey: "tvSound2")
-            }
-        }
-        else if !soundEnabled {
-            spriteNode.removeAction(forKey: "tvSound")
-            spriteNode.removeAction(forKey: "tvSound2")
-
         }
     }
 }
