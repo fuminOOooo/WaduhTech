@@ -69,9 +69,13 @@ class WindowScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if counter == 7 || counter == 14 {
-                let windowOpenSound = SKAction.playSoundFileNamed("soundWindow", waitForCompletion: false)
+            if counter == 7 {
+                let windowOpenSound = SKAction.playSoundFileNamed("window3_openclose", waitForCompletion: false)
                 scene.run(windowOpenSound)
+            }
+            else if counter == 14 {
+                let window2OpenSound = SKAction.playSoundFileNamed("window2_openclose", waitForCompletion: false)
+                scene.run(window2OpenSound)
             }
         }
     }

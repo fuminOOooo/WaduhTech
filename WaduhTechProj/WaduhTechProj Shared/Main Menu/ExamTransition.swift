@@ -7,12 +7,28 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class ExamTransition: SKScene {
     var stage: Int = 0
     var timer = Timer()
     var gesture = ""
+    var audioPlayer: AVAudioPlayer! // Add this line
+
+    func playMusic() {
+        let path = Bundle.main.path(forResource: "bellRing_5s", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
+        }
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+    
     override func didMove(to view: SKView) {
+        playMusic()
         let background = SKSpriteNode()
         background.color = .black
         background.size = CGSize(width: frame.width, height: frame.height)

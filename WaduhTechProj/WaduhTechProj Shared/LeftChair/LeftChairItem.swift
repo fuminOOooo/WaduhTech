@@ -15,7 +15,7 @@ class LeftChairItem: SKSpriteNode {
         let leftChairTexture = SKTexture(imageNamed: "kursiTap1_1")
         let leftChairSize = CGSize(width: 200, height: 200)
         
-        super.init(texture: leftChairTexture, color: UIColor.white, size: leftChairSize)
+        super.init(texture: leftChairTexture, color: UIColor.clear, size: leftChairSize)
         
         scene.addChild(self)
         

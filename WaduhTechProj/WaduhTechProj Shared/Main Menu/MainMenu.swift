@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class MainMenu: SKScene {
     
@@ -15,8 +16,23 @@ class MainMenu: SKScene {
     var newGame: SKSpriteNode!
     var continueButton: SKSpriteNode!
     var startLocation: CGPoint? = nil
+    var audioPlayer: AVAudioPlayer! // Add this line
+
+    func playMusic() {
+        let path = Bundle.main.path(forResource: "mainmenu", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
+        }
+        audioPlayer.numberOfLoops = -1 //Infinite
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
     
     override func didMove(to view: SKView) {
+        playMusic()
         
         // MARK: Button New Game
         newGame = SKSpriteNode(imageNamed: "newButton")
