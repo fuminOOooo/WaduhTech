@@ -36,6 +36,7 @@ class GameScene: SKScene {
                     if stage >= 2 {
                         aBlackboard.enableSoundEffects()
                         aWindow.enableSoundEffects()
+                        aWindow.updateAudioIndex()
                         if stage >= 3 {
                             aDrawer.enableSoundEffects()
                             if stage >= 4 {
@@ -55,6 +56,9 @@ class GameScene: SKScene {
                     if stage >= 2 {
                         aBlackboard.disableSoundEffects()
                         aWindow.disableSoundEffects()
+                        aWindow.audioPlayer?.stop() // Stop playing the "window_outside" audio
+                        aWindow.audioPlayer = nil
+                        aWindow.playingAudio = false
                         if stage >= 3 {
                             aDrawer.disableSoundEffects()
                             if stage >= 4 {
@@ -813,6 +817,9 @@ class GameScene: SKScene {
                             }
                             if node == windowNode {
                                 windowNode.texture = SKTexture(imageNamed: "windowState1")
+                                aWindow.audioPlayer?.stop() // Stop playing the "window_outside" audio
+                                aWindow.audioPlayer = nil
+                                aWindow.playingAudio = false
                                 aWindow.startCountdown()
                             }
                         }

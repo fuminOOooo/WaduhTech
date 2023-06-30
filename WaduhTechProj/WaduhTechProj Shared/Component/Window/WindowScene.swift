@@ -16,6 +16,7 @@ class WindowScene {
     var counter = 0
     var countdownTimer = Timer()
     var timeRemaining = 21
+    var playingAudio : Bool = false
     var audioPlayer: AVAudioPlayer! // Add this line
     
     // Audio Enable or Disable
@@ -77,9 +78,10 @@ class WindowScene {
             else if counter == 14 {
                 let window2OpenSound = SKAction.playSoundFileNamed("window2_openclose", waitForCompletion: false)
                 scene.run(window2OpenSound)
-                outsideSound() // Start playing the "window_outside" audio
-            } else if counter == 21 {
-                audioPlayer?.stop() // Stop playing the "window_outside" audio
+            }
+            if counter <= 14 && playingAudio == false {
+                outsideSound()
+                playingAudio = true
             }
         }
     }
