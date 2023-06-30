@@ -28,7 +28,6 @@ class GameScene: SKScene {
         didSet {
             
             if examOpen {
-                
                 let paperFlip = SKAction.playSoundFileNamed("paperFlip", waitForCompletion: false)
                 scene!.run(paperFlip)
                 // Turn on sound effects
@@ -235,9 +234,6 @@ class GameScene: SKScene {
             aExamSheet.labelAnswerD.zPosition = 6.0
             aExamSheet.nextQuestion.zPosition = 6.0
             aExamSheet.prevQuestion.zPosition = 6.0
-            if (stage >= 2) {
-                aBlackboard.soundEnabled = true
-            }
         }
         else if !examOpen {
             aExam.spriteNode.zPosition = -2.0
@@ -250,9 +246,6 @@ class GameScene: SKScene {
             aExamSheet.labelAnswerD.zPosition = -1.0
             aExamSheet.nextQuestion.zPosition = -1.0
             aExamSheet.prevQuestion.zPosition = -1.0
-            if (stage >= 2) {
-//                aBlackboard.soundEnabled = false
-            }
         }
         
     }

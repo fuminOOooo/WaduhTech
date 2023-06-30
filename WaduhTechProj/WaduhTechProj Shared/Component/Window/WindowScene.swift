@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class WindowScene {
     
@@ -15,10 +16,11 @@ class WindowScene {
     var counter = 0
     var countdownTimer = Timer()
     var timeRemaining = 21
+    var audioPlayer: AVAudioPlayer! // Add this line
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
-
+    
     var scene: SKScene!
     
     init(scene: SKScene) {
@@ -28,10 +30,10 @@ class WindowScene {
     let views: [SKTexture] = [SKTexture(imageNamed: "windowState1"), SKTexture(imageNamed: "windowState2"), SKTexture(imageNamed: "windowState3")]
     
     var currentTextureIndex: Int = 0 {
-            didSet {
-                updateSpriteTexture()
-            }
+        didSet {
+            updateSpriteTexture()
         }
+    }
     
     func startCountdown() {
         counter = timeRemaining // Set counter to countdownStart
@@ -48,15 +50,15 @@ class WindowScene {
     }
     
     func updateTextureIndex() {
-            
-            if counter <= 7 {
-                currentTextureIndex = 2
-            } else if counter <= 14 {
-                currentTextureIndex = 1
-            } else if counter <= 21 {
-                currentTextureIndex = 0
-            }
+        
+        if counter <= 7 {
+            currentTextureIndex = 2
+        } else if counter <= 14 {
+            currentTextureIndex = 1
+        } else if counter <= 21 {
+            currentTextureIndex = 0
         }
+    }
     
     func enableSoundEffects() {
         soundEnabled = true
@@ -68,7 +70,6 @@ class WindowScene {
     
     func updateAudioIndex() {
         if soundEnabled {
-            
             if counter == 7 {
                 let windowOpenSound = SKAction.playSoundFileNamed("window3_openclose", waitForCompletion: false)
                 scene.run(windowOpenSound)
@@ -76,14 +77,30 @@ class WindowScene {
             else if counter == 14 {
                 let window2OpenSound = SKAction.playSoundFileNamed("window2_openclose", waitForCompletion: false)
                 scene.run(window2OpenSound)
+                outsideSound() // Start playing the "window_outside" audio
+            } else if counter == 21 {
+                audioPlayer?.stop() // Stop playing the "window_outside" audio
             }
         }
     }
     
-    func updateSpriteTexture() {
-            let textureAction = SKAction.setTexture(views[currentTextureIndex])
-            textureAction.speed = 0.5
-            spriteNode.run(textureAction)
+    func outsideSound() {
+        let path = Bundle.main.path(forResource: "window_outside", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
         }
+        audioPlayer.numberOfLoops = -1 //Infinite
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+    
+    func updateSpriteTexture() {
+        let textureAction = SKAction.setTexture(views[currentTextureIndex])
+        textureAction.speed = 0.5
+        spriteNode.run(textureAction)
+    }
     
 }
