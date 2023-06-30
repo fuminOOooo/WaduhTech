@@ -31,8 +31,8 @@
 		15C3ECA22A4EB9D20065FF12 /* GameCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */; };
 		9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */; };
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
-		9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */; };
-		9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */; };
+		9B0D9AC62A443DA0009AB7FC /* CupboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */; };
+		9B0D9AC82A443DC4009AB7FC /* CupboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC72A443DC4009AB7FC /* CupboardScene.swift */; };
 		9B1E91AF2A47773F00ADD9A4 /* blackboard_I.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */; };
 		9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */; };
 		9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */; };
@@ -40,14 +40,13 @@
 		9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */; };
 		9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */; };
 		9B1E91B92A484D5D00ADD9A4 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */; };
-		9B1E91C12A4C3DA200ADD9A4 /* LaciItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C02A4C3DA200ADD9A4 /* LaciItem.swift */; };
-		9B1E91C32A4C3E0F00ADD9A4 /* LaciScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C22A4C3E0F00ADD9A4 /* LaciScene.swift */; };
+		9B1E91C12A4C3DA200ADD9A4 /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C02A4C3DA200ADD9A4 /* DrawerItem.swift */; };
+		9B1E91C32A4C3E0F00ADD9A4 /* DrawerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C22A4C3E0F00ADD9A4 /* DrawerScene.swift */; };
 		9B1E91C62A4C44FF00ADD9A4 /* TVItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C52A4C44FF00ADD9A4 /* TVItem.swift */; };
 		9B1E91C82A4C450E00ADD9A4 /* TVScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E91C72A4C450E00ADD9A4 /* TVScene.swift */; };
 		9B7B328D2A4E81FD006E4797 /* hulberthopperdisplay.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B328C2A4E81E8006E4797 /* hulberthopperdisplay.otf */; };
 		9B7B32912A4E8AA6006E4797 /* RightChairItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7B32902A4E8AA6006E4797 /* RightChairItem.swift */; };
 		9B7B32932A4E8AFA006E4797 /* RightChairScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7B32922A4E8AFA006E4797 /* RightChairScene.swift */; };
-		9B7B32962A4EBDCD006E4797 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7B32952A4EBDCD006E4797 /* PauseButton.swift */; };
 		9B7B32992A4EC4DB006E4797 /* window3_openclose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32972A4EC4DB006E4797 /* window3_openclose.wav */; };
 		9B7B329A2A4EC4DB006E4797 /* window2_openclose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32982A4EC4DB006E4797 /* window2_openclose.wav */; };
 		9B7B329C2A4EC54D006E4797 /* paperFlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B329B2A4EC54D006E4797 /* paperFlip.wav */; };
@@ -89,8 +88,8 @@
 		15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCredits.swift; sourceTree = "<group>"; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
-		9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
-		9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScene.swift; sourceTree = "<group>"; };
+		9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupboardItem.swift; sourceTree = "<group>"; };
+		9B0D9AC72A443DC4009AB7FC /* CupboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupboardScene.swift; sourceTree = "<group>"; };
 		9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_I.mp3; sourceTree = "<group>"; };
 		9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_L.mp3; sourceTree = "<group>"; };
 		9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_A.mp3; sourceTree = "<group>"; };
@@ -98,15 +97,14 @@
 		9B1E91B32A47788500ADD9A4 /* cupboardOpening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cupboardOpening.mp3; sourceTree = "<group>"; };
 		9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
-		9B1E91C02A4C3DA200ADD9A4 /* LaciItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaciItem.swift; sourceTree = "<group>"; };
-		9B1E91C22A4C3E0F00ADD9A4 /* LaciScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaciScene.swift; sourceTree = "<group>"; };
+		9B1E91C02A4C3DA200ADD9A4 /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
+		9B1E91C22A4C3E0F00ADD9A4 /* DrawerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScene.swift; sourceTree = "<group>"; };
 		9B1E91C52A4C44FF00ADD9A4 /* TVItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVItem.swift; sourceTree = "<group>"; };
 		9B1E91C72A4C450E00ADD9A4 /* TVScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVScene.swift; sourceTree = "<group>"; };
 		9B7B328C2A4E81E8006E4797 /* hulberthopperdisplay.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hulberthopperdisplay.otf; sourceTree = "<group>"; };
 		9B7B328E2A4E8254006E4797 /* WaduhTechProj-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WaduhTechProj-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9B7B32902A4E8AA6006E4797 /* RightChairItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChairItem.swift; sourceTree = "<group>"; };
 		9B7B32922A4E8AFA006E4797 /* RightChairScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChairScene.swift; sourceTree = "<group>"; };
-		9B7B32952A4EBDCD006E4797 /* PauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		9B7B32972A4EC4DB006E4797 /* window3_openclose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = window3_openclose.wav; path = "Sound Assets/window3_openclose.wav"; sourceTree = SOURCE_ROOT; };
 		9B7B32982A4EC4DB006E4797 /* window2_openclose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = window2_openclose.wav; path = "Sound Assets/window2_openclose.wav"; sourceTree = SOURCE_ROOT; };
 		9B7B329B2A4EC54D006E4797 /* paperFlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = paperFlip.wav; path = "Sound Assets/paperFlip.wav"; sourceTree = SOURCE_ROOT; };
@@ -145,23 +143,13 @@
 		15662C9E2A41C58F00214FD7 /* WaduhTechProj Shared */ = {
 			isa = PBXGroup;
 			children = (
-				15C3ECA02A4EB9880065FF12 /* CreditScene */,
-				15C3EC942A4ACD1F0065FF12 /* Exam Sheet */,
-				15C3EC8F2A4979710065FF12 /* Variables */,
 				15662C9F2A41C58F00214FD7 /* Actions.sks */,
 				15662CA02A41C58F00214FD7 /* GameScene.sks */,
 				15662CA12A41C58F00214FD7 /* GameScene.swift */,
+				15C3ECA02A4EB9880065FF12 /* CreditScene */,
+				15C3EC942A4ACD1F0065FF12 /* Exam Sheet */,
+				15C3EC8F2A4979710065FF12 /* Variables */,
 				9B7B32942A4EBDC1006E4797 /* Component */,
-				15C3EC8A2A484B8F0065FF12 /* ExamTable */,
-				15C3EC852A4843E00065FF12 /* Exam */,
-				A30F1BB12A49349300F402B5 /* LightSwitch */,
-				9B0D9AC42A443D94009AB7FC /* Closet */,
-				15C3EC5A2A436A880065FF12 /* Window */,
-				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
-				9B1E91BF2A4C3D9200ADD9A4 /* Drawer */,
-				9B1E91C42A4C44E800ADD9A4 /* TV */,
-				9BAC41B92A4E06B100782376 /* LeftChair */,
-				9B7B328F2A4E8A94006E4797 /* RightChair */,
 				9B1E91B52A484CCD00ADD9A4 /* Main Menu */,
 				9BCD53282A45929E00B09C86 /* Game Over */,
 				9B7B328B2A4E81B2006E4797 /* Fonts */,
@@ -253,13 +241,13 @@
 			path = Blackboard;
 			sourceTree = "<group>";
 		};
-		9B0D9AC42A443D94009AB7FC /* Closet */ = {
+		9B0D9AC42A443D94009AB7FC /* Cupboard */ = {
 			isa = PBXGroup;
 			children = (
-				9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */,
-				9B0D9AC72A443DC4009AB7FC /* DrawerScene.swift */,
+				9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */,
+				9B0D9AC72A443DC4009AB7FC /* CupboardScene.swift */,
 			);
-			path = Closet;
+			path = Cupboard;
 			sourceTree = "<group>";
 		};
 		9B1E91AA2A47772300ADD9A4 /* Audio */ = {
@@ -295,8 +283,8 @@
 		9B1E91BF2A4C3D9200ADD9A4 /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
-				9B1E91C02A4C3DA200ADD9A4 /* LaciItem.swift */,
-				9B1E91C22A4C3E0F00ADD9A4 /* LaciScene.swift */,
+				9B1E91C02A4C3DA200ADD9A4 /* DrawerItem.swift */,
+				9B1E91C22A4C3E0F00ADD9A4 /* DrawerScene.swift */,
 			);
 			path = Drawer;
 			sourceTree = "<group>";
@@ -330,7 +318,16 @@
 		9B7B32942A4EBDC1006E4797 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				9B7B32952A4EBDCD006E4797 /* PauseButton.swift */,
+				15C3EC8A2A484B8F0065FF12 /* ExamTable */,
+				15C3EC852A4843E00065FF12 /* Exam */,
+				A30F1BB12A49349300F402B5 /* LightSwitch */,
+				9B0D9AC42A443D94009AB7FC /* Cupboard */,
+				15C3EC5A2A436A880065FF12 /* Window */,
+				9B0D9ABF2A4435D9009AB7FC /* Blackboard */,
+				9B1E91BF2A4C3D9200ADD9A4 /* Drawer */,
+				9B1E91C42A4C44E800ADD9A4 /* TV */,
+				9BAC41B92A4E06B100782376 /* LeftChair */,
+				9B7B328F2A4E8A94006E4797 /* RightChair */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -453,12 +450,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B1E91C82A4C450E00ADD9A4 /* TVScene.swift in Sources */,
-				9B1E91C12A4C3DA200ADD9A4 /* LaciItem.swift in Sources */,
+				9B1E91C12A4C3DA200ADD9A4 /* DrawerItem.swift in Sources */,
 				9BAC41B82A4DE6D700782376 /* GameOverTransition.swift in Sources */,
 				9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */,
 				15C3EC982A4ACDC10065FF12 /* ExamSheetItem.swift in Sources */,
 				15C3EC9A2A4ACE110065FF12 /* QuestionsAndAnswers.swift in Sources */,
-				9B7B32962A4EBDCD006E4797 /* PauseButton.swift in Sources */,
 				A30F1BB02A48881100F402B5 /* LightSwitchItem.swift in Sources */,
 				15662CB62A41C59000214FD7 /* GameScene.swift in Sources */,
 				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
@@ -474,16 +470,16 @@
 				15C3EC932A49A2ED0065FF12 /* ExamTransition.swift in Sources */,
 				9B7B32912A4E8AA6006E4797 /* RightChairItem.swift in Sources */,
 				15C3ECA22A4EB9D20065FF12 /* GameCredits.swift in Sources */,
-				9B1E91C32A4C3E0F00ADD9A4 /* LaciScene.swift in Sources */,
+				9B1E91C32A4C3E0F00ADD9A4 /* DrawerScene.swift in Sources */,
 				9BAC41BD2A4E07DF00782376 /* LeftChairScene.swift in Sources */,
-				9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */,
+				9B0D9AC62A443DA0009AB7FC /* CupboardItem.swift in Sources */,
 				9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */,
 				15C3EC962A4ACDB60065FF12 /* ExamSheetScene.swift in Sources */,
 				15C3EC872A4843FB0065FF12 /* ExamScene.swift in Sources */,
 				15662CAB2A41C59000214FD7 /* AppDelegate.swift in Sources */,
 				9BAC41BB2A4E06F800782376 /* LeftChairItem.swift in Sources */,
 				9B7B32932A4E8AFA006E4797 /* RightChairScene.swift in Sources */,
-				9B0D9AC82A443DC4009AB7FC /* DrawerScene.swift in Sources */,
+				9B0D9AC82A443DC4009AB7FC /* CupboardScene.swift in Sources */,
 				9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,14 +8,14 @@
 import Foundation
 import SpriteKit
 
-class LaciItem: SKSpriteNode {
+class DrawerItem: SKSpriteNode {
     
     init(scene: SKScene) {
 
-        let laciSize = CGSize(width: 200, height: 200)
-        let laciTexture = SKTexture(imageNamed: "Untitled_Artwork 1")
+        let drawerSize = CGSize(width: 200, height: 200)
+        let drawerTexture = SKTexture(imageNamed: "drawer_1")
 
-        super.init(texture: laciTexture, color: UIColor.clear, size: laciSize)
+        super.init(texture: drawerTexture, color: UIColor.clear, size: drawerSize)
 
         // Add the box node to the scene
         scene.addChild(self)

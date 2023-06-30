@@ -1,5 +1,5 @@
 //
-//  DrawerItem.swift
+//  CupboardItem.swift
 //  WaduhTechProj iOS
 //
 //  Created by Abiyyu Firmansyah on 22/06/23.
@@ -8,15 +8,14 @@
 import Foundation
 import SpriteKit
 
-class DrawerItem: SKSpriteNode{
+class CupboardItem: SKSpriteNode{
     
     init(scene: SKScene) {
 
-        let drawerSize = CGSize(width: 200, height: 473)
-        let drawerColor = SKColor.white
-        let drawerTexture = SKTexture(imageNamed: "closedCupboard")
+        let cupboardSize = CGSize(width: 200, height: 473)
+        let cupboardTexture = SKTexture(imageNamed: "closedCupboard")
 
-        super.init(texture: drawerTexture, color: drawerColor, size: drawerSize)
+        super.init(texture: cupboardTexture, color: UIColor.clear, size: cupboardSize)
 
         // Add the box node to the scene
         scene.addChild(self)

@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class LaciScene {    
+class DrawerScene {    
     var spriteNode : SKSpriteNode!
     var timerLaci: SKLabelNode!
     var holdTimer : Timer?
@@ -25,7 +25,7 @@ class LaciScene {
         self.scene = scene
     }
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3"), SKTexture(imageNamed: "Untitled_Artwork 3")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "drawer_1"), SKTexture(imageNamed: "drawer_2"), SKTexture(imageNamed: "drawer_3"), SKTexture(imageNamed: "drawer_4")]
     
     var timeRemaining: TimeInterval = 32.0 {
         didSet {

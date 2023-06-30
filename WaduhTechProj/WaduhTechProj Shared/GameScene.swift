@@ -33,12 +33,12 @@ class GameScene: SKScene {
                 scene!.run(paperFlip)
                 // Turn on sound effects
                 if stage >= 1 {
-                    aDrawer.enableSoundEffects()
+                    aCupboard.enableSoundEffects()
                     if stage >= 2 {
                         aBlackboard.enableSoundEffects()
                         aWindow.enableSoundEffects()
                         if stage >= 3 {
-                            aLaci.enableSoundEffects()
+                            aDrawer.enableSoundEffects()
                             if stage >= 4 {
                                 aTV.enableSoundEffects()
                             }
@@ -52,12 +52,12 @@ class GameScene: SKScene {
                 
                 // Turn off sound effects
                 if stage >= 1 {
-                    aDrawer.disableSoundEffects()
+                    aCupboard.disableSoundEffects()
                     if stage >= 2 {
                         aBlackboard.disableSoundEffects()
                         aWindow.disableSoundEffects()
                         if stage >= 3 {
-                            aLaci.disableSoundEffects()
+                            aDrawer.disableSoundEffects()
                             if stage >= 4 {
                                 aTV.disableSoundEffects()
                             }
@@ -101,16 +101,16 @@ class GameScene: SKScene {
     var aLightSwitch: LightSwitchScene!
     
     // Cupboard
-    var drawerNode: DrawerItem!
-    var aDrawer: DrawerScene!
+    var cupboardNode: CupboardItem!
+    var aCupboard: CupboardScene!
     
     // Window
     var windowNode: WindowItem!
     var aWindow: WindowScene!
     
     // Drawer
-    var laciNode: LaciItem!
-    var aLaci: LaciScene!
+    var drawerNode: DrawerItem!
+    var aDrawer: DrawerScene!
     
     // TV
     var tvNode: TVItem!
@@ -123,9 +123,6 @@ class GameScene: SKScene {
     // Right Chair
     var rightChairNode: RightChairItem!
     var aRightChair: RightChairScene!
-    
-    var pauseNode: PauseButton!
-    var gamePaused = false
 
     var isHeld: Bool = false
     var isGameOver: Bool = false
@@ -185,36 +182,36 @@ class GameScene: SKScene {
         globalTimerLabel.text = "\(Int(timeRemaining))"
         globalTimerLabel.zPosition = 10.0
         
-        if ((stage >= 1) && (aDrawer.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
-            aDrawer.countdownTimer.invalidate()
+        if ((stage >= 1) && (aCupboard.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
+            aCupboard.countdownTimer.invalidate()
             isGameOver = true
             moveToGameOver()
         }
         
-        else if ((stage >= 2) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
-            aDrawer.countdownTimer.invalidate()
+        else if ((stage >= 2) && (aBlackboard.counter == 0 || aCupboard.counter == 0 || aWindow.counter == 0 || timeRemaining == 0) && (isGameOver == false)) {
+            aCupboard.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
             aWindow.countdownTimer.invalidate()
             isGameOver = true
             moveToGameOver()
         }
         
-        else if ((stage >= 3) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || timeRemaining == 0) && (isGameOver == false)) {
-            // TODO: Drawer, blackboard, window, all item that use hold gesture
-            aDrawer.countdownTimer.invalidate()
+        else if ((stage >= 3) && (aBlackboard.counter == 0 || aCupboard.counter == 0 || aWindow.counter == 0 || aDrawer.timeRemaining == 0 || timeRemaining == 0) && (isGameOver == false)) {
+            // TODO: Cupboard, blackboard, window, drawer
+            aCupboard.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
             aWindow.countdownTimer.invalidate()
-            aLaci.countdownTimer?.invalidate()
+            aDrawer.countdownTimer?.invalidate()
             isGameOver = true
             moveToGameOver()
         }
         
-        else if ((stage >= 4) && (aBlackboard.counter == 0 || aDrawer.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0 || timeRemaining == 0 || aLeftChair.counter == 0 || aRightChair.counter == 0) && (isGameOver == false)) {
-            // TODO: Drawer, blackboard, window, all item that use hold gesture
-            aDrawer.countdownTimer.invalidate()
+        else if ((stage >= 4) && (aBlackboard.counter == 0 || aCupboard.counter == 0 || aWindow.counter == 0 || aDrawer.timeRemaining == 0 || aTV.timeRemaining == 0 || timeRemaining == 0 || aLeftChair.counter == 0 || aRightChair.counter == 0) && (isGameOver == false)) {
+            // TODO: Cupboard, blackboard, window, drawer, tv, left chair, right chair
+            aCupboard.countdownTimer.invalidate()
             aBlackboard.countdownTimer.invalidate()
             aWindow.countdownTimer.invalidate()
-            aLaci.countdownTimer?.invalidate()
+            aDrawer.countdownTimer?.invalidate()
             aTV.countdownTimer?.invalidate()
             aLeftChair.countdownTimer.invalidate()
             aRightChair.countdownTimer.invalidate()
@@ -362,19 +359,17 @@ class GameScene: SKScene {
         addChild(buttonTest)
         buttonTest.zPosition = -2.0
         
-        pauseNode = PauseButton(scene: self)
-
         // MARK: Setup Stage Timer and Obstacle
         if (stage >= 1) {
             // MARK: Cupboard Item
             timeRemaining = 240.0
             totalDuration = 240.0
-            aDrawer = DrawerScene(scene: self)
-            drawerNode = DrawerItem(scene: self)
-            aDrawer.spriteNode = drawerNode
+            aCupboard = CupboardScene(scene: self)
+            cupboardNode = CupboardItem(scene: self)
+            aCupboard.spriteNode = cupboardNode
             
-            // Start the drawer counter timer
-            aDrawer.startCountdown()
+            // Start the cupboard counter timer
+            aCupboard.startCountdown()
             
             if (stage >= 2) {
                 timeRemaining = 300.0
@@ -400,12 +395,12 @@ class GameScene: SKScene {
                     timeRemaining = 330.0
                     totalDuration = 330.0
                     
-                    // MARK: Laci Item
-                    aLaci = LaciScene(scene: self)
-                    laciNode = LaciItem(scene: self)
-                    aLaci.spriteNode = laciNode
+                    // MARK: Drawer Item
+                    aDrawer = DrawerScene(scene: self)
+                    drawerNode = DrawerItem(scene: self)
+                    aDrawer.spriteNode = drawerNode
                     //Start drawer countdown timer
-                    aLaci.startCountdown()
+                    aDrawer.startCountdown()
                     
                     if (stage >= 4) {
                         timeRemaining = 360.0
@@ -416,7 +411,7 @@ class GameScene: SKScene {
                         tvNode = TVItem(scene: self)
                         aTV.spriteNode = tvNode
                         
-                        //Start drawer countdown timer
+                        //Start tv countdown timer
                         aTV.startCountdown()
                         
                         // MARK: Left Chair Item
@@ -594,10 +589,10 @@ class GameScene: SKScene {
     // Khusus Drawer
     @objc func fireTimer() {
         print("Timer fired!")
-        if aLaci.timeRemaining == 32 {
-            aLaci.timeRemaining = 32
-        } else if aLaci.timeRemaining < 32 {
-            aLaci.timeRemaining += 1
+        if aDrawer.timeRemaining == 32 {
+            aDrawer.timeRemaining = 32
+        } else if aDrawer.timeRemaining < 32 {
+            aDrawer.timeRemaining += 1
         }
     }
     
@@ -649,21 +644,9 @@ class GameScene: SKScene {
     func gameOverIndicator() {
         if (timeRemaining == 0) {
             loseIndicator = 1
-        } else if (aDrawer.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aLaci.timeRemaining == 0 || aTV.timeRemaining == 0 || aLeftChair.counter == 0 || aRightChair.counter == 0) {
+        } else if (aCupboard.counter == 0 || aBlackboard.counter == 0 || aWindow.counter == 0 || aDrawer.timeRemaining == 0 || aTV.timeRemaining == 0 || aLeftChair.counter == 0 || aRightChair.counter == 0) {
             loseIndicator = 2
         }
-    }
-    
-    func togglePause() {
-        gamePaused = !gamePaused
-            
-            if gamePaused {
-                // Pause any ongoing actions, animations, or physics simulations
-                self.view?.isPaused = true
-            } else {
-                // Resume actions, animations, or physics simulations
-                self.view?.isPaused = false
-            }
     }
     
     // MARK: Touches Began
@@ -685,56 +668,52 @@ class GameScene: SKScene {
             }
             
             // MARK: Began for Swipe Gesture
-            else if (drawerNode.contains(touchLocation)) {
-                print("start drawer")
+            else if (cupboardNode.contains(touchLocation)) {
                 startLocation = touchLocation
                 whichTouchIndicator = 1
             }
             
             else if (blackboardNode != nil && blackboardNode.contains(touchLocation)) {
-                print("start blackboard")
                 startLocation = touchLocation
                 whichTouchIndicator = 2
                 
             }
             
             else if (windowNode != nil && windowNode.contains(touchLocation)) {
-                print("start window")
                 startLocation = touchLocation
                 whichTouchIndicator = 3
             }
             else if (leftChairNode != nil && leftChairNode.contains(touchLocation)) {
                 leftChairNode.texture = SKTexture(imageNamed: "kursiTap1_1")
-                print("left chair texture change")
                 aLeftChair.startCountdown()
+            }
+            else if (rightChairNode != nil && rightChairNode.contains(touchLocation)) {
+                rightChairNode.texture = SKTexture(imageNamed: "kursiTap2_1")
+                aRightChair.startCountdown()
             }
             
             // MARK: Began for Hold Gesture
             
-            else if (aLaci != nil && aLaci.spriteNode.contains(touchLocation)) {
+            else if (aDrawer != nil && aDrawer.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
                 whichTouchIndicator = 4
                 
-                print("touch inside laci detected!")
+                aDrawer.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
                 
-                aLaci.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+                // Drawer timer stops
+                aDrawer.countdownTimer?.invalidate()
+                aDrawer.countdownTimer = nil
                 
-                // Laci timer stops
-                aLaci.countdownTimer?.invalidate()
-                aLaci.countdownTimer = nil
-                
-                aLaci.touchStartTime = touch.timestamp
+                aDrawer.touchStartTime = touch.timestamp
             }
             
             else if (aTV != nil && aTV.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
                 whichTouchIndicator = 5
                 
-                print("touch inside tv detected!")
-                
                 aTV.holdTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fireTimerTV), userInfo: nil, repeats: true)
                 
-                // Laci timer stops
+                // Drawer timer stops
                 aTV.countdownTimer?.invalidate()
                 aTV.countdownTimer = nil
                 
@@ -776,9 +755,6 @@ class GameScene: SKScene {
             print(currentQuestionsAndAnswers.playerAnswers)
             
         }
-        else if pauseNode.contains(touchLocation) {
-            togglePause()
-        }
         
     }
     
@@ -788,7 +764,7 @@ class GameScene: SKScene {
         // 2nd Person View Interactions
         if !examOpen {
             
-            // Ended for blackboard and drawer
+            // Ended for blackboard, cupboard, and window
             if ((whichTouchIndicator == 1 || whichTouchIndicator == 2 || whichTouchIndicator == 3) && isHeld == false) {
                 
                 guard let startLocation = startLocation else { return }
@@ -800,7 +776,7 @@ class GameScene: SKScene {
                     var nodeToUpdate: SKSpriteNode?
                     
                     if whichTouchIndicator == 1 {
-                        nodeToUpdate = drawerNode
+                        nodeToUpdate = cupboardNode
                     } else if whichTouchIndicator == 2 {
                         nodeToUpdate = blackboardNode
                     } else if whichTouchIndicator == 3 {
@@ -813,24 +789,21 @@ class GameScene: SKScene {
                             if node == blackboardNode {
                                 continue // Skip right swipe for blackboard
                             }
-                            else if node == drawerNode {
-                                drawerNode.texture = SKTexture(imageNamed: "closedCupboard")
-                                print("drawer swiped right")
-                                aDrawer.startCountdown()
+                            else if node == cupboardNode {
+                                cupboardNode.texture = SKTexture(imageNamed: "closedCupboard")
+                                aCupboard.startCountdown()
                             }
                             else if node == windowNode {
                                 windowNode.texture = SKTexture(imageNamed: "windowState1")
-                                print("window swiped right")
                                 aWindow.startCountdown()
                             }
                         } else if translation.x < -swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
                             // Left swipe
-                            if node == drawerNode || node == windowNode{
+                            if node == cupboardNode || node == windowNode{
                                 continue // Skip right swipe for blackboard
                             }
                             else if node == blackboardNode {
                                 blackboardNode.texture = SKTexture(imageNamed: "blackboard")
-                                print("blackboard swiped left")
                                 aBlackboard.startCountdown()
                             }
                         }
@@ -842,11 +815,11 @@ class GameScene: SKScene {
             else if (whichTouchIndicator == 4 && isHeld == true) {
                 print("hold ended!")
                 isHeld.toggle()
-                aLaci.holdTimer?.invalidate()
-                aLaci.holdTimer = nil
+                aDrawer.holdTimer?.invalidate()
+                aDrawer.holdTimer = nil
                 
                 // Window timer starts
-                aLaci.startCountdown()
+                aDrawer.startCountdown()
             }
             else if (whichTouchIndicator == 5 && isHeld == true) {
                 print("hold ended!")

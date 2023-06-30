@@ -1,5 +1,5 @@
 //
-//  DrawerScene.swift
+//  CupboardScene.swift
 //  WaduhTechProj iOS
 //
 //  Created by Abiyyu Firmansyah on 22/06/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SpriteKit
 
-class DrawerScene {
+class CupboardScene {
     
     var spriteNode : SKSpriteNode!
     var timerCupboard: SKLabelNode!
