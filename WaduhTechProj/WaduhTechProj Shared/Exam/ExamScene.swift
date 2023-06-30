@@ -12,7 +12,7 @@ class ExamScene {
     
     var spriteNode : SKSpriteNode!
     var scene: SKScene!
-    var exitLabel: SKSpriteNode!
+    var exitLabel: SKLabelNode!
     
     init(scene: SKScene) {
         self.scene = scene

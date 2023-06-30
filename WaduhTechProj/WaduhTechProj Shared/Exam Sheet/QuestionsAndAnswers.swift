@@ -130,16 +130,16 @@ class QuestionsAndAnswers {
                 temp = questionsAndCorrectAnswers(questions: "The absolute value of -26 is ...", answerA: "26", answerB: "-26", answerC: "0", answerD: "1")
                 qACA.append(temp)
                 
-                temp = questionsAndCorrectAnswers(questions: "5^3 = ...", answerA: "125", answerB: "625", answerC: "25", answerD: "55")
+                temp = questionsAndCorrectAnswers(questions: "5^3 = ...", answerA: "55", answerB: "625", answerC: "25", answerD: "125")
                 qACA.append(temp)
                 
-                temp = questionsAndCorrectAnswers(questions: "1 KM = ...", answerA: "1000 m", answerB: "1000 cm", answerC: "1000 dm", answerD: "1000 mm")
+                temp = questionsAndCorrectAnswers(questions: "1 KM = ...", answerA: "1000 dm", answerB: "1000 cm", answerC: "1000 m", answerD: "1000 mm")
                 qACA.append(temp)
                 
                 temp = questionsAndCorrectAnswers(questions: "1 l = ...", answerA: "10 cl", answerB: "10 dl", answerC: "100 ml", answerD: "10 hl")
                 qACA.append(temp)
                 
-                correctAnswers = ["B","A","D","C","B"]
+                correctAnswers = ["A","A","D","C","B"]
                 
             }
             

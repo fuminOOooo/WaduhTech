@@ -296,9 +296,9 @@ class GameScene: SKScene {
         aExam = ExamScene(scene: self)
         examNode = ExamItem(scene: self)
         aExam.spriteNode = examNode
-        aExam.exitLabel = SKSpriteNode(imageNamed: "examPaper")
+        aExam.exitLabel = SKLabelNode(text: "X")
+        aExam.exitLabel.fontSize = 100
         aExam.exitLabel.position = CGPoint(x: frame.maxX-200, y: frame.maxY-200)
-        aExam.exitLabel.size = CGSize(width: 30, height: 30)
         addChild(aExam.exitLabel)
         aExam.exitLabel.zPosition = -1.0
         
@@ -431,7 +431,6 @@ class GameScene: SKScene {
         }
     }
     
-    
     // Change Questions
     func changeQuestions() {
         
@@ -515,14 +514,23 @@ class GameScene: SKScene {
     }
     
     func nextStage() {
-        let scene = ExamTransition()
-        scene.stage = stage+1
-        scene.size = CGSize(width: frame.width, height: frame.height)
-        let transition = SKTransition.fade(with: .black, duration: 5)
-        self.view?.presentScene(scene, transition: transition)
+        if (stage == 4) {
+            let scene = GameCredits()
+            scene.size = CGSize(width: frame.width, height: frame.height)
+            let transition = SKTransition.fade(with: .black, duration: 5)
+            self.view?.presentScene(scene, transition: transition)
+        } else {
+            let scene = ExamTransition()
+            scene.stage = stage+1
+            scene.size = CGSize(width: frame.width, height: frame.height)
+            let transition = SKTransition.fade(with: .black, duration: 5)
+            self.view?.presentScene(scene, transition: transition)
+        }
+        
     }
     
     func checkCorrectAnswers() {
+        
         var counter: Float = 0
         for i in 0 ..< currentQuestionsAndAnswers.correctAnswers.count-1 {
             if currentQuestionsAndAnswers.playerAnswers[i] == currentQuestionsAndAnswers.correctAnswers[i] {

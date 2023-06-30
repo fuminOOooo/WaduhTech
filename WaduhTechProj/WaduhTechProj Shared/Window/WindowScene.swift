@@ -43,7 +43,6 @@ class WindowScene {
     @objc func decrementCounter() {
         counter -= 1
         counter = max(counter, 0)
-        timerWindow.text = "\(counter)"
         updateTextureIndex()
         updateAudioIndex()
     }
