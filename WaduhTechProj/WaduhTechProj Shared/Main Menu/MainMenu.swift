@@ -7,34 +7,49 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class MainMenu: SKScene {
     
-    var stage: Int = 0
+    var stage: Int = 4
     
     var newGame: SKSpriteNode!
     var continueButton: SKSpriteNode!
     var startLocation: CGPoint? = nil
+    var audioPlayer: AVAudioPlayer! // Add this line
+
+    func playMusic() {
+        let path = Bundle.main.path(forResource: "mainmenu", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
+        }
+        audioPlayer.numberOfLoops = -1 //Infinite
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
     
     override func didMove(to view: SKView) {
+        playMusic()
         
         // MARK: Button New Game
-        newGame = SKSpriteNode(imageNamed: "newGameButton")
+        newGame = SKSpriteNode(imageNamed: "newButton")
         newGame.zPosition = 2
         newGame.position = CGPoint(x: 0, y: -100)
-        newGame.size = CGSize(width: 500, height: 100)
+        newGame.size = CGSize(width: 485, height: 100)
         addChild(newGame)
-        print("button new")
         
         if (stage >= 1) {
             // MARK: Button Continue
             continueButton = SKSpriteNode(imageNamed: "continueButton")
             continueButton.zPosition = 2
             continueButton.position = CGPoint(x: 0, y: -250)
-            continueButton.size = CGSize(width: 500, height: 100)
+            continueButton.size = CGSize(width: 485, height: 100)
             addChild(continueButton)
-            print("button continue")
         }
+        print(stage)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -43,7 +58,6 @@ class MainMenu: SKScene {
             let transition = SKTransition.fade(with: .black, duration: 5)
             
             if newGame.contains(location) {
-                print("button new clicked")
                 let scene = ExamTransition()
                 scene.stage = 1
                 scene.size = CGSize(width: frame.width, height: frame.height)
@@ -52,7 +66,6 @@ class MainMenu: SKScene {
             else if stage > 1 && continueButton.contains(location) {
                 if (stage >= 1) {
                     
-                    print("button continue clicked")
                     let scene = ExamTransition()
                     scene.stage = stage
                     scene.size = CGSize(width: frame.width, height: frame.height)

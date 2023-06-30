@@ -7,12 +7,28 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class ExamTransition: SKScene {
     var stage: Int = 0
     var timer = Timer()
     var gesture = ""
+    var audioPlayer: AVAudioPlayer! // Add this line
+
+    func playMusic() {
+        let path = Bundle.main.path(forResource: "bellRing_5s", ofType: "wav")
+        let fileURL = URL(fileURLWithPath: path!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
+        } catch {
+            print("error play music")
+        }
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+    }
+    
     override func didMove(to view: SKView) {
+        playMusic()
         let background = SKSpriteNode()
         background.color = .black
         background.size = CGSize(width: frame.width, height: frame.height)
@@ -30,12 +46,9 @@ class ExamTransition: SKScene {
             gesture = "All at once"
         }
         
-        let examLabel = SKLabelNode(attributedText: NSAttributedString(string: "EXAM \(stage): \"\(gesture)\"",
-                                                                       attributes: [.font: UIFont.systemFont(ofSize: 64, weight: .medium),
-                                                                                    .foregroundColor: UIColor.white]))
+        let examLabel = SKLabelNode(attributedText: NSAttributedString(string: "EXAM \(stage): \"\(gesture)\"", attributes: [.font: UIFont(name: "hulberthopperdisplay", size: 64)!, .foregroundColor: UIColor.white]))
+        
         examLabel.position = CGPoint(x: frame.midX, y: frame.midY)
-        examLabel.fontSize = CGFloat(64)
-        examLabel.fontColor = .white
         addChild(examLabel)
         
         let durationLabel = SKLabelNode(attributedText: NSAttributedString(string: "17:00 - 19:00",

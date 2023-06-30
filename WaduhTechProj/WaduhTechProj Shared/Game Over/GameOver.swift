@@ -12,43 +12,34 @@ import GameplayKit
 class GameOver: SKScene {
     
     var stage: Int = 0
+    var loseIndicator: Int = 0
     
-    var mainMenuButton: SKSpriteNode!
-    var startLocation: CGPoint? = nil
-
-    public var win = false
+    var timer = Timer()
+    let transition = SKTransition.fade(with: .red, duration: 3)
     
     override func didMove(to view: SKView) {
         // Set up the scene
-        let label = self.childNode(withName: "//gameOverLabel") as? SKLabelNode
-        if win == false {
-            label?.text = "You Failed!"
-            let jumpscare = SKSpriteNode(imageNamed: "jumpscare")
-            jumpscare.position = CGPoint(x: frame.midX, y: frame.midY+100)
-            jumpscare.zPosition = 2
-            jumpscare.size = CGSize(width: 600, height: 600)
-            addChild(jumpscare)
-        }
-        mainMenuButton = SKSpriteNode(imageNamed: "mainMenuButton")
-        //        mainMenuButton.zPosition = 2
-        mainMenuButton.position = CGPoint(x: frame.midX, y: frame.midY-300)
-        mainMenuButton.size = CGSize(width: 500, height: 100)
-        addChild(mainMenuButton)
-        print("button loaded")
+        let jumpscare = SKSpriteNode(imageNamed: "jumpscare")
+        jumpscare.position = CGPoint(x: frame.midX, y: frame.midY)
+        jumpscare.zPosition = 2
+        jumpscare.size = CGSize(width: frame.width, height: frame.height)
+        addChild(jumpscare)
+        
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(moveToTransition), userInfo: nil, repeats: false)
+
+        let jumpscareSound = SKAction.playSoundFileNamed("jumpscare", waitForCompletion: false)
+        self.run(jumpscareSound)
+        
+        print(loseIndicator)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            
-            if mainMenuButton.contains(location) {
-                print("button main menu clicked")
-                startLocation = location
-                let scene = MainMenu(fileNamed: "MainMenu")
-                scene?.stage = stage
-                scene!.scaleMode = .aspectFit
-                self.view?.presentScene(scene)
-            }
-        }
+    @objc func moveToTransition() {
+        //Configure the new scene to be presented and then present.
+        let scene = GameOverTransition()
+        scene.stage = stage
+        scene.loseIndicator = loseIndicator
+        scene.size = CGSize(width: frame.width, height: frame.height)
+        self.view?.presentScene(scene, transition: transition)
+        
     }
 }
