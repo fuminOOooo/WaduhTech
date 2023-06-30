@@ -26,6 +26,8 @@
 		15C3EC962A4ACDB60065FF12 /* ExamSheetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC952A4ACDB60065FF12 /* ExamSheetScene.swift */; };
 		15C3EC982A4ACDC10065FF12 /* ExamSheetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC972A4ACDC10065FF12 /* ExamSheetItem.swift */; };
 		15C3EC9A2A4ACE110065FF12 /* QuestionsAndAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC992A4ACE110065FF12 /* QuestionsAndAnswers.swift */; };
+		15C3EC9C2A4E06690065FF12 /* LightSwitchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */; };
+		15C3EC9F2A4E8D460065FF12 /* lightswitch3_off.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */; };
 		9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */; };
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
 		9B0D9AC62A443DA0009AB7FC /* DrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */; };
@@ -45,7 +47,7 @@
 		9BAC41B82A4DE6D700782376 /* GameOverTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC41B72A4DE6D700782376 /* GameOverTransition.swift */; };
 		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
 		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
-		A30F1BB02A48881100F402B5 /* LightItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F1BAF2A48881100F402B5 /* LightItem.swift */; };
+		A30F1BB02A48881100F402B5 /* LightSwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F1BAF2A48881100F402B5 /* LightSwitchItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,9 @@
 		15C3EC952A4ACDB60065FF12 /* ExamSheetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamSheetScene.swift; sourceTree = "<group>"; };
 		15C3EC972A4ACDC10065FF12 /* ExamSheetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamSheetItem.swift; sourceTree = "<group>"; };
 		15C3EC992A4ACE110065FF12 /* QuestionsAndAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsAndAnswers.swift; sourceTree = "<group>"; };
+		15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchScene.swift; sourceTree = "<group>"; };
+		15C3EC9D2A4E81C10065FF12 /* WaduhTechProj-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WaduhTechProj-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lightswitch3_off.mp3; path = "Sound Assets/lightswitch3_off.mp3"; sourceTree = SOURCE_ROOT; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* DrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerItem.swift; sourceTree = "<group>"; };
@@ -88,7 +93,7 @@
 		9BAC41B72A4DE6D700782376 /* GameOverTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverTransition.swift; sourceTree = "<group>"; };
 		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
-		A30F1BAF2A48881100F402B5 /* LightItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightItem.swift; sourceTree = "<group>"; };
+		A30F1BAF2A48881100F402B5 /* LightSwitchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +151,7 @@
 		15662CA92A41C59000214FD7 /* WaduhTechProj iOS */ = {
 			isa = PBXGroup;
 			children = (
+				15C3EC9D2A4E81C10065FF12 /* WaduhTechProj-iOS-Info.plist */,
 				15662CAA2A41C59000214FD7 /* AppDelegate.swift */,
 				15662CAC2A41C59000214FD7 /* GameViewController.swift */,
 				15662CAE2A41C59000214FD7 /* Main.storyboard */,
@@ -220,6 +226,7 @@
 		9B1E91AA2A47772300ADD9A4 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */,
 				9BAC41B52A4DDC3300782376 /* jumpscare.wav */,
 				9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */,
 				9B1E91AE2A47773F00ADD9A4 /* blackboard_F.mp3 */,
@@ -271,7 +278,8 @@
 		A30F1BB12A49349300F402B5 /* LightSwitch */ = {
 			isa = PBXGroup;
 			children = (
-				A30F1BAF2A48881100F402B5 /* LightItem.swift */,
+				A30F1BAF2A48881100F402B5 /* LightSwitchItem.swift */,
+				15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */,
 			);
 			path = LightSwitch;
 			sourceTree = "<group>";
@@ -345,6 +353,7 @@
 				15662CB32A41C59000214FD7 /* LaunchScreen.storyboard in Resources */,
 				9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */,
 				9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */,
+				15C3EC9F2A4E8D460065FF12 /* lightswitch3_off.mp3 in Resources */,
 				9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */,
 				15662CB72A41C59000214FD7 /* Assets.xcassets in Resources */,
 			);
@@ -363,13 +372,14 @@
 				9B1E91B72A484D4300ADD9A4 /* MainMenu.swift in Sources */,
 				15C3EC982A4ACDC10065FF12 /* ExamSheetItem.swift in Sources */,
 				15C3EC9A2A4ACE110065FF12 /* QuestionsAndAnswers.swift in Sources */,
-				A30F1BB02A48881100F402B5 /* LightItem.swift in Sources */,
+				A30F1BB02A48881100F402B5 /* LightSwitchItem.swift in Sources */,
 				15662CB62A41C59000214FD7 /* GameScene.swift in Sources */,
 				15C3EC5C2A436A990065FF12 /* WindowItem.swift in Sources */,
 				15C3EC912A4979850065FF12 /* MovingStage.swift in Sources */,
 				15662CAD2A41C59000214FD7 /* GameViewController.swift in Sources */,
 				15C3EC892A48441F0065FF12 /* ExamItem.swift in Sources */,
 				9BCD53272A45929600B09C86 /* GameOver.swift in Sources */,
+				15C3EC9C2A4E06690065FF12 /* LightSwitchScene.swift in Sources */,
 				15C3EC8E2A484BDA0065FF12 /* ExamTableItem.swift in Sources */,
 				9B1E91C62A4C44FF00ADD9A4 /* TVItem.swift in Sources */,
 				15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */,
@@ -526,6 +536,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35V95TRX69;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WaduhTechProj-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -559,6 +570,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35V95TRX69;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WaduhTechProj-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

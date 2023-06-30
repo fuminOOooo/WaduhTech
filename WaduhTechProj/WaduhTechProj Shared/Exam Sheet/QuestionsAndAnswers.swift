@@ -112,10 +112,10 @@ class QuestionsAndAnswers {
                 temp = questionsAndCorrectAnswers(questions: "999 + 99 + 9 = ...", answerA: "1107", answerB: "1117", answerC: "1087", answerD: "1987")
                 qACA.append(temp)
                 
-                temp = questionsAndCorrectAnswers(questions: "272 = ...", answerA: "20 + 52 - 100 + 200", answerB: "83 + 80 - 91 + 200", answerC: "100 + 72 - 50 + 100", answerD: "500 - 232 - 100 + 50")
+                temp = questionsAndCorrectAnswers(questions: "272 = ...", answerA: "58 x 4", answerB: "136 x 2", answerC: "42 x 6", answerD: "91 x 3")
                 qACA.append(temp)
                 
-                temp = questionsAndCorrectAnswers(questions: "6x + 12 - 6x + 2, what is the value of x = ...", answerA: "10", answerB: "13", answerC: "14", answerD: "15")
+                temp = questionsAndCorrectAnswers(questions: "20 - 2.5 = ...", answerA: "19.5", answerB: "18", answerC: "17.5", answerD: "18.5")
                 qACA.append(temp)
                 
                 correctAnswers = ["C","D","A","A","B","D","C","A","B","C"]
@@ -136,7 +136,7 @@ class QuestionsAndAnswers {
                 temp = questionsAndCorrectAnswers(questions: "1 KM = ...", answerA: "1000 m", answerB: "1000 cm", answerC: "1000 dm", answerD: "1000 mm")
                 qACA.append(temp)
                 
-                temp = questionsAndCorrectAnswers(questions: "8 months + 40 days = ...", answerA: "9 months 10 days", answerB: "620 days", answerC: "9 months", answerD: "10 months")
+                temp = questionsAndCorrectAnswers(questions: "1 l = ...", answerA: "10 cl", answerB: "10 dl", answerC: "100 ml", answerD: "10 hl")
                 qACA.append(temp)
                 
                 correctAnswers = ["B","A","D","C","B"]

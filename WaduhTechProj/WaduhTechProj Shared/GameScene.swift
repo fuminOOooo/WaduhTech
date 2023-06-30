@@ -94,6 +94,10 @@ class GameScene: SKScene {
     var blackboardNode: BlackboardItem!
     var aBlackboard: BlackboardScene!
     
+    // Light Switch
+    var lightSwitchNode: LightSwitchItem!
+    var aLightSwitch: LightSwitchScene!
+    
     // Cupboard
     var drawerNode: DrawerItem!
     var aDrawer: DrawerScene!
@@ -124,22 +128,43 @@ class GameScene: SKScene {
     
     var globalTimer = Timer()
     
-    var timeRemaining: TimeInterval = 120.0 {
-        didSet
-        {
-            if !lightSwitch {
-                darken()
-            }
-        }
-    }
+    var timeRemaining: TimeInterval = 120.0
     var totalDuration: TimeInterval = 120.0
     var globalTimerLabel: SKLabelNode!
     var darkOverlay: SKSpriteNode!
     var lightSwitch: Bool = false
     
+    var nextLight: TimeInterval = 0.0
+    
     var firstTime: Bool = true
     
+    func lightsTurning() {
+        if lightSwitch == true {
+            darkOverlay.alpha = 0.0
+            nextLight = TimeInterval(Int.random(in: 12...15))
+            lightSwitch = false
+            let texture = SKTexture(imageNamed: "onSwitch")
+            let textureAction = SKAction.setTexture(texture)
+            aLightSwitch.spriteNode.run(textureAction)
+        } else if nextLight == 0 {
+            if (examOpen) {
+                let windowOpenSound = SKAction.playSoundFileNamed("lightswitch3_off", waitForCompletion: false)
+                self.run(windowOpenSound)
+            }
+            let texture = SKTexture(imageNamed: "offSwitch")
+            let textureAction = SKAction.setTexture(texture)
+            aLightSwitch.spriteNode.run(textureAction)
+        }
+            
+    }
+    
     override func update(_ currentTime: TimeInterval) {
+        
+        lightsTurning()
+        
+        if nextLight == 0 {
+            darken()
+        }
         
         if (done == false) {
             checkAnswers()
@@ -236,6 +261,9 @@ class GameScene: SKScene {
             if timeRemaining > 0 {
                 timeRemaining -= 1.0
             }
+            if nextLight > 0 {
+                nextLight -= 1.0
+            }
         }
         
         // Background
@@ -266,6 +294,12 @@ class GameScene: SKScene {
         aExamTable = ExamTableScene(scene: self)
         examTableNode = ExamTableItem(scene: self)
         aExamTable.spriteNode = examTableNode
+        
+        // Opening Exam
+        aLightSwitch = LightSwitchScene(scene: self)
+        lightSwitchNode = LightSwitchItem(scene: self)
+        aLightSwitch.spriteNode = lightSwitchNode
+        aLightSwitch.spriteNode.zPosition = 1.0
         
         // Exam Sheet
         aExamSheet = ExamSheetScene(scene: self)
@@ -387,33 +421,6 @@ class GameScene: SKScene {
         }
     }
     
-    @objc func updateFontSize() {
-        if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "A"
-        {
-            aExamSheet.labelAnswerA.fontColor = .green
-            aExamSheet.labelAnswerB.fontColor = .black
-            aExamSheet.labelAnswerC.fontColor = .black
-            aExamSheet.labelAnswerD.fontColor = .black
-        } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "B"
-        {
-            aExamSheet.labelAnswerA.fontColor = .black
-            aExamSheet.labelAnswerB.fontColor = .green
-            aExamSheet.labelAnswerC.fontColor = .black
-            aExamSheet.labelAnswerD.fontColor = .black
-        } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "C"
-        {
-            aExamSheet.labelAnswerA.fontColor = .black
-            aExamSheet.labelAnswerB.fontColor = .black
-            aExamSheet.labelAnswerC.fontColor = .green
-            aExamSheet.labelAnswerD.fontColor = .black
-        } else if currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] == "D"
-        {
-            aExamSheet.labelAnswerA.fontColor = .black
-            aExamSheet.labelAnswerB.fontColor = .black
-            aExamSheet.labelAnswerC.fontColor = .black
-            aExamSheet.labelAnswerD.fontColor = .green
-        }
-    }
     
     // Change Questions
     func changeQuestions() {
@@ -430,7 +437,7 @@ class GameScene: SKScene {
         
         var answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "A" {
-            aExamSheet.labelAnswerA.fontColor = .green
+            aExamSheet.labelAnswerA.fontColor = .systemBlue
         } else {
             aExamSheet.labelAnswerA.fontColor = .black
         }
@@ -440,7 +447,7 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerB.text = "\(labelAnswer)"
         answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "B" {
-            aExamSheet.labelAnswerB.fontColor = .green
+            aExamSheet.labelAnswerB.fontColor = .systemBlue
         } else {
             aExamSheet.labelAnswerB.fontColor = .black
         }
@@ -450,7 +457,7 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerC.text = "\(labelAnswer)"
         answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "C" {
-            aExamSheet.labelAnswerC.fontColor = .green
+            aExamSheet.labelAnswerC.fontColor = .systemBlue
         } else {
             aExamSheet.labelAnswerC.fontColor = .black
         }
@@ -460,7 +467,7 @@ class GameScene: SKScene {
         aExamSheet.labelAnswerD.text = "\(labelAnswer)"
         answered = currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)]
         if answered == "D" {
-            aExamSheet.labelAnswerD.fontColor = .green
+            aExamSheet.labelAnswerD.fontColor = .systemBlue
         } else {
             aExamSheet.labelAnswerD.fontColor = .black
         }
@@ -640,6 +647,10 @@ class GameScene: SKScene {
                 examOpen.toggle()
             }
             
+            else if (lightSwitch == false && aLightSwitch.spriteNode.contains(touchLocation)) {
+                lightSwitch = true
+            }
+            
             // MARK: Began for Swipe Gesture
             else if (drawerNode.contains(touchLocation)) {
                 print("start drawer")
@@ -704,16 +715,12 @@ class GameScene: SKScene {
             else if (aExamSheet.spriteNode.contains(touchLocation)) {
                 if (aExamSheet.labelAnswerA.contains(touchLocation)) {
                     currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "A"
-                    updateFontSize()
                 } else if (aExamSheet.labelAnswerB.contains(touchLocation)) {
                     currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "B"
-                    updateFontSize()
                 } else if (aExamSheet.labelAnswerC.contains(touchLocation)) {
                     currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "C"
-                    updateFontSize()
                 } else if (aExamSheet.labelAnswerD.contains(touchLocation)) {
                     currentQuestionsAndAnswers.playerAnswers[currentQuestionsAndAnswers.playerAnswers.index(currentQuestionsAndAnswers.playerAnswers.startIndex, offsetBy: questionNumber-1)] = "D"
-                    updateFontSize()
                 }
                 if (questionNumber != 10) {
                     if (aExamSheet.nextQuestion.contains(touchLocation)) {
@@ -728,7 +735,6 @@ class GameScene: SKScene {
                 changeQuestions()
             }
             
-        
             print(currentQuestionsAndAnswers.playerAnswers)
             
         }
