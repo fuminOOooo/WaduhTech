@@ -27,7 +27,7 @@ class TVScene {
     
     let views: [SKTexture] = [SKTexture(imageNamed: "Untitled_Artwork 1"), SKTexture(imageNamed: "Untitled_Artwork"), SKTexture(imageNamed: "Untitled_Artwork 3"), SKTexture(imageNamed: "Untitled_Artwork")]
     
-    var timeRemaining: TimeInterval = 30.0 {
+    var timeRemaining: TimeInterval = 40.0 {
         didSet {
             updateTextureIndex()
         }
