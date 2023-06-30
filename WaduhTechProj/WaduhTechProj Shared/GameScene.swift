@@ -352,6 +352,13 @@ class GameScene: SKScene {
         darkOverlay.alpha = 0
         darkOverlay.zPosition = 20.0
         
+        // MARK: Door
+        let doorNode = SKSpriteNode(imageNamed: "door")
+        doorNode.position = CGPoint(x: frame.midX+395, y: frame.midY+60)
+        doorNode.size = CGSize(width: 89, height: 350)
+        addChild(doorNode)
+        doorNode.zPosition = 1.0
+        
         // MARK: BUTTON BUAT TEST WIN CONDITION
         buttonTest = SKLabelNode(text: "SUBMIT")
         buttonTest.fontSize = 100

@@ -12,7 +12,7 @@ class DrawerItem: SKSpriteNode {
     
     init(scene: SKScene) {
 
-        let drawerSize = CGSize(width: 200, height: 200)
+        let drawerSize = CGSize(width: 100, height: 100)
         let drawerTexture = SKTexture(imageNamed: "drawer_1")
 
         super.init(texture: drawerTexture, color: UIColor.clear, size: drawerSize)
@@ -21,7 +21,7 @@ class DrawerItem: SKSpriteNode {
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: scene.frame.midX-200, y: scene.frame.midY+100)
+        self.position = CGPoint(x: scene.frame.midX-330, y: scene.frame.midY+80)
 
     }
     
