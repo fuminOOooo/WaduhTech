@@ -793,25 +793,34 @@ class GameScene: SKScene {
                     if let node = nodeToUpdate {
                         if translation.x > swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
                             // Right swipe
-                            if node == blackboardNode {
-                                continue // Skip right swipe for blackboard
+                            if node == blackboardNode || node == windowNode{
+                                continue // Skip right swipe for blackboard and window
                             }
                             else if node == cupboardNode {
                                 cupboardNode.texture = SKTexture(imageNamed: "closedCupboard")
                                 aCupboard.startCountdown()
                             }
-                            else if node == windowNode {
+                            if node == windowNode {
                                 windowNode.texture = SKTexture(imageNamed: "windowState1")
                                 aWindow.startCountdown()
                             }
                         } else if translation.x < -swipeDistanceThreshold && translation.y < swipeDistanceThreshold {
                             // Left swipe
                             if node == cupboardNode || node == windowNode{
-                                continue // Skip right swipe for blackboard
+                                continue // Skip right swipe for cupboard and window
                             }
                             else if node == blackboardNode {
                                 blackboardNode.texture = SKTexture(imageNamed: "blackboard")
                                 aBlackboard.startCountdown()
+                            }
+                        } else if translation.x > swipeDistanceThreshold && translation.y > swipeDistanceThreshold {
+                            // Diagonal up-right swipe
+                            if node == cupboardNode || node == blackboardNode{
+                                continue // Skip right swipe for blackboard and cupboard
+                            }
+                            if node == windowNode {
+                                windowNode.texture = SKTexture(imageNamed: "windowState1")
+                                aWindow.startCountdown()
                             }
                         }
                     }
