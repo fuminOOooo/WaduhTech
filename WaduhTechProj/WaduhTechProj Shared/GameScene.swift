@@ -29,6 +29,8 @@ class GameScene: SKScene {
             
             if examOpen {
                 
+                let paperFlip = SKAction.playSoundFileNamed("paperFlip", waitForCompletion: false)
+                scene!.run(paperFlip)
                 // Turn on sound effects
                 if stage >= 1 {
                     aDrawer.enableSoundEffects()
@@ -122,6 +124,9 @@ class GameScene: SKScene {
     var rightChairNode: RightChairItem!
     var aRightChair: RightChairScene!
     
+    var pauseNode: PauseButton!
+    var gamePaused = false
+
     var isHeld: Bool = false
     var isGameOver: Bool = false
     
@@ -357,6 +362,8 @@ class GameScene: SKScene {
         addChild(buttonTest)
         buttonTest.zPosition = -2.0
         
+        pauseNode = PauseButton(scene: self)
+
         // MARK: Setup Stage Timer and Obstacle
         if (stage >= 1) {
             // MARK: Cupboard Item
@@ -639,6 +646,18 @@ class GameScene: SKScene {
         }
     }
     
+    func togglePause() {
+        gamePaused = !gamePaused
+            
+            if gamePaused {
+                // Pause any ongoing actions, animations, or physics simulations
+                self.view?.isPaused = true
+            } else {
+                // Resume actions, animations, or physics simulations
+                self.view?.isPaused = false
+            }
+    }
+    
     // MARK: Touches Began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -748,6 +767,9 @@ class GameScene: SKScene {
             
             print(currentQuestionsAndAnswers.playerAnswers)
             
+        }
+        else if pauseNode.contains(touchLocation) {
+            togglePause()
         }
         
     }
