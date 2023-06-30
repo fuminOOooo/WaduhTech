@@ -416,6 +416,7 @@ class GameScene: SKScene {
                         aLeftChair = LeftChairScene(scene: self)
                         leftChairNode = LeftChairItem(scene: self)
                         aLeftChair.spriteNode = leftChairNode
+                        
                         // Start left chair countdown timer
                         aLeftChair.startCountdown()
                         
@@ -424,6 +425,7 @@ class GameScene: SKScene {
                         rightChairNode = RightChairItem(scene: self)
                         aRightChair.spriteNode = rightChairNode
                         
+                        // Start right chair countdown timer
                         aRightChair.startCountdown()
                     }
                 }
@@ -577,9 +579,9 @@ class GameScene: SKScene {
     // Khusus Drawer
     @objc func fireTimer() {
         print("Timer fired!")
-        if aLaci.timeRemaining == 24 {
-            aLaci.timeRemaining = 24
-        } else if aLaci.timeRemaining < 24 {
+        if aLaci.timeRemaining == 32 {
+            aLaci.timeRemaining = 32
+        } else if aLaci.timeRemaining < 32 {
             aLaci.timeRemaining += 1
         }
     }
@@ -587,9 +589,9 @@ class GameScene: SKScene {
     // Khusus TV
     @objc func fireTimerTV() {
         print("Timer fired!")
-        if aTV.timeRemaining == 30 {
-            aTV.timeRemaining = 30
-        } else if aTV.timeRemaining < 30 {
+        if aTV.timeRemaining == 40 {
+            aTV.timeRemaining = 40
+        } else if aTV.timeRemaining < 40 {
             aTV.timeRemaining += 1
         }
     }

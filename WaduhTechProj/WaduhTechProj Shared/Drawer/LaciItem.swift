@@ -12,7 +12,7 @@ class LaciItem: SKSpriteNode {
     
     init(scene: SKScene) {
 
-        let laciSize = CGSize(width: 200, height: 400)
+        let laciSize = CGSize(width: 200, height: 200)
         let laciTexture = SKTexture(imageNamed: "Untitled_Artwork 1")
 
         super.init(texture: laciTexture, color: UIColor.clear, size: laciSize)

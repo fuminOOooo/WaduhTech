@@ -12,15 +12,15 @@ class LeftChairItem: SKSpriteNode {
     
     init(scene: SKScene) {
         
-        let leftChairSize = CGSize(width: 200, height: 200)
         let leftChairTexture = SKTexture(imageNamed: "kursiTap1_1")
+        let leftChairSize = CGSize(width: 200, height: 200)
         
-        super.init(texture: leftChairTexture, color: UIColor.clear, size: leftChairSize)
+        super.init(texture: leftChairTexture, color: UIColor.white, size: leftChairSize)
         
         scene.addChild(self)
         
         self.zPosition = 1.0
-        self.position = CGPoint(x: frame.midX-240, y: frame.midY-180)
+        self.position = CGPoint(x: scene.frame.midX-240, y: scene.frame.midY-180)
         
     }
     
