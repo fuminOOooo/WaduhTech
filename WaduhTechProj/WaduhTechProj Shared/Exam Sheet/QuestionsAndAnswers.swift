@@ -70,7 +70,7 @@ class QuestionsAndAnswers {
                 var temp = questionsAndCorrectAnswers(questions: "3^4 / 3^2 = ...", answerA: "3", answerB: "27", answerC: "9", answerD: "81")
                 qACA.append(temp)
                 
-                temp = questionsAndCorrectAnswers(questions: "8.56 + 4.82 = ...", answerA: "14.38", answerB: "14.98", answerC: "15.76", answerD: "12.39")
+                temp = questionsAndCorrectAnswers(questions: "8.56 + 4.82 = ...", answerA: "13.38", answerB: "14.98", answerC: "15.76", answerD: "12.39")
                 qACA.append(temp)
                 
                 temp = questionsAndCorrectAnswers(questions: "22, 21, 23, 22, 24, 23, …", answerA: "22", answerB: "23", answerC: "24", answerD: "25")
