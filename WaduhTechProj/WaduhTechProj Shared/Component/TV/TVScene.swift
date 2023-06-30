@@ -18,6 +18,8 @@ class TVScene {
     
     // Audio Enable or Disable
     var soundEnabled: Bool = false
+    var tvSound: SKAction!
+    var tvSound2: SKAction!
     
     var scene: SKScene!
     
@@ -30,6 +32,7 @@ class TVScene {
     var timeRemaining: TimeInterval = 40.0 {
         didSet {
             updateTextureIndex()
+            updateAudioIndex()
         }
     }
     
@@ -81,10 +84,25 @@ class TVScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if timeRemaining == 24 || timeRemaining == 16 {
-                let tvSound = SKAction.playSoundFileNamed("soundTV", waitForCompletion: false)
-                scene.run(tvSound)
+            if timeRemaining == 30 || timeRemaining == 20 {
+                tvSound = SKAction.playSoundFileNamed("television_1", waitForCompletion: false)
+                let playSoundAction = SKAction.group([tvSound])
+                scene.run(tvSound, withKey: "tvSound")
             }
+            else if timeRemaining == 10 {
+                tvSound2 = SKAction.playSoundFileNamed("television_3", waitForCompletion: false)
+                let playSoundAction = SKAction.group([tvSound2])
+                scene.run(tvSound2, withKey: "tvSound2")
+            }
+            else if timeRemaining >= 31 {
+                spriteNode.removeAction(forKey: "tvSound")
+                spriteNode.removeAction(forKey: "tvSound2")
+            }
+        }
+        else if !soundEnabled {
+            spriteNode.removeAction(forKey: "tvSound")
+            spriteNode.removeAction(forKey: "tvSound2")
+
         }
     }
 }

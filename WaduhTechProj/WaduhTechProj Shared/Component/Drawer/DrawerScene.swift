@@ -30,6 +30,7 @@ class DrawerScene {
     var timeRemaining: TimeInterval = 32.0 {
         didSet {
             updateTextureIndex()
+            updateAudioIndex()
         }
     }
     
@@ -81,9 +82,9 @@ class DrawerScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if timeRemaining == 24 || timeRemaining == 16 {
-                let laciSound = SKAction.playSoundFileNamed("soundLaci", waitForCompletion: false)
-                scene.run(laciSound)
+            if timeRemaining == 24 || timeRemaining == 16 || timeRemaining == 8 {
+                let drawerSound = SKAction.playSoundFileNamed("drawer_1", waitForCompletion: false)
+                scene.run(drawerSound)
             }
         }
     }

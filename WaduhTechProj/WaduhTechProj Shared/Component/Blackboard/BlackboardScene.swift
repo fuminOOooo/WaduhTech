@@ -73,16 +73,16 @@ class BlackboardScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if counter == 7 {
+            if counter == 6 {
                 let blackboardSoundL = SKAction.playSoundFileNamed("blackboard_L", waitForCompletion: false)
                 scene.run(blackboardSoundL)
-            } else if counter == 14 {
+            } else if counter == 12 {
                 let blackboardSoundI = SKAction.playSoundFileNamed("blackboard_I", waitForCompletion: false)
                 scene.run(blackboardSoundI)
-            } else if counter == 21 {
+            } else if counter == 18 {
                 let blackboardSoundA = SKAction.playSoundFileNamed("blackboard_A", waitForCompletion: false)
                 scene.run(blackboardSoundA)
-            } else if counter == 28 {
+            } else if counter == 24 {
                 let blackboardSoundF = SKAction.playSoundFileNamed("blackboard_F", waitForCompletion: false)
                 scene.run(blackboardSoundF)
             }

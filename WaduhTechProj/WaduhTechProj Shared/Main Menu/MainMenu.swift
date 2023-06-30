@@ -11,7 +11,7 @@ import AVFoundation
 
 class MainMenu: SKScene {
     
-    var stage: Int = 4
+    var stage: Int = 2
     
     var newGame: SKSpriteNode!
     var continueButton: SKSpriteNode!

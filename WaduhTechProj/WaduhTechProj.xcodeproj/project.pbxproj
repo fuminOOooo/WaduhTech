@@ -53,6 +53,10 @@
 		9B7B329E2A4EC6D8006E4797 /* mainmenu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B329D2A4EC6D8006E4797 /* mainmenu.wav */; };
 		9B7B32A02A4EC7DC006E4797 /* bellRing_5s.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B329F2A4EC7DC006E4797 /* bellRing_5s.wav */; };
 		9B7B32A22A4EC87B006E4797 /* clickplay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32A12A4EC87B006E4797 /* clickplay.mp3 */; };
+		9B7B32A52A4F3109006E4797 /* television_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32A42A4F3109006E4797 /* television_1.wav */; };
+		9B7B32A72A4F310E006E4797 /* television_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32A62A4F310E006E4797 /* television_3.wav */; };
+		9B7B32A92A4F311B006E4797 /* window_outside.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32A82A4F311B006E4797 /* window_outside.wav */; };
+		9B7B32AB2A4F312A006E4797 /* drawer_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9B7B32AA2A4F312A006E4797 /* drawer_1.wav */; };
 		9BAC41B62A4DDC3300782376 /* jumpscare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9BAC41B52A4DDC3300782376 /* jumpscare.wav */; };
 		9BAC41B82A4DE6D700782376 /* GameOverTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC41B72A4DE6D700782376 /* GameOverTransition.swift */; };
 		9BAC41BB2A4E06F800782376 /* LeftChairItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC41BA2A4E06F800782376 /* LeftChairItem.swift */; };
@@ -111,6 +115,10 @@
 		9B7B329D2A4EC6D8006E4797 /* mainmenu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mainmenu.wav; path = "Sound Assets/mainmenu.wav"; sourceTree = SOURCE_ROOT; };
 		9B7B329F2A4EC7DC006E4797 /* bellRing_5s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bellRing_5s.wav; path = "Sound Assets/bellRing_5s.wav"; sourceTree = SOURCE_ROOT; };
 		9B7B32A12A4EC87B006E4797 /* clickplay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = clickplay.mp3; path = "Sound Assets/clickplay.mp3"; sourceTree = SOURCE_ROOT; };
+		9B7B32A42A4F3109006E4797 /* television_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = television_1.wav; path = "Sound Assets/television_1.wav"; sourceTree = SOURCE_ROOT; };
+		9B7B32A62A4F310E006E4797 /* television_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = television_3.wav; path = "Sound Assets/television_3.wav"; sourceTree = SOURCE_ROOT; };
+		9B7B32A82A4F311B006E4797 /* window_outside.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = window_outside.wav; path = "Sound Assets/window_outside.wav"; sourceTree = SOURCE_ROOT; };
+		9B7B32AA2A4F312A006E4797 /* drawer_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drawer_1.wav; path = "Sound Assets/drawer_1.wav"; sourceTree = SOURCE_ROOT; };
 		9BAC41B52A4DDC3300782376 /* jumpscare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jumpscare.wav; sourceTree = "<group>"; };
 		9BAC41B72A4DE6D700782376 /* GameOverTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverTransition.swift; sourceTree = "<group>"; };
 		9BAC41BA2A4E06F800782376 /* LeftChairItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftChairItem.swift; sourceTree = "<group>"; };
@@ -253,8 +261,12 @@
 		9B1E91AA2A47772300ADD9A4 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				9B7B32AA2A4F312A006E4797 /* drawer_1.wav */,
+				9B7B32A42A4F3109006E4797 /* television_1.wav */,
 				9B7B32A12A4EC87B006E4797 /* clickplay.mp3 */,
+				9B7B32A82A4F311B006E4797 /* window_outside.wav */,
 				9B7B329F2A4EC7DC006E4797 /* bellRing_5s.wav */,
+				9B7B32A62A4F310E006E4797 /* television_3.wav */,
 				9B7B329D2A4EC6D8006E4797 /* mainmenu.wav */,
 				9B7B329B2A4EC54D006E4797 /* paperFlip.wav */,
 				15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */,
@@ -420,6 +432,8 @@
 			files = (
 				15662CB52A41C59000214FD7 /* GameScene.sks in Resources */,
 				9B1E91B92A484D5D00ADD9A4 /* MainMenu.sks in Resources */,
+				9B7B32A92A4F311B006E4797 /* window_outside.wav in Resources */,
+				9B7B32A72A4F310E006E4797 /* television_3.wav in Resources */,
 				9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */,
 				9B7B32992A4EC4DB006E4797 /* window3_openclose.wav in Resources */,
 				9B7B329C2A4EC54D006E4797 /* paperFlip.wav in Resources */,
@@ -429,6 +443,7 @@
 				15662CB02A41C59000214FD7 /* Main.storyboard in Resources */,
 				15662CB42A41C59000214FD7 /* Actions.sks in Resources */,
 				9B1E91AF2A47773F00ADD9A4 /* blackboard_I.mp3 in Resources */,
+				9B7B32AB2A4F312A006E4797 /* drawer_1.wav in Resources */,
 				15662CB32A41C59000214FD7 /* LaunchScreen.storyboard in Resources */,
 				9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */,
 				9B7B32A22A4EC87B006E4797 /* clickplay.mp3 in Resources */,
@@ -436,6 +451,7 @@
 				9B1E91B42A47788500ADD9A4 /* cupboardOpening.mp3 in Resources */,
 				15C3EC9F2A4E8D460065FF12 /* lightswitch3_off.mp3 in Resources */,
 				9B7B329E2A4EC6D8006E4797 /* mainmenu.wav in Resources */,
+				9B7B32A52A4F3109006E4797 /* television_1.wav in Resources */,
 				9B7B328D2A4E81FD006E4797 /* hulberthopperdisplay.otf in Resources */,
 				9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */,
 				15662CB72A41C59000214FD7 /* Assets.xcassets in Resources */,
