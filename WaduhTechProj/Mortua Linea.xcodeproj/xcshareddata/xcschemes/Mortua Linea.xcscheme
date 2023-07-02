@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "15662CA62A41C59000214FD7"
-               BuildableName = "WaduhTechProj.app"
+               BuildableName = "Mortua Linea.app"
                BlueprintName = "WaduhTechProj iOS"
                ReferencedContainer = "container:Mortua Linea.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15662CA62A41C59000214FD7"
-            BuildableName = "WaduhTechProj.app"
+            BuildableName = "Mortua Linea.app"
             BlueprintName = "WaduhTechProj iOS"
             ReferencedContainer = "container:Mortua Linea.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15662CA62A41C59000214FD7"
-            BuildableName = "WaduhTechProj.app"
+            BuildableName = "Mortua Linea.app"
             BlueprintName = "WaduhTechProj iOS"
             ReferencedContainer = "container:Mortua Linea.xcodeproj">
          </BuildableReference>
