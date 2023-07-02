@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class OnboardPage: SKScene {
-    var stage: Int = 4
+    var stage: Int = 0
     var timer = Timer()
     
     override func didMove(to view: SKView) {
