@@ -42,6 +42,8 @@ class GameScene: SKScene {
                             if stage >= 4 {
                                 aTV.enableSoundEffects()
                                 aTV.updateAudioIndex()
+                                aLeftChair.enableSoundEffects()
+                                aRightChair.enableSoundEffects()
                             }
                         }
                     }
@@ -67,6 +69,8 @@ class GameScene: SKScene {
                                 aTV.audioPlayer?.stop()
                                 aTV.audioPlayer = nil
                                 aTV.playingAudio = false
+                                aRightChair.disableSoundEffects()
+                                aRightChair.disableSoundEffects()
                             }
                         }
                     }

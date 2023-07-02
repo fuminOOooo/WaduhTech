@@ -28,6 +28,8 @@
 		15C3EC9C2A4E06690065FF12 /* LightSwitchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */; };
 		15C3EC9F2A4E8D460065FF12 /* lightswitch3_off.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */; };
 		15C3ECA22A4EB9D20065FF12 /* GameCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */; };
+		15C3ECA52A51A0C50065FF12 /* chairmove_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */; };
+		15C3ECA62A51A0C50065FF12 /* chairfall_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */; };
 		9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */; };
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
 		9B0D9AC62A443DA0009AB7FC /* CupboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */; };
@@ -93,6 +95,8 @@
 		15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchScene.swift; sourceTree = "<group>"; };
 		15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lightswitch3_off.mp3; path = "Sound Assets/lightswitch3_off.mp3"; sourceTree = SOURCE_ROOT; };
 		15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCredits.swift; sourceTree = "<group>"; };
+		15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairmove_1.wav; path = ../../../../../../Downloads/chairmove_1.wav; sourceTree = "<group>"; };
+		15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairfall_1.wav; path = ../../../../../../Downloads/chairfall_1.wav; sourceTree = "<group>"; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupboardItem.swift; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 		9B1E91AA2A47772300ADD9A4 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */,
+				15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */,
 				9B7B32AA2A4F312A006E4797 /* drawer_1.wav */,
 				9B7B32A42A4F3109006E4797 /* television_1.wav */,
 				9B7B32A12A4EC87B006E4797 /* clickplay.mp3 */,
@@ -469,6 +475,8 @@
 				9B1AE9342A5167DD0073B4CC /* OnboardPage.sks in Resources */,
 				9B7B328D2A4E81FD006E4797 /* hulberthopperdisplay.otf in Resources */,
 				A369AB7B2A4F5E7F006FB778 /* Empty.xcassets in Resources */,
+				15C3ECA62A51A0C50065FF12 /* chairfall_1.wav in Resources */,
+				15C3ECA52A51A0C50065FF12 /* chairmove_1.wav in Resources */,
 				9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
