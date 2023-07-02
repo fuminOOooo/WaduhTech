@@ -42,6 +42,8 @@ class GameScene: SKScene {
                             if stage >= 4 {
                                 aTV.enableSoundEffects()
                                 aTV.updateAudioIndex()
+                                aLeftChair.enableSoundEffects()
+                                aRightChair.enableSoundEffects()
                             }
                         }
                     }
@@ -67,6 +69,8 @@ class GameScene: SKScene {
                                 aTV.audioPlayer?.stop()
                                 aTV.audioPlayer = nil
                                 aTV.playingAudio = false
+                                aRightChair.disableSoundEffects()
+                                aRightChair.disableSoundEffects()
                             }
                         }
                     }
@@ -683,28 +687,28 @@ class GameScene: SKScene {
                 whichTouchIndicator = 1
             }
             
-            else if (blackboardNode != nil && blackboardNode.contains(touchLocation)) {
+            else if (stage >= 2 && blackboardNode != nil && blackboardNode.contains(touchLocation)) {
                 startLocation = touchLocation
                 whichTouchIndicator = 2
                 
             }
             
-            else if (windowNode != nil && windowNode.contains(touchLocation)) {
+            else if (stage >= 2 && windowNode != nil && windowNode.contains(touchLocation)) {
                 startLocation = touchLocation
                 whichTouchIndicator = 3
             }
-            else if (leftChairNode != nil && leftChairNode.contains(touchLocation)) {
+            else if (stage >= 4 && leftChairNode != nil && leftChairNode.contains(touchLocation)) {
                 leftChairNode.texture = SKTexture(imageNamed: "kursiTap1_1")
                 aLeftChair.startCountdown()
             }
-            else if (rightChairNode != nil && rightChairNode.contains(touchLocation)) {
+            else if (stage >= 4 && rightChairNode != nil && rightChairNode.contains(touchLocation)) {
                 rightChairNode.texture = SKTexture(imageNamed: "kursiTap2_1")
                 aRightChair.startCountdown()
             }
             
             // MARK: Began for Hold Gesture
             
-            else if (aDrawer != nil && aDrawer.spriteNode.contains(touchLocation)) {
+            else if (stage >= 3 && aDrawer != nil && aDrawer.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
                 whichTouchIndicator = 4
                 
@@ -717,7 +721,7 @@ class GameScene: SKScene {
                 aDrawer.touchStartTime = touch.timestamp
             }
             
-            else if (aTV != nil && aTV.spriteNode.contains(touchLocation)) {
+            else if (stage >= 4 && aTV != nil && aTV.spriteNode.contains(touchLocation)) {
                 isHeld.toggle()
                 whichTouchIndicator = 5
                 

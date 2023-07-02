@@ -25,9 +25,9 @@ class DrawerScene {
         self.scene = scene
     }
     
-    let views: [SKTexture] = [SKTexture(imageNamed: "drawer_1"), SKTexture(imageNamed: "drawer_2"), SKTexture(imageNamed: "drawer_3"), SKTexture(imageNamed: "drawer_4")]
+    let views: [SKTexture] = [SKTexture(imageNamed: "drawer_1"), SKTexture(imageNamed: "drawer_4")]
     
-    var timeRemaining: TimeInterval = 32.0 {
+    var timeRemaining: TimeInterval = 16.0 {
         didSet {
             updateTextureIndex()
             updateAudioIndex()
@@ -55,12 +55,8 @@ class DrawerScene {
     func updateTextureIndex() {
         
         if timeRemaining <= 8 {
-            currentTextureIndex = 3
-        } else if timeRemaining <= 16 {
-            currentTextureIndex = 2
-        } else if timeRemaining <= 24 {
             currentTextureIndex = 1
-        } else if timeRemaining <= 32 {
+        } else if timeRemaining <= 16 {
             currentTextureIndex = 0
         }
     }
@@ -82,7 +78,7 @@ class DrawerScene {
     func updateAudioIndex() {
         if soundEnabled {
             
-            if timeRemaining == 24 || timeRemaining == 16 || timeRemaining == 8 {
+            if timeRemaining == 8 {
                 let drawerSound = SKAction.playSoundFileNamed("drawer_1", waitForCompletion: false)
                 scene.run(drawerSound)
             }

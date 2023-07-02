@@ -68,7 +68,7 @@ class LeftChairScene {
         if soundEnabled {
             
             if counter == 10 {
-                let cupboardOpenSound = SKAction.playSoundFileNamed("kursiTap1_1", waitForCompletion: false)
+                let cupboardOpenSound = SKAction.playSoundFileNamed("chairfall_1", waitForCompletion: false)
                 scene.run(cupboardOpenSound)
             }
         }

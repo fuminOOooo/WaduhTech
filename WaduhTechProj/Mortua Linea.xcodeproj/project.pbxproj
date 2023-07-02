@@ -28,10 +28,14 @@
 		15C3EC9C2A4E06690065FF12 /* LightSwitchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */; };
 		15C3EC9F2A4E8D460065FF12 /* lightswitch3_off.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */; };
 		15C3ECA22A4EB9D20065FF12 /* GameCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */; };
+		15C3ECA52A51A0C50065FF12 /* chairmove_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */; };
+		15C3ECA62A51A0C50065FF12 /* chairfall_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */; };
 		9B0D9AC12A443755009AB7FC /* BlackboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */; };
 		9B0D9AC32A4437F6009AB7FC /* BlackboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */; };
 		9B0D9AC62A443DA0009AB7FC /* CupboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */; };
 		9B0D9AC82A443DC4009AB7FC /* CupboardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0D9AC72A443DC4009AB7FC /* CupboardScene.swift */; };
+		9B1AE9322A5167100073B4CC /* OnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1AE9312A5167100073B4CC /* OnboardPage.swift */; };
+		9B1AE9342A5167DD0073B4CC /* OnboardPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B1AE9332A5167DD0073B4CC /* OnboardPage.sks */; };
 		9B1E91AF2A47773F00ADD9A4 /* blackboard_I.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */; };
 		9B1E91B02A47773F00ADD9A4 /* blackboard_L.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */; };
 		9B1E91B12A47773F00ADD9A4 /* blackboard_A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */; };
@@ -64,8 +68,8 @@
 		9BCD53272A45929600B09C86 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD53262A45929600B09C86 /* GameOver.swift */; };
 		9BCD532A2A45943200B09C86 /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD53292A45943200B09C86 /* GameOver.sks */; };
 		A30F1BB02A48881100F402B5 /* LightSwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F1BAF2A48881100F402B5 /* LightSwitchItem.swift */; };
-		A369AB792A4F5DBB006FB778 /* duatiga.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A369AB782A4F5DBB006FB778 /* duatiga.xcassets */; };
-		A369AB7B2A4F5E7F006FB778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A369AB7A2A4F5E7F006FB778 /* Assets.xcassets */; };
+		A369AB792A4F5DBB006FB778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A369AB782A4F5DBB006FB778 /* Assets.xcassets */; };
+		A369AB7B2A4F5E7F006FB778 /* Empty.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A369AB7A2A4F5E7F006FB778 /* Empty.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,10 +95,14 @@
 		15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchScene.swift; sourceTree = "<group>"; };
 		15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lightswitch3_off.mp3; path = "Sound Assets/lightswitch3_off.mp3"; sourceTree = SOURCE_ROOT; };
 		15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCredits.swift; sourceTree = "<group>"; };
+		15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairmove_1.wav; path = ../../../../../../Downloads/chairmove_1.wav; sourceTree = "<group>"; };
+		15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairfall_1.wav; path = ../../../../../../Downloads/chairfall_1.wav; sourceTree = "<group>"; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC72A443DC4009AB7FC /* CupboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupboardScene.swift; sourceTree = "<group>"; };
+		9B1AE9312A5167100073B4CC /* OnboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPage.swift; sourceTree = "<group>"; };
+		9B1AE9332A5167DD0073B4CC /* OnboardPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OnboardPage.sks; sourceTree = "<group>"; };
 		9B1E91AB2A47773F00ADD9A4 /* blackboard_I.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_I.mp3; sourceTree = "<group>"; };
 		9B1E91AC2A47773F00ADD9A4 /* blackboard_L.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_L.mp3; sourceTree = "<group>"; };
 		9B1E91AD2A47773F00ADD9A4 /* blackboard_A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blackboard_A.mp3; sourceTree = "<group>"; };
@@ -128,8 +136,8 @@
 		9BCD53262A45929600B09C86 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		9BCD53292A45943200B09C86 /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		A30F1BAF2A48881100F402B5 /* LightSwitchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchItem.swift; sourceTree = "<group>"; };
-		A369AB782A4F5DBB006FB778 /* duatiga.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = duatiga.xcassets; sourceTree = "<group>"; };
-		A369AB7A2A4F5E7F006FB778 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A369AB782A4F5DBB006FB778 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A369AB7A2A4F5E7F006FB778 /* Empty.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Empty.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +154,8 @@
 		15662C992A41C58E00214FD7 = {
 			isa = PBXGroup;
 			children = (
-				A369AB7A2A4F5E7F006FB778 /* Assets.xcassets */,
-				A369AB782A4F5DBB006FB778 /* duatiga.xcassets */,
+				A369AB7A2A4F5E7F006FB778 /* Empty.xcassets */,
+				A369AB782A4F5DBB006FB778 /* Assets.xcassets */,
 				15662CA92A41C59000214FD7 /* Mortua Linea iOS */,
 				15662C9E2A41C58F00214FD7 /* Mortua Linea Shared */,
 				15662CA82A41C59000214FD7 /* Products */,
@@ -266,6 +274,8 @@
 		9B1E91AA2A47772300ADD9A4 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */,
+				15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */,
 				9B7B32AA2A4F312A006E4797 /* drawer_1.wav */,
 				9B7B32A42A4F3109006E4797 /* television_1.wav */,
 				9B7B32A12A4EC87B006E4797 /* clickplay.mp3 */,
@@ -292,8 +302,10 @@
 			isa = PBXGroup;
 			children = (
 				9B1E91B82A484D5D00ADD9A4 /* MainMenu.sks */,
+				9B1AE9332A5167DD0073B4CC /* OnboardPage.sks */,
 				9B1E91B62A484D4300ADD9A4 /* MainMenu.swift */,
 				15C3EC922A49A2ED0065FF12 /* ExamTransition.swift */,
+				9B1AE9312A5167100073B4CC /* OnboardPage.swift */,
 			);
 			path = "Main Menu";
 			sourceTree = "<group>";
@@ -438,7 +450,7 @@
 			files = (
 				15662CB52A41C59000214FD7 /* GameScene.sks in Resources */,
 				9B1E91B92A484D5D00ADD9A4 /* MainMenu.sks in Resources */,
-				A369AB792A4F5DBB006FB778 /* duatiga.xcassets in Resources */,
+				A369AB792A4F5DBB006FB778 /* Assets.xcassets in Resources */,
 				9B7B32A92A4F311B006E4797 /* window_outside.wav in Resources */,
 				9B7B32AD2A4F45FE006E4797 /* jumpscareFix.wav in Resources */,
 				9B7B32A72A4F310E006E4797 /* television_3.wav in Resources */,
@@ -460,8 +472,11 @@
 				15C3EC9F2A4E8D460065FF12 /* lightswitch3_off.mp3 in Resources */,
 				9B7B329E2A4EC6D8006E4797 /* mainmenu.wav in Resources */,
 				9B7B32A52A4F3109006E4797 /* television_1.wav in Resources */,
+				9B1AE9342A5167DD0073B4CC /* OnboardPage.sks in Resources */,
 				9B7B328D2A4E81FD006E4797 /* hulberthopperdisplay.otf in Resources */,
-				A369AB7B2A4F5E7F006FB778 /* Assets.xcassets in Resources */,
+				A369AB7B2A4F5E7F006FB778 /* Empty.xcassets in Resources */,
+				15C3ECA62A51A0C50065FF12 /* chairfall_1.wav in Resources */,
+				15C3ECA52A51A0C50065FF12 /* chairmove_1.wav in Resources */,
 				9B1E91B22A47773F00ADD9A4 /* blackboard_F.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +506,7 @@
 				9B1E91C62A4C44FF00ADD9A4 /* TVItem.swift in Sources */,
 				15C3EC592A4368320065FF12 /* WindowScene.swift in Sources */,
 				15C3EC8C2A484BD30065FF12 /* ExamTableScene.swift in Sources */,
+				9B1AE9322A5167100073B4CC /* OnboardPage.swift in Sources */,
 				15C3EC932A49A2ED0065FF12 /* ExamTransition.swift in Sources */,
 				9B7B32912A4E8AA6006E4797 /* RightChairItem.swift in Sources */,
 				15C3ECA22A4EB9D20065FF12 /* GameCredits.swift in Sources */,
@@ -646,7 +662,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ACWW5N46RD;
+				DEVELOPMENT_TEAM = 35V95TRX69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mortua Linea-iOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Mortua Linea";
@@ -664,7 +680,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.WaduchTech.MortuaLinea;
+				PRODUCT_BUNDLE_IDENTIFIER = tes.com.WaduchTech.MortuaLinea;
 				PRODUCT_NAME = "Mortua Linea";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -683,7 +699,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ACWW5N46RD;
+				DEVELOPMENT_TEAM = 35V95TRX69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mortua Linea-iOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Mortua Linea";
@@ -701,7 +717,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.WaduchTech.MortuaLinea;
+				PRODUCT_BUNDLE_IDENTIFIER = tes.com.WaduchTech.MortuaLinea;
 				PRODUCT_NAME = "Mortua Linea";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
