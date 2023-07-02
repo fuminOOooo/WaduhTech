@@ -51,16 +51,16 @@ class MainMenu: SKScene {
         
         // MARK: Button New Game
         newGame = SKSpriteNode(imageNamed: "newButton")
-        newGame.zPosition = 2
-        newGame.position = CGPoint(x: 0, y: -170)
+        newGame.zPosition = 2.0
+        newGame.position = CGPoint(x: frame.midX, y: frame.midY-170)
         newGame.size = CGSize(width: 450, height: 93)
         addChild(newGame)
         
         if (stage >= 1) {
             // MARK: Button Continue
             continueButton = SKSpriteNode(imageNamed: "continueButton")
-            continueButton.zPosition = 2
-            continueButton.position = CGPoint(x: 0, y: -300)
+            continueButton.zPosition = 2.0
+            continueButton.position = CGPoint(x: frame.midX, y: frame.midY-300)
             continueButton.size = CGSize(width: 450, height: 93)
             addChild(continueButton)
         }
