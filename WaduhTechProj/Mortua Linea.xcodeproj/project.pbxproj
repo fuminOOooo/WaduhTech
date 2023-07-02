@@ -95,8 +95,8 @@
 		15C3EC9B2A4E06690065FF12 /* LightSwitchScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSwitchScene.swift; sourceTree = "<group>"; };
 		15C3EC9E2A4E8D460065FF12 /* lightswitch3_off.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lightswitch3_off.mp3; path = "Sound Assets/lightswitch3_off.mp3"; sourceTree = SOURCE_ROOT; };
 		15C3ECA12A4EB9D20065FF12 /* GameCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCredits.swift; sourceTree = "<group>"; };
-		15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairmove_1.wav; path = ../../../../../../Downloads/chairmove_1.wav; sourceTree = "<group>"; };
-		15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairfall_1.wav; path = ../../../../../../Downloads/chairfall_1.wav; sourceTree = "<group>"; };
+		15C3ECA32A51A0C50065FF12 /* chairmove_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairmove_1.wav; path = "../../Sound Assets/chairmove_1.wav"; sourceTree = "<group>"; };
+		15C3ECA42A51A0C50065FF12 /* chairfall_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = chairfall_1.wav; path = "../../Sound Assets/chairfall_1.wav"; sourceTree = "<group>"; };
 		9B0D9AC02A443755009AB7FC /* BlackboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardItem.swift; sourceTree = "<group>"; };
 		9B0D9AC22A4437F6009AB7FC /* BlackboardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackboardScene.swift; sourceTree = "<group>"; };
 		9B0D9AC52A443DA0009AB7FC /* CupboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupboardItem.swift; sourceTree = "<group>"; };
@@ -662,7 +662,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 35V95TRX69;
+				DEVELOPMENT_TEAM = ACWW5N46RD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mortua Linea-iOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Mortua Linea";
@@ -699,7 +699,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 35V95TRX69;
+				DEVELOPMENT_TEAM = ACWW5N46RD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mortua Linea-iOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Mortua Linea";
